@@ -31,6 +31,6 @@ export default defineConfig({
     strictPort: true,
   },
   server: {
-    historyApiFallback: true,
+    proxy: {},
   },
 })

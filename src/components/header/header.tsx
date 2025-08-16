@@ -22,8 +22,8 @@ export function Header() {
   
   const getNavItemClasses = (path: string) => {
     const baseClasses = "rounded-md bg-linear-to-b p-3 tablet:p-4 my-2 no-underline outline-hidden select-none focus:shadow-md transition-all duration-200 font-inter text-sm tablet:text-base"
-    const hoverClasses = "hover:bg-gray-300 dark:hover:bg-gray-600 active:bg-gray-400 dark:active:bg-gray-500"
-    const activeClasses = "bg-gray-300 dark:bg-gray-600"
+    const hoverClasses = "hover:bg-indigo-100 dark:hover:bg-indigo-900/30 active:bg-indigo-200 dark:active:bg-indigo-800/40"
+    const activeClasses = "bg-indigo-100 dark:bg-indigo-900/30"
     
     if (isActive(path)) {
       return `${baseClasses} ${activeClasses} ${hoverClasses} ml-2`
@@ -64,7 +64,7 @@ export function Header() {
                 {menuItems.map((item) => (
                   <NavigationMenuItem key={item.path}>
                     <NavigationMenuLink asChild className={getNavItemClasses(item.path)}>
-                      <a href={item.path} className="dark:text-white">{item.label}</a>
+                      <a href={item.path} className={isActive(item.path) ? "text-ipimIndigoLight dark:text-ipimIndigoLight" : "dark:text-white"}>{item.label}</a>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
@@ -146,8 +146,8 @@ export function Header() {
                     onClick={closeMenu}
                     className={`block w-full text-left p-4 rounded-md transition-all duration-200 font-inter text-base ${
                       isActive(item.path)
-                        ? 'bg-gray-300 dark:bg-gray-600 text-ipimBlack dark:text-white font-medium'
-                        : 'text-ipimBlack dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600'
+                        ? 'bg-indigo-100 dark:bg-indigo-900/30 text-ipimIndigoLight dark:text-ipimIndigoLight font-medium'
+                        : 'text-ipimBlack dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-900/20 active:bg-indigo-100 dark:active:bg-indigo-900/30'
                     }`}
                   >
                     {item.label}

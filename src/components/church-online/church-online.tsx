@@ -54,14 +54,14 @@ export default function ChurchOnline() {
 
         <div
           className="mt-10 flex items-center justify-center gap-5 phone:mx-4
-        phone:flex-wrap laptopMd:mx-0
+        phone:flex-wrap tablet:flex-nowrap laptopMd:mx-0
         laptopMd:flex-nowrap"
         >
           <LinkIndigo
             url="https://youtube.com/ipimacaubal"
             newTab={true}
             classLink="text-[1rem] px-14 py-4 mt-5 mx-3 
-            phone:w-full laptopMd:w-auto font-inter"
+            phone:w-full tablet:w-auto laptopMd:w-auto font-inter"
             text="Ir para a Igreja Online"
           />
 
@@ -69,7 +69,7 @@ export default function ChurchOnline() {
             url="https://maps.app.goo.gl/64dCtoF9D114BzPn8"
             newTab={true}
             classLink="text-[1rem] px-14 py-4 mt-5 mx-3 
-            phone:flex phone:items-center phone:justify-center phone:w-full laptopMd:w-auto font-inter"
+            phone:flex phone:items-center phone:justify-center phone:w-full tablet:w-auto laptopMd:w-auto font-inter"
             text="Achar um local perto de mim"
           />
         </div>

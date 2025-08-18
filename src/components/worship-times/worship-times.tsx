@@ -81,7 +81,10 @@ export default function WorshipTimes() {
                 </div>
               </div>
               <p className="font-bold">19h30</p>
-              <p className="font-bold">Culto Sociedade de Adultos</p>
+              <p className="font-bold flex flex-col gap-1">
+                <span>Culto Sociedade de Adultos</span> 
+                <span className="text-[.7rem]">Primeiro sábado do mês</span>
+                </p>
               <p className="font-normal">Templo</p>
               <p className="text-[.8rem] font-light">
                 R Jeronimo Narciso Ramos, 889

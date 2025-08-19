@@ -87,6 +87,8 @@ module.exports = {
   		}
   	},
   	screens: {
+  		ultrawide: '3440px',  // Monitores ultrawide
+  		desktop4k: '2560px',   // Monitores 4K
   		desktop: '2000px',
   		laptopLg: '1920px',
   		laptopMd: '1100px',

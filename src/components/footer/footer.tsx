@@ -61,12 +61,12 @@ export function Footer() {
                   >
                     Congresso
                   </a>
-                  <a href="https://ipib.app.br/siipicenso/" className="font-source">Censo 2024</a>
                   <a href="https://www.ipiconecta.app.br/" className="font-source">IPI Conecta</a>
                   <a href="https://drive.google.com/file/d/1XOFkIBKvjzwzcsUKm5sCMA1WR0NrVfeR/view" className="font-source">
                     O Estardarte
                   </a>
                   <a href="https://www.ctmonline.com.br/" className="font-source">CTM Online</a>
+                  <a href="https://www.fatipi.edu.br/" className="font-source">FATIPI</a>
                 </div>
               </div>
             </div>

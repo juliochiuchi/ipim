@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+import QRCodePixIPIM from '@/assets/qrcode-pix.png'
 
 export const Route = createFileRoute('/_app/doe')({
   component: Doe,
@@ -67,23 +68,7 @@ function Doe() {
                     <div className="w-48 h-48 phone:w-40 phone:h-40 bg-gradient-to-br from-zinc-100 to-zinc-200 rounded-xl flex items-center justify-center border-2 border-dashed border-zinc-400">
                       <div className="text-center">
                         <div className="w-16 h-16 mx-auto mb-3 bg-zinc-300 rounded-lg flex items-center justify-center">
-                          <svg className="w-8 h-8 text-zinc-600" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zM13 3v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4z"/>
-                            <rect x="13" y="13" width="2" height="2"/>
-                            <rect x="15" y="15" width="2" height="2"/>
-                            <rect x="17" y="13" width="2" height="2"/>
-                            <rect x="19" y="15" width="2" height="2"/>
-                            <rect x="21" y="13" width="2" height="2"/>
-                            <rect x="13" y="17" width="2" height="2"/>
-                            <rect x="17" y="17" width="2" height="2"/>
-                            <rect x="19" y="19" width="2" height="2"/>
-                            <rect x="13" y="19" width="2" height="2"/>
-                            <rect x="15" y="21" width="2" height="2"/>
-                            <rect x="17" y="21" width="2" height="2"/>
-                            <rect x="21" y="17" width="2" height="2"/>
-                            <rect x="21" y="19" width="2" height="2"/>
-                            <rect x="21" y="21" width="2" height="2"/>
-                          </svg>
+                          <img src={QRCodePixIPIM} alt="qrcode pix ipim" />
                         </div>
                         <span className="text-sm text-zinc-600 font-source">QR Code PIX</span>
                       </div>

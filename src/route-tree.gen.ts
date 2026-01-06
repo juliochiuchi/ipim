@@ -9,10 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './pages/__root'
-import { Route as DashboardRouteImport } from './pages/dashboard'
+import { Route as PrivateLayoutRouteImport } from './pages/_private/layout'
 import { Route as AuthLayoutRouteImport } from './pages/_auth/layout'
 import { Route as AppLayoutRouteImport } from './pages/_app/layout'
 import { Route as AppIndexRouteImport } from './pages/_app/index'
+import { Route as PrivateDashboardRouteImport } from './pages/_private/dashboard'
 import { Route as AuthLoginRouteImport } from './pages/_auth/login'
 import { Route as AppLiveRouteImport } from './pages/_app/live'
 import { Route as AppDoeRouteImport } from './pages/_app/doe'
@@ -20,9 +21,8 @@ import { Route as AppCatalogoAcampamentoRouteImport } from './pages/_app/catalog
 import { Route as AppCalendarRouteImport } from './pages/_app/calendar'
 import { Route as AppAcampamentoRouteImport } from './pages/_app/acampamento'
 
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
+const PrivateLayoutRoute = PrivateLayoutRouteImport.update({
+  id: '/_private',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthLayoutRoute = AuthLayoutRouteImport.update({
@@ -37,6 +37,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppLayoutRoute,
+} as any)
+const PrivateDashboardRoute = PrivateDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => PrivateLayoutRoute,
 } as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/login',
@@ -70,86 +75,88 @@ const AppAcampamentoRoute = AppAcampamentoRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/dashboard': typeof DashboardRoute
   '/acampamento': typeof AppAcampamentoRoute
   '/calendar': typeof AppCalendarRoute
   '/catalogo-acampamento': typeof AppCatalogoAcampamentoRoute
   '/doe': typeof AppDoeRoute
   '/live': typeof AppLiveRoute
   '/login': typeof AuthLoginRoute
+  '/dashboard': typeof PrivateDashboardRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
-  '/dashboard': typeof DashboardRoute
   '/acampamento': typeof AppAcampamentoRoute
   '/calendar': typeof AppCalendarRoute
   '/catalogo-acampamento': typeof AppCatalogoAcampamentoRoute
   '/doe': typeof AppDoeRoute
   '/live': typeof AppLiveRoute
   '/login': typeof AuthLoginRoute
+  '/dashboard': typeof PrivateDashboardRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app': typeof AppLayoutRouteWithChildren
   '/_auth': typeof AuthLayoutRouteWithChildren
-  '/dashboard': typeof DashboardRoute
+  '/_private': typeof PrivateLayoutRouteWithChildren
   '/_app/acampamento': typeof AppAcampamentoRoute
   '/_app/calendar': typeof AppCalendarRoute
   '/_app/catalogo-acampamento': typeof AppCatalogoAcampamentoRoute
   '/_app/doe': typeof AppDoeRoute
   '/_app/live': typeof AppLiveRoute
   '/_auth/login': typeof AuthLoginRoute
+  '/_private/dashboard': typeof PrivateDashboardRoute
   '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/dashboard'
     | '/acampamento'
     | '/calendar'
     | '/catalogo-acampamento'
     | '/doe'
     | '/live'
     | '/login'
+    | '/dashboard'
     | '/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/dashboard'
     | '/acampamento'
     | '/calendar'
     | '/catalogo-acampamento'
     | '/doe'
     | '/live'
     | '/login'
+    | '/dashboard'
     | '/'
   id:
     | '__root__'
     | '/_app'
     | '/_auth'
-    | '/dashboard'
+    | '/_private'
     | '/_app/acampamento'
     | '/_app/calendar'
     | '/_app/catalogo-acampamento'
     | '/_app/doe'
     | '/_app/live'
     | '/_auth/login'
+    | '/_private/dashboard'
     | '/_app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   AppLayoutRoute: typeof AppLayoutRouteWithChildren
   AuthLayoutRoute: typeof AuthLayoutRouteWithChildren
-  DashboardRoute: typeof DashboardRoute
+  PrivateLayoutRoute: typeof PrivateLayoutRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
+    '/_private': {
+      id: '/_private'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof PrivateLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_auth': {
@@ -172,6 +179,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppLayoutRoute
+    }
+    '/_private/dashboard': {
+      id: '/_private/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof PrivateDashboardRouteImport
+      parentRoute: typeof PrivateLayoutRoute
     }
     '/_auth/login': {
       id: '/_auth/login'
@@ -252,10 +266,22 @@ const AuthLayoutRouteWithChildren = AuthLayoutRoute._addFileChildren(
   AuthLayoutRouteChildren,
 )
 
+interface PrivateLayoutRouteChildren {
+  PrivateDashboardRoute: typeof PrivateDashboardRoute
+}
+
+const PrivateLayoutRouteChildren: PrivateLayoutRouteChildren = {
+  PrivateDashboardRoute: PrivateDashboardRoute,
+}
+
+const PrivateLayoutRouteWithChildren = PrivateLayoutRoute._addFileChildren(
+  PrivateLayoutRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   AppLayoutRoute: AppLayoutRouteWithChildren,
   AuthLayoutRoute: AuthLayoutRouteWithChildren,
-  DashboardRoute: DashboardRoute,
+  PrivateLayoutRoute: PrivateLayoutRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

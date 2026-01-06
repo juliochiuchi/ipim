@@ -1,4 +1,4 @@
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { supabase } from '@/utils/supabase'
@@ -11,16 +11,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
-export const Route = createFileRoute('/dashboard')({
+export const Route = createFileRoute('/_private/dashboard')({
   component: DashboardPage,
-  beforeLoad: async () => {
-    const { data: { session } } = await supabase.auth.getSession()
-    if (!session) {
-      throw redirect({
-        to: '/login',
-      })
-    }
-  }
 })
 
 function DashboardPage() {

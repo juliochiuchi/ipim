@@ -9,15 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './pages/__root'
+import { Route as DashboardRouteImport } from './pages/dashboard'
 import { Route as AuthLayoutRouteImport } from './pages/_auth/layout'
 import { Route as AppLayoutRouteImport } from './pages/_app/layout'
 import { Route as AppIndexRouteImport } from './pages/_app/index'
+import { Route as AuthLoginRouteImport } from './pages/_auth/login'
 import { Route as AppLiveRouteImport } from './pages/_app/live'
 import { Route as AppDoeRouteImport } from './pages/_app/doe'
 import { Route as AppCatalogoAcampamentoRouteImport } from './pages/_app/catalogo-acampamento'
 import { Route as AppCalendarRouteImport } from './pages/_app/calendar'
 import { Route as AppAcampamentoRouteImport } from './pages/_app/acampamento'
 
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthLayoutRoute = AuthLayoutRouteImport.update({
   id: '/_auth',
   getParentRoute: () => rootRouteImport,
@@ -30,6 +37,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppLayoutRoute,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AuthLayoutRoute,
 } as any)
 const AppLiveRoute = AppLiveRouteImport.update({
   id: '/live',
@@ -58,68 +70,88 @@ const AppAcampamentoRoute = AppAcampamentoRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/dashboard': typeof DashboardRoute
   '/acampamento': typeof AppAcampamentoRoute
   '/calendar': typeof AppCalendarRoute
   '/catalogo-acampamento': typeof AppCatalogoAcampamentoRoute
   '/doe': typeof AppDoeRoute
   '/live': typeof AppLiveRoute
+  '/login': typeof AuthLoginRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
+  '/dashboard': typeof DashboardRoute
   '/acampamento': typeof AppAcampamentoRoute
   '/calendar': typeof AppCalendarRoute
   '/catalogo-acampamento': typeof AppCatalogoAcampamentoRoute
   '/doe': typeof AppDoeRoute
   '/live': typeof AppLiveRoute
+  '/login': typeof AuthLoginRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app': typeof AppLayoutRouteWithChildren
-  '/_auth': typeof AuthLayoutRoute
+  '/_auth': typeof AuthLayoutRouteWithChildren
+  '/dashboard': typeof DashboardRoute
   '/_app/acampamento': typeof AppAcampamentoRoute
   '/_app/calendar': typeof AppCalendarRoute
   '/_app/catalogo-acampamento': typeof AppCatalogoAcampamentoRoute
   '/_app/doe': typeof AppDoeRoute
   '/_app/live': typeof AppLiveRoute
+  '/_auth/login': typeof AuthLoginRoute
   '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/dashboard'
     | '/acampamento'
     | '/calendar'
     | '/catalogo-acampamento'
     | '/doe'
     | '/live'
+    | '/login'
     | '/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/dashboard'
     | '/acampamento'
     | '/calendar'
     | '/catalogo-acampamento'
     | '/doe'
     | '/live'
+    | '/login'
     | '/'
   id:
     | '__root__'
     | '/_app'
     | '/_auth'
+    | '/dashboard'
     | '/_app/acampamento'
     | '/_app/calendar'
     | '/_app/catalogo-acampamento'
     | '/_app/doe'
     | '/_app/live'
+    | '/_auth/login'
     | '/_app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   AppLayoutRoute: typeof AppLayoutRouteWithChildren
-  AuthLayoutRoute: typeof AuthLayoutRoute
+  AuthLayoutRoute: typeof AuthLayoutRouteWithChildren
+  DashboardRoute: typeof DashboardRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_auth': {
       id: '/_auth'
       path: ''
@@ -140,6 +172,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppLayoutRoute
+    }
+    '/_auth/login': {
+      id: '/_auth/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof AuthLayoutRoute
     }
     '/_app/live': {
       id: '/_app/live'
@@ -201,9 +240,22 @@ const AppLayoutRouteWithChildren = AppLayoutRoute._addFileChildren(
   AppLayoutRouteChildren,
 )
 
+interface AuthLayoutRouteChildren {
+  AuthLoginRoute: typeof AuthLoginRoute
+}
+
+const AuthLayoutRouteChildren: AuthLayoutRouteChildren = {
+  AuthLoginRoute: AuthLoginRoute,
+}
+
+const AuthLayoutRouteWithChildren = AuthLayoutRoute._addFileChildren(
+  AuthLayoutRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   AppLayoutRoute: AppLayoutRouteWithChildren,
-  AuthLayoutRoute: AuthLayoutRoute,
+  AuthLayoutRoute: AuthLayoutRouteWithChildren,
+  DashboardRoute: DashboardRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

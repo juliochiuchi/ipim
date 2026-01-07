@@ -15,8 +15,9 @@ export function Footer() {
   return (
     <footer className="bg-ipimBgLightFooter shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)] dark:bg-ipimBgDark dark:text-white">
       <div className="flex flex-col">
-        <div className="justify-center px-20 pt-12 phone:flex-col phone:px-6 laptopMd:flex-row desktop:px-[30rem]">
-          <div className="flex phone:items-center phone:justify-center laptopMd:items-start laptopMd:justify-start">
+
+        <div className="justify-center px-6 pt-12 phone:flex-col phone:px-6 laptopMd:flex-row laptopMd:px-20 desktop:px-[30rem]">
+          <div className="flex phone:items-center phone:justify-center laptopMd:items-start laptopMd:justify-start -ml-2">
             <img
               src={IPIBIcon}
               alt="IPIB ICON"
@@ -25,7 +26,7 @@ export function Footer() {
           </div>
 
           <div
-            className="from-0 to-100 flex w-full gap-10 pb-10 phone:w-full
+            className="from-0 to-100 flex w-full gap-8 pb-10 phone:w-full
               phone:flex-col phone:items-center phone:justify-center laptopMd:flex-row laptopMd:justify-between"
           >
             <div className="max-w-[300px] text-[1rem] phone:text-center laptopMd:text-left">

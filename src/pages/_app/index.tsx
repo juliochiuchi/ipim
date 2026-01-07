@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Banner } from '../../components/banner/banner'
 import ChurchOnline from '../../components/church-online/church-online'
-import { FindMe } from '../../components/find-me/find-me'
+import { VisitUs } from '../../components/visit-us/visit-us'
 import ChurchOperation from '@/components/church-operation/church-operation'
 // import Prayer from '../../components/prayer/prayer'
 // import WorshipTimes from '../../components/worship-times/worship-times'
@@ -15,7 +15,7 @@ function Index() {
     <>
       <Banner />
       <ChurchOnline />
-      <FindMe />
+      <VisitUs />
       {/* <Prayer /> */}
       {/* <WorshipTimes /> */}
       <ChurchOperation />

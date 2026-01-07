@@ -15,7 +15,9 @@ export default function ChurchOperation() {
             CULTOS
           </p>
 
-          <p className="text-sm font-poppins font-stretch-extra-expanded">Texto aqui do que vai ser escerito pelo texto aqui</p>
+          <p className="text-sm font-poppins font-stretch-extra-expanded">
+            Nossos cultos são momentos de comunhão, adoração e ensino da Palavra. Um tempo separado para buscar a Deus, fortalecer a fé e viver a presença dEle juntos como igreja.
+          </p>
         </div>
 
         <div className="w-full max-w-[300px] flex flex-col gap-9 items-center text-center mt-10 laptopMd:mt-0 laptopMd:items-start laptopMd:text-left">
@@ -23,7 +25,9 @@ export default function ChurchOperation() {
             EBDS
           </p>
 
-          <p className="text-sm font-poppins font-stretch-extra-expanded">Texto aqui do que vai ser escerito pelo texto aqui</p>
+          <p className="text-sm font-poppins font-stretch-extra-expanded">
+            A Escola Dominical é um espaço de aprendizado e crescimento espiritual. Por meio do estudo bíblico, somos edificados, fortalecidos na fé e preparados para viver o evangelho no dia a dia.
+          </p>
         </div>
 
         <div className="w-full max-w-[300px] flex flex-col gap-9 items-center text-center mt-10 laptopMd:mt-0 laptopMd:items-start laptopMd:text-left">
@@ -31,7 +35,9 @@ export default function ChurchOperation() {
             SERVIÇO
           </p>
 
-          <p className="text-sm font-poppins font-stretch-extra-expanded">Texto aqui do que vai ser escerito pelo texto aqui</p>
+          <p className="text-sm font-poppins font-stretch-extra-expanded">
+            Servir a Deus é responder ao Seu amor com dedicação e obediência. Quando servimos, participamos da obra do Senhor, abençoamos pessoas e descobrimos nosso propósito no corpo de Cristo.
+          </p>
         </div>
       </div>
 

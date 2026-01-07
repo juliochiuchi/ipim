@@ -80,7 +80,7 @@ export function Footer() {
                 <div className="flex flex-col gap-4 text-ipimTextFooter dark:text-ipimBgLightFooter phone:items-center phone:justify-center laptopMd:items-start laptopMd:justify-start">
                   <div className="mt-1 flex phone:flex-col phone:items-center phone:gap-1 phone:text-center laptopMd:flex-row laptopMd:gap-2 laptopMd:text-left">
                     <div className="phone:flex phone:justify-center">
-                      <FiNavigation className="mt-[5px] text-ipimGreen hover:text-ipimTextFooter" />
+                      <FiNavigation className="mt-[5px] text-[#008785] hover:text-ipimTextFooter" />
                     </div>
                     <a
                       className="max-w-[250px] text-[1rem] text-ipimTitleFooter dark:text-ipimBgLightFooter"
@@ -94,7 +94,7 @@ export function Footer() {
 
                   <div className="mt-1 flex items-center gap-2 phone:flex-col phone:gap-1 laptopMd:flex-row">
                     <div className="phone:flex phone:justify-center">
-                      <FiMail className="mt-1 text-ipimGreen hover:text-ipimTextFooter" />
+                      <FiMail className="mt-1 text-[#008785] hover:text-ipimTextFooter" />
                     </div>
                     <a
                       className="text-ipimTitleFooter dark:text-ipimBgLightFooter"
@@ -106,7 +106,7 @@ export function Footer() {
 
                   <div className="mt-1 flex items-center gap-2 phone:flex-col phone:gap-1 laptopMd:flex-row">
                     <div className="phone:flex phone:justify-center">
-                      <FiPhone className="text-ipimGreen hover:text-ipimTextFooter" />
+                      <FiPhone className="text-[#008785] hover:text-ipimTextFooter" />
                     </div>
                     <a
                       className="text-ipimTitleFooter dark:text-ipimBgLightFooter"
@@ -140,23 +140,23 @@ export function Footer() {
 
                 <div className="flex flex-row gap-3 text-[1rem] text-ipimTextFooter phone:items-center phone:justify-center laptopMd:items-start laptopMd:justify-start">
                   <a href="#" className="mt-1">
-                    <FiFacebook className="h-[22px] w-[22px] text-ipimGreen hover:text-ipimTextFooter" />
+                    <FiFacebook className="h-[22px] w-[22px] text-[#008785] hover:text-ipimTextFooter" />
                   </a>
 
                   <a href="#" className="mt-1">
-                    <FiYoutube className="h-[22px] w-[22px] text-ipimGreen hover:text-ipimTextFooter" />
+                    <FiYoutube className="h-[22px] w-[22px] text-[#008785] hover:text-ipimTextFooter" />
                   </a>
 
                   <a href="#" className="mt-1">
-                    <FiInstagram className="h-[22px] w-[22px] text-ipimGreen hover:text-ipimTextFooter" />
+                    <FiInstagram className="h-[22px] w-[22px] text-[#008785] hover:text-ipimTextFooter" />
                   </a>
 
                   <a href="#" className="mt-1">
-                    <FaXTwitter className="h-[22px] w-[22px] text-ipimGreen hover:text-ipimTextFooter" />
+                    <FaXTwitter className="h-[22px] w-[22px] text-[#008785] hover:text-ipimTextFooter" />
                   </a>
 
                   <a href="#" className="mt-1">
-                    <FaWhatsapp className="h-[22px] w-[22px] text-ipimGreen hover:text-ipimTextFooter" />
+                    <FaWhatsapp className="h-[22px] w-[22px] text-[#008785] hover:text-ipimTextFooter" />
                   </a>
                 </div>
               </div>

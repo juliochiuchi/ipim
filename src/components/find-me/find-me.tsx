@@ -1,4 +1,4 @@
-import { SewingPinFilledIcon } from '@radix-ui/react-icons'
+import { MapPin } from 'lucide-react'
 
 export function FindMe() {
   return (
@@ -7,11 +7,10 @@ export function FindMe() {
         <div className="flex gap-10 phone:flex-col phone:flex-wrap laptopMd:mt-0 laptopMd:w-[50%] laptopMd:flex-row laptopMd:flex-nowrap laptopMd:items-center laptopMd:justify-between">
           <div className="phone:w-auto laptopMd:w-[50%]">
             <h2 className="text-[2em] font-bold text-ipimBgDark dark:text-white font-poppins">
-              Viva seu <br />
+              Viva o seu <br />
               <span className="italic underline decoration-indigo-500 underline-offset-4">
-                chamado, <br />
+                chamado
               </span>
-              não só sua carreira.
             </h2>
           </div>
 
@@ -26,10 +25,13 @@ export function FindMe() {
         <div className="laptopMd:w-[400px]">
           <a
             href="https://maps.app.goo.gl/64dCtoF9D114BzPn8"
-            className="flex items-center justify-center gap-2 rounded-xl bg-ipimSnowButton px-7 py-3 text-ipimIndigoLight hover:bg-ipimSnowButtonHover hover:text-ipimIndigoDark phone:text-[1rem] font-inter transition-colors duration-200"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-ipimIndigoLight to-ipimIndigoDark px-10 py-4 font-inter text-white shadow-xl shadow-ipimIndigoLight/40 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-ipimIndigoLight/60 active:scale-95 phone:text-[1.1rem]"
           >
-            <SewingPinFilledIcon className="h-[26px] w-[26px]" />
-            <span className="text-[1.2rem]">Onde nos encontrar?</span>
+            <div className="absolute inset-0 bg-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <MapPin className="h-[24px] w-[24px] transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-110" />
+            <span className="relative text-[1.2rem] font-bold tracking-wide">Onde nos encontrar?</span>
           </a>
         </div>
       </div>

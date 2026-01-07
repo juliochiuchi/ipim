@@ -1,7 +1,5 @@
 import VideoPlayerLive from '@/components/video-player-live/video-player-live'
 import { createFileRoute } from '@tanstack/react-router'
-import { supabase } from '@/utils/supabase'
-import { useEffect } from 'react'
 
 export const Route = createFileRoute('/_app/live')({
   // loader: async () => {
@@ -14,15 +12,6 @@ export const Route = createFileRoute('/_app/live')({
 function Live() {
   // const { test } = Route.useLoaderData()
   // console.log('response test ->', test)
-
-  const getLiveTest = async () => {
-    const { data } = await supabase.from('test').select('*')
-    console.log('response test #2 ->', data)
-  }
-
-  useEffect(() => {
-    getLiveTest()
-  }, [])
 
   return (
     <>

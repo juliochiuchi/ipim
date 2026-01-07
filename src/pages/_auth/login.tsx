@@ -47,6 +47,20 @@ function LoginPage() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     try {
+      const { data: userMail, error: userMailError } = await supabase.from("usersMails").select("email").eq("email", values.email).single()
+
+      if (!userMail) {
+        toast.error("E-mail não encontrado.", {
+          description: <span className="text-black dark:text-white">A sua conta não está verificada.</span>,
+        })
+        return
+      }
+
+      if (userMailError) {
+        toast.error("Erro ao verificar e-mail.")
+        return
+      }
+
       const { error } = await supabase.auth.signInWithOtp({
         email: values.email,
         options: {
@@ -56,17 +70,17 @@ function LoginPage() {
 
       if (error) {
         toast.error("Erro ao enviar link de login", {
-          description: error.message,
+          description: <span className="text-black dark:text-white">{error.message}</span>,
         })
         return
       }
 
       toast.success("Link enviado com sucesso!", {
-        description: "Verifique sua caixa de entrada para acessar o sistema.",
+        description: <span className="text-black dark:text-white">Verifique sua caixa de entrada para acessar o sistema.</span>,
       })
       form.reset()
     } catch (error) {
-      toast.error("Ocorreu um erro inesperado")
+      toast.error("Ocorreu um erro inesperado.")
       console.error(error)
     } finally {
       setIsLoading(false)

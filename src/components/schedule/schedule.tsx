@@ -3,7 +3,7 @@ import Paper from '../paper/paper'
 
 export default function Schedule() {
   return (
-    <section className="bg-[#f6f6f6] text-[#333] py-10 px-4 tablet:px-12 desktop4k:px-72 laptopMd:py-20 laptopMd:px-20">
+    <section className="bg-[#f6f6f6] text-[#333] py-10 px-4 tablet:px-12 desktop:px-72 laptopMd:py-20 laptopMd:px-20">
       <div className="flex flex-wrap items-start justify-center tablet:justify-between gap-10">
 
         <div className="w-full max-w-[35rem] flex flex-col gap-10 text-left justify-start font-poppins">

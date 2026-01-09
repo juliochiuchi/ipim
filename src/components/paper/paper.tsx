@@ -34,7 +34,7 @@ export default function Paper() {
   }
 
   return (
-    <div className="w-full mx-auto px-4 laptopMd:max-w-[35rem] laptopMd:w-[35rem] laptopMd:px-0 desktop:max-w-[60rem] desktop:w-[60rem] desktop:px-0">
+    <div className="w-full mx-auto px-4 phone:max-w-[35rem] phone:px-0 laptop:max-w-[35rem] laptop:w-[35rem] desktop:max-w-[60rem] desktop:w-[60rem] desktop:px-0">
       <div className="flex items-center justify-between mb-2 px-1">
         <div>
           <p className="font-poppins text-[#333] font-bold tracking-wider text-sm">
@@ -62,12 +62,12 @@ export default function Paper() {
         </div>
       </div>
 
-      <div className="flex flex-col tablet:flex-row gap-6">
+      <div className="flex flex-col phone:flex-row gap-6">
         {SCHEDULES.slice(currentIndex, currentIndex + itemsPerPage).map(
           (schedule, index) => (
             <div
               key={index}
-              className="bg-white flex-1 h-72 rounded-md shadow-sm w-full tablet:min-w-[18rem] transition-all duration-300"
+              className="bg-white flex-1 h-72 rounded-md shadow-sm w-full phone:min-w-[18rem] transition-all duration-300"
             >
               <div className="bg-black rounded-t-md p-4">
                 <p className="font-poppins text-white font-bold tracking-wider">

@@ -38,13 +38,13 @@ function CatalogoAcampamento() {
       <div ref={myRef}>
         <div className="min-h-screen w-full bg-gradient-to-br from-ipimBgDark via-zinc-900 to-zinc-800">
           {/* Main Content */}
-          <div className="mx-auto max-w-[1800px] p-6 phone:p-4 laptopLg:p-8 desktop:p-12">
+          <div className="mx-auto max-w-[1800px] p-6 phone:p-4 laptop:p-8 desktop:p-12">
             <div className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm rounded-3xl border border-zinc-700/30 shadow-2xl overflow-hidden">
-              <div className="p-6 phone:p-4 laptopLg:p-8 desktop:p-12">
-                <div className="flex w-full gap-6 phone:flex-col phone:gap-4 tablet:flex-col tablet:gap-6 laptopMd:flex-row laptopLg:gap-8 desktop:gap-12">
+              <div className="p-6 phone:p-4 laptop:p-8 desktop:p-12">
+                <div className="flex w-full gap-6 phone:flex-col phone:gap-4 phone:flex-col phone:gap-6 laptop:flex-row laptop:gap-8 desktop:gap-12">
                   {/* Player Video Section */}
                   <div className="flex-1 rounded-2xl bg-gradient-to-br from-[#09090A] to-zinc-900 border border-zinc-700/30 shadow-xl overflow-hidden">
-                    <div className="p-6 phone:p-4 laptopLg:p-8 desktop:p-10 phone:min-h-[300px] tablet:min-h-[400px] laptopMd:min-h-[500px] laptopLg:min-h-[600px] desktop:min-h-[700px]">
+                    <div className="p-6 phone:p-4 laptop:p-8 desktop:p-10 phone:min-h-[300px] phone:min-h-[400px] laptop:min-h-[500px] laptop:min-h-[600px] desktop:min-h-[700px]">
                       {selectedVideo !== undefined ? (
                         <PlayerVideo
                           id={selectedVideo.id}
@@ -60,10 +60,10 @@ function CatalogoAcampamento() {
                           <div className="text-center">
                             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-zinc-700/50 flex items-center justify-center phone:w-12 phone:h-12">
                               <svg className="w-8 h-8 text-zinc-400 phone:w-6 phone:h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
+                                <path d="M8 5v14l11-7z" />
                               </svg>
                             </div>
-                            <span className="text-lg text-zinc-400 font-source phone:text-sm tablet:text-base laptopLg:text-xl">
+                            <span className="text-lg text-zinc-400 font-source phone:text-sm phone:text-base laptop:text-xl">
                               Selecione um vídeo para assistir
                             </span>
                             <p className="text-sm text-zinc-500 mt-2 font-source phone:text-xs">
@@ -76,20 +76,20 @@ function CatalogoAcampamento() {
                   </div>
 
                   {/* Video List Section */}
-                  <div className="rounded-2xl bg-gradient-to-br from-[#121214] to-zinc-800 border border-zinc-700/30 shadow-xl phone:w-full tablet:w-full laptopMd:w-80 laptopLg:w-96 desktop:w-[420px]">
-                    <div className="p-6 phone:p-4 laptopLg:p-6 desktop:p-8">
+                  <div className="rounded-2xl bg-gradient-to-br from-[#121214] to-zinc-800 border border-zinc-700/30 shadow-xl phone:w-full phone:w-full laptop:w-80 laptop:w-96 desktop:w-[420px]">
+                    <div className="p-6 phone:p-4 laptop:p-6 desktop:p-8">
                       <div className="mb-6 phone:mb-4">
-                        <h2 className="text-xl font-bold text-white font-poppins text-center phone:text-lg laptopLg:text-2xl desktop:text-3xl">
+                        <h2 className="text-xl font-bold text-white font-poppins text-center phone:text-lg laptop:text-2xl desktop:text-3xl">
                           Transmissões
                         </h2>
-                        <p className="text-sm text-zinc-400 text-center mt-2 font-source phone:text-xs laptopLg:text-base">
+                        <p className="text-sm text-zinc-400 text-center mt-2 font-source phone:text-xs laptop:text-base">
                           {availableVideos.length} vídeos disponíveis
                         </p>
                       </div>
 
                       <div className="w-full h-px bg-gradient-to-r from-transparent via-zinc-600 to-transparent mb-6 phone:mb-4" />
 
-                      <div className="max-h-[600px] overflow-y-auto phone:max-h-[400px] tablet:max-h-[500px] laptopLg:max-h-[700px] desktop:max-h-[800px] scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-600 hover:scrollbar-thumb-zinc-500 pr-2">
+                      <div className="max-h-[600px] overflow-y-auto phone:max-h-[400px] phone:max-h-[500px] laptop:max-h-[700px] desktop:max-h-[800px] scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-600 hover:scrollbar-thumb-zinc-500 pr-2">
                         <div className="space-y-3 phone:space-y-2 px-1">
                           {availableVideos.map((cardVideo, index: number) => {
                             return (

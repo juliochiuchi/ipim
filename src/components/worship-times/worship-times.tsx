@@ -22,7 +22,7 @@ export default function WorshipTimes() {
             </div>
           </div>
 
-          <div className="mt-10 flex justify-center gap-6 phone:flex-col phone:items-center laptopMd:flex-row laptopMd:items-stretch">
+          <div className="mt-10 flex justify-center gap-6 phone:flex-col phone:items-center laptop:flex-row laptop:items-stretch">
             <div className="flex h-[250px] w-full max-w-[450px] flex-col items-center justify-center gap-4 rounded-2xl bg-white p-4 shadow-lg dark:bg-[#1e1e23]">
               <p className="font-bold">9h</p>
               <p className="font-bold">Escola Bíblica Dominical</p>
@@ -43,7 +43,7 @@ export default function WorshipTimes() {
         </div>
 
         <div className="quartas-e-sabados">
-          <div className="mt-10 flex justify-center gap-6 phone:flex-col phone:items-center laptopMd:flex-row laptopMd:items-stretch">
+          <div className="mt-10 flex justify-center gap-6 phone:flex-col phone:items-center laptop:flex-row laptop:items-stretch">
             <div className="flex h-[250px] w-full max-w-[450px] flex-col items-center justify-center gap-4 rounded-2xl bg-white p-4 shadow-lg dark:bg-[#1e1e23]">
               <div className="flex flex-row flex-wrap items-center justify-center gap-3">
                 <div>
@@ -82,9 +82,9 @@ export default function WorshipTimes() {
               </div>
               <p className="font-bold">19h30</p>
               <p className="font-bold flex flex-col gap-1">
-                <span>Culto Sociedade de Adultos</span> 
+                <span>Culto Sociedade de Adultos</span>
                 <span className="text-[.7rem]">Primeiro sábado do mês</span>
-                </p>
+              </p>
               <p className="font-normal">Templo</p>
               <p className="text-[.8rem] font-light">
                 R Jeronimo Narciso Ramos, 889

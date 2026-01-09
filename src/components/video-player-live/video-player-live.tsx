@@ -5,8 +5,8 @@ export default function VideoPlayerLive() {
         <iframe
           className="w-full border-0 transition-all duration-300
                     phone:h-[250px] 
-                    tablet:h-[400px] 
-                    laptopMd:h-[500px] 
+                    phone:h-[400px] 
+                    laptop:h-[500px] 
                     desktop:h-[600px]"
           src="https://www.youtube.com/embed/live_stream?channel=UCKhKw97cqyvDtaXrljUcL0A&autoplay=0&mute=0"
           title="IPIM - Transmissão ao Vivo"
@@ -16,14 +16,14 @@ export default function VideoPlayerLive() {
           loading="lazy"
         />
       </div>
-      
+
       {/* Status indicator */}
       <div className="mt-4 flex items-center justify-center gap-2 flex-col">
         <div className="flex items-center justify-center gap-2">
           <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-        <span className="text-sm text-gray-600 dark:text-gray-300 font-source">
-          Ao vivo no YouTube
-        </span>
+          <span className="text-sm text-gray-600 dark:text-gray-300 font-source">
+            Ao vivo no YouTube
+          </span>
         </div>
       </div>
     </div>

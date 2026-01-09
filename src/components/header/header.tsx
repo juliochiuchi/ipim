@@ -12,19 +12,19 @@ import IPIBIcon from '../../assets/IPIB-icon.png'
 export function Header() {
   const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  
+
   const isActive = (path: string) => {
     if (path === '/' && location.pathname === '/') {
       return true
     }
     return path !== '/' && location.pathname === path
   }
-  
+
   const getNavItemClasses = (path: string) => {
-    const baseClasses = "rounded-md bg-linear-to-b p-3 tablet:p-4 my-2 no-underline outline-hidden select-none focus:shadow-md transition-all duration-200 font-inter text-sm tablet:text-base"
+    const baseClasses = "rounded-md bg-linear-to-b p-3 phone:p-4 my-2 no-underline outline-hidden select-none focus:shadow-md transition-all duration-200 font-inter text-sm phone:text-base"
     const hoverClasses = "hover:bg-indigo-100 dark:hover:bg-indigo-900/30 active:bg-indigo-200 dark:active:bg-indigo-800/40"
     const activeClasses = "bg-indigo-100 dark:bg-indigo-900/30"
-    
+
     if (isActive(path)) {
       return `${baseClasses} ${activeClasses} ${hoverClasses} ml-2`
     }
@@ -50,13 +50,13 @@ export function Header() {
   return (
     <header className="w-full bg-ipimBgSectionNextStep dark:bg-[#1f1f25] relative z-50 transition-colors duration-200">
       {/* Desktop Navigation */}
-      <div className="hidden laptopMd:block">
+      <div className="hidden laptop:block">
         <div className="flex items-center justify-between w-full px-4 py-4">
           {/* Logo and Menu Items - Left Side */}
           <div className="flex items-center gap-4">
-            <img 
-              src={IPIBIcon} 
-              alt="IPIB Icon" 
+            <img
+              src={IPIBIcon}
+              alt="IPIB Icon"
               className="h-10 w-10"
             />
             <NavigationMenu>
@@ -71,7 +71,7 @@ export function Header() {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-          
+
           {/* Theme Toggle - Right Side */}
           <div className="flex items-center">
             <ThemeToggle />
@@ -80,15 +80,15 @@ export function Header() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="laptopMd:hidden">
+      <div className="laptop:hidden">
         {/* Mobile Header with Hamburger */}
         <div className="flex items-center justify-between px-4 py-4">
-          <img 
-            src={IPIBIcon} 
-            alt="IPIB Icon" 
+          <img
+            src={IPIBIcon}
+            alt="IPIB Icon"
             className="h-8 w-8"
           />
-          
+
           <div className="flex items-center gap-2">
             <ThemeToggle />
             {/* Hamburger Button */}
@@ -109,16 +109,15 @@ export function Header() {
 
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
-          <div 
+          <div
             className="fixed inset-0 bg-black bg-opacity-50 z-40"
             onClick={closeMenu}
           />
         )}
 
         {/* Mobile Menu */}
-        <div className={`fixed top-0 right-0 h-full w-80 phone:w-72 bg-ipimBgSectionNextStep dark:bg-[#1f1f25] shadow-xl transform transition-transform duration-300 ease-in-out z-50 ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}>
+        <div className={`fixed top-0 right-0 h-full w-80 phone:w-72 bg-ipimBgSectionNextStep dark:bg-[#1f1f25] shadow-xl transform transition-transform duration-300 ease-in-out z-50 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}>
           {/* Mobile Menu Header */}
           <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
             <div className="font-poppins font-semibold text-lg text-ipimBlack dark:text-white">
@@ -144,11 +143,10 @@ export function Header() {
                   <a
                     href={item.path}
                     onClick={closeMenu}
-                    className={`block w-full text-left p-4 rounded-md transition-all duration-200 font-inter text-base ${
-                      isActive(item.path)
-                        ? 'bg-indigo-100 dark:bg-indigo-900/30 text-ipimIndigoLight dark:text-ipimIndigoLight font-medium'
-                        : 'text-ipimBlack dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-900/20 active:bg-indigo-100 dark:active:bg-indigo-900/30'
-                    }`}
+                    className={`block w-full text-left p-4 rounded-md transition-all duration-200 font-inter text-base ${isActive(item.path)
+                      ? 'bg-indigo-100 dark:bg-indigo-900/30 text-ipimIndigoLight dark:text-ipimIndigoLight font-medium'
+                      : 'text-ipimBlack dark:text-white hover:bg-indigo-50 dark:hover:bg-indigo-900/20 active:bg-indigo-100 dark:active:bg-indigo-900/30'
+                      }`}
                   >
                     {item.label}
                   </a>

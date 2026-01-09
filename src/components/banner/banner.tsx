@@ -8,10 +8,10 @@ export function Banner() {
       </div>
       <div
         className="relative z-10 mx-auto my-0 flex w-full items-center text-center phone:flex-wrap phone:justify-start
-          laptopMd:h-auto laptopMd:flex-nowrap laptopMd:justify-center laptopMd:gap-96"
+          laptop:h-auto laptop:flex-nowrap laptop:justify-center laptop:gap-96"
       >
         <div className="flex flex-col items-center justify-center text-center">
-          <h1 className="font-poppins font-bold text-white phone:text-[2rem] laptopMd:text-[4em]">
+          <h1 className="font-poppins font-bold text-white phone:text-[2rem] laptop:text-[4em]">
             Revelar o amor de <br />
             <span className="italic underline decoration-indigo-500 underline-offset-4">
               Jesus
@@ -19,7 +19,7 @@ export function Banner() {
             ao mundo
           </h1>
 
-          <h3 className="font-nunito font-medium text-white phone:px-8 phone:text-[.9rem] laptopMd:text-[18px]">
+          <h3 className="font-nunito font-medium text-white phone:px-8 phone:text-[.9rem] laptop:text-[18px]">
             através da pregação do evangelho da graça e da fé.
           </h3>
         </div>

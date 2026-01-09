@@ -3,31 +3,31 @@ import { Button } from '@/components/ui/button'
 
 export function VisitUs() {
   return (
-    <section className="mx-auto w-full px-4 py-20 laptopMd:w-[90%] laptopLg:w-[80%]">
+    <section className="mx-auto w-full px-4 py-20 laptop:w-[90%] laptop:w-[80%]">
       <div className="group relative rounded-3xl bg-gradient-to-r from-ipimIndigoLight to-ipimIndigoDark p-[2px] shadow-2xl transition-all hover:shadow-ipimIndigoLight/20">
-        <div className="relative h-full w-full overflow-hidden rounded-[calc(1.5rem-2px)] bg-white p-8 dark:bg-ipimBgDark laptopMd:p-16">
+        <div className="relative h-full w-full overflow-hidden rounded-[calc(1.5rem-2px)] bg-white p-8 dark:bg-ipimBgDark laptop:p-16">
 
           <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-ipimIndigoLight/5 blur-3xl transition-all group-hover:bg-ipimIndigoLight/10" />
           <div className="absolute -bottom-20 -left-20 h-96 w-96 rounded-full bg-ipimGreen/5 blur-3xl transition-all group-hover:bg-ipimGreen/10" />
 
-          <div className="relative z-10 grid gap-12 laptopMd:grid-cols-2 laptopMd:items-center">
-            <div className="flex flex-col gap-6 text-center laptopMd:text-left">
+          <div className="relative z-10 grid gap-12 laptop:grid-cols-2 laptop:items-center">
+            <div className="flex flex-col gap-6 text-center laptop:text-left">
 
-              <div className="mx-auto inline-flex w-fit items-center rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-medium text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400 laptopMd:mx-0">
+              <div className="mx-auto inline-flex w-fit items-center rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-medium text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400 laptop:mx-0">
                 <span className="mr-2 h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
                 Viva o seu chamado
               </div>
 
               <div className="space-y-4">
-                <h2 className="font-poppins text-3xl font-bold leading-tight text-ipimBgDark dark:text-white laptopMd:text-5xl">
+                <h2 className="font-poppins text-3xl font-bold leading-tight text-ipimBgDark dark:text-white laptop:text-5xl">
                   Sua jornada começa aqui
                 </h2>
-                <p className="font-source text-lg text-gray-600 dark:text-gray-300 laptopMd:text-xl max-w-xl">
+                <p className="font-source text-lg text-gray-600 dark:text-gray-300 laptop:text-xl max-w-xl">
                   Estamos te esperando! Se você ou alguém que você conhece estiver interessado em nos conhecer, adoraríamos te receber nesta casa!
                 </p>
               </div>
 
-              <div className="hidden laptopMd:block pt-2">
+              <div className="hidden laptop:block pt-2">
                 <p className="text-sm font-medium text-gray-500 dark:text-gray-400 italic">
                   "A alegria do Senhor é a nossa força."
                 </p>

@@ -42,7 +42,7 @@ function Live() {
             <p className="text-sm text-gray-500 dark:text-gray-400 font-source transition-colors duration-300">
               Transmissão direta do YouTube &nbsp; • &nbsp; Qualidade ajustada automaticamente
             </p>
-            <div className="mt-4 flex justify-center gap-6 phone:gap-4 phone:flex-col phone:items-center tablet:flex-row">
+            <div className="mt-4 flex justify-center gap-6 phone:gap-4 phone:flex-col phone:items-center phone:flex-row">
               <a
                 href="https://youtube.com/ipimacaubal"
                 target="_blank"

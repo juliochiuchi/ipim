@@ -4,21 +4,21 @@ import { LinkSnow } from '../link/LinkSnow'
 
 export default function ChurchOnline() {
   return (
-    <section className="flex h-auto w-full items-center bg-[#1f1f25] pt-24 pb-16 phone:flex-wrap phone:justify-start phone:gap-5 laptopMd:flex-nowrap laptopMd:justify-around">
+    <section className="flex h-auto w-full items-center bg-[#1f1f25] pt-24 pb-16 phone:flex-wrap phone:justify-start phone:gap-5 laptop:flex-nowrap laptop:justify-around">
       <div
         className="flex 
       phone:mb-12 phone:w-full phone:justify-center 
-      laptopMd:mb-0 laptopMd:w-[25%] laptopMd:justify-end"
+      laptop:mb-0 laptop:w-[25%] laptop:justify-end"
       >
         <img
           src={Dots}
           alt="dots"
-          className="laptopMod:w-[150px] absolute mr-14 mt-[-70px] phone:h-[170px] phone:w-[100px] laptopMd:h-[220px]"
+          className="tabletMod:w-[150px] absolute mr-14 mt-[-70px] phone:h-[170px] phone:w-[100px] laptop:h-[220px]"
         />
 
         <span>
           <img
-            className="relative phone:max-w-[150px] laptopMd:max-w-[280px]"
+            className="relative phone:max-w-[150px] laptop:max-w-[280px]"
             loading="lazy"
             decoding="async"
             width="890"
@@ -31,10 +31,10 @@ export default function ChurchOnline() {
         </span>
       </div>
 
-      <div className="text-center phone:w-full laptopMd:w-[50%]">
-        <span className="font-medium text-ipimWhiteSnowTwo phone:text-[2.3rem] laptopMd:text-[3rem] font-poppins">
+      <div className="text-center phone:w-full laptop:w-[50%]">
+        <span className="font-medium text-ipimWhiteSnowTwo phone:text-[2.3rem] laptop:text-[3rem] font-poppins">
           A <span className="font-bold">IPIM</span> está <br />
-          <span className="mt-0 font-bold text-ipimYellow phone:text-[3.5rem] laptopMd:text-[5rem] laptopLg:text-[7rem]">
+          <span className="mt-0 font-bold text-ipimYellow phone:text-[3.5rem] laptop:text-[5rem] laptop:text-[7rem]">
             O N L I N E
           </span>
         </span>
@@ -42,8 +42,8 @@ export default function ChurchOnline() {
         <p
           className="font-source font-light text-ipimWhiteSnowTwo 
         phone:mt-6 phone:px-6 
-        phone:text-[1.2rem] laptopMd:mt-0 laptopMd:px-0
-        laptopMd:text-[1rem]"
+        phone:text-[1.2rem] laptop:mt-0 laptop:px-0
+        laptop:text-[1rem]"
         >
           A IPIM Online é uma comunidade de pessoas ao redor do mundo, que{' '}
           <br />
@@ -54,14 +54,14 @@ export default function ChurchOnline() {
 
         <div
           className="mt-10 flex items-center justify-center gap-5 phone:mx-4
-        phone:flex-wrap tablet:flex-nowrap laptopMd:mx-0
-        laptopMd:flex-nowrap"
+        phone:flex-wrap phone:flex-nowrap laptop:mx-0
+        laptop:flex-nowrap"
         >
           <LinkIndigo
             url="https://youtube.com/ipimacaubal"
             newTab={true}
             classLink="text-[1rem] px-14 py-4 mt-5 mx-3 
-            phone:w-full tablet:w-auto laptopMd:w-auto font-inter"
+            phone:w-full phone:w-auto laptop:w-auto font-inter"
             text="Ir para a Igreja Online"
           />
 
@@ -69,7 +69,7 @@ export default function ChurchOnline() {
             url="https://maps.app.goo.gl/64dCtoF9D114BzPn8"
             newTab={true}
             classLink="text-[1rem] px-14 py-4 mt-5 mx-3 
-            phone:flex phone:items-center phone:justify-center phone:w-full tablet:w-auto laptopMd:w-auto font-inter"
+            phone:flex phone:items-center phone:justify-center phone:w-full phone:w-auto laptop:w-auto font-inter"
             text="Achar um local perto de mim"
           />
         </div>
@@ -78,7 +78,7 @@ export default function ChurchOnline() {
       <div
         className="flex 
       phone:mt-16 phone:w-full phone:justify-center 
-      laptopMd:mt-0 laptopMd:w-[25%] laptopMd:justify-start"
+      laptop:mt-0 laptop:w-[25%] laptop:justify-start"
       >
         <span>
           <img

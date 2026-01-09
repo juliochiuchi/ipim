@@ -2,10 +2,10 @@ import Speak from '../../assets/conte.png'
 
 export default function Prayer() {
   return (
-    <section className="flex items-center justify-center gap-20 py-24 dark:bg-[#1f1f25] phone:flex-wrap phone:gap-12 phone:py-20 laptopMd:flex-nowrap laptopMd:gap-20">
-      <div className="text-right phone:text-center laptopMd:text-right">
+    <section className="flex items-center justify-center gap-20 py-24 dark:bg-[#1f1f25] phone:flex-wrap phone:gap-12 phone:py-20 laptop:flex-nowrap laptop:gap-20">
+      <div className="text-right phone:text-center laptop:text-right">
         <div>
-          <h2 className="font-poppins text-[2.5rem] font-bold dark:text-ipimBgLightFooter phone:text-[2rem] tablet:text-[2.2rem]">
+          <h2 className="font-poppins text-[2.5rem] font-bold dark:text-ipimBgLightFooter phone:text-[2rem] phone:text-[2.2rem]">
             Tem algum <br /> pedido de <br /> oração?
           </h2>
           <p className="font-source dark:text-ipimTextDark mt-2">Conta com a gente.</p>
@@ -22,13 +22,13 @@ export default function Prayer() {
         </div>
       </div>
 
-      <div className="phone:hidden phone:max-w-[270px] laptopMd:flex laptopMd:max-w-[330px]">
+      <div className="phone:hidden phone:max-w-[270px] laptop:flex laptop:max-w-[330px]">
         <img src={Speak} alt="conte" width={1998} height={941} className="w-full h-auto" />
       </div>
 
-      <div className="phone:text-center laptopMd:text-left">
+      <div className="phone:text-center laptop:text-left">
         <div>
-          <h2 className="font-poppins text-[2.5rem] font-bold dark:text-ipimBgLightFooter phone:text-[2rem] tablet:text-[2.2rem]">
+          <h2 className="font-poppins text-[2.5rem] font-bold dark:text-ipimBgLightFooter phone:text-[2rem] phone:text-[2.2rem]">
             Deus fez algo <br /> maravilhoso?
           </h2>
           <p className="font-source dark:text-ipimTextDark mt-2">Conta pra gente!</p>

@@ -34,7 +34,7 @@ export default function Paper() {
   }
 
   return (
-    <div className="max-w-[60rem] w-[60rem]">
+    <div className="w-full mx-auto px-4 laptopMd:max-w-[35rem] laptopMd:w-[35rem] laptopMd:px-0 desktop4k:max-w-[60rem] desktop4k:w-[60rem] desktop4k:px-0">
       <div className="flex items-center justify-between mb-2 px-1">
         <div>
           <p className="font-poppins text-[#333] font-bold tracking-wider text-sm">

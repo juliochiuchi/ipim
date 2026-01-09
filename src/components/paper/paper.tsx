@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Clock2, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const SCHEDULES = [
   {
@@ -87,7 +87,8 @@ export default function Paper() {
                       </span>
                     </div>
 
-                    <div>
+                    <div className="flex items-center gap-3">
+                      <Clock2 size={20} color="#333" />
                       <span className="font-poppins text-[#333] font-bold tracking-wider text-sm m-0 p-0">
                         {event.time}
                       </span>

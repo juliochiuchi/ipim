@@ -4,20 +4,15 @@ import { Button } from '@/components/ui/button'
 export function VisitUs() {
   return (
     <section className="mx-auto w-full px-4 py-20 laptopMd:w-[90%] laptopLg:w-[80%]">
-      {/* Container com Borda Gradiente */}
       <div className="group relative rounded-3xl bg-gradient-to-r from-ipimIndigoLight to-ipimIndigoDark p-[2px] shadow-2xl transition-all hover:shadow-ipimIndigoLight/20">
         <div className="relative h-full w-full overflow-hidden rounded-[calc(1.5rem-2px)] bg-white p-8 dark:bg-ipimBgDark laptopMd:p-16">
 
-          {/* Subtle decorative gradient glow behind content */}
           <div className="absolute -right-20 -top-20 h-96 w-96 rounded-full bg-ipimIndigoLight/5 blur-3xl transition-all group-hover:bg-ipimIndigoLight/10" />
           <div className="absolute -bottom-20 -left-20 h-96 w-96 rounded-full bg-ipimGreen/5 blur-3xl transition-all group-hover:bg-ipimGreen/10" />
 
           <div className="relative z-10 grid gap-12 laptopMd:grid-cols-2 laptopMd:items-center">
-
-            {/* Coluna da Esquerda: Texto e Chamada */}
             <div className="flex flex-col gap-6 text-center laptopMd:text-left">
 
-              {/* Badge "Viva o seu chamado" estilizado */}
               <div className="mx-auto inline-flex w-fit items-center rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-medium text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400 laptopMd:mx-0">
                 <span className="mr-2 h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
                 Viva o seu chamado
@@ -32,7 +27,6 @@ export function VisitUs() {
                 </p>
               </div>
 
-              {/* Botão visível apenas em telas maiores aqui (opcional, ou manter apenas no card) */}
               <div className="hidden laptopMd:block pt-2">
                 <p className="text-sm font-medium text-gray-500 dark:text-gray-400 italic">
                   "A alegria do Senhor é a nossa força."
@@ -40,10 +34,8 @@ export function VisitUs() {
               </div>
             </div>
 
-            {/* Coluna da Direita: Card de Informações */}
             <div className="relative rounded-2xl bg-gray-50/80 p-6 backdrop-blur-sm dark:bg-zinc-900/50 border border-gray-100 dark:border-zinc-800 transition-all hover:border-indigo-100 dark:hover:border-indigo-900/50">
               <div className="space-y-8">
-                {/* Endereço */}
                 <div className="flex items-start gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400">
                     <MapPin className="h-6 w-6" />
@@ -57,7 +49,6 @@ export function VisitUs() {
                   </div>
                 </div>
 
-                {/* Horários */}
                 <div className="flex items-start gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400">
                     <Clock className="h-6 w-6" />
@@ -71,7 +62,6 @@ export function VisitUs() {
                   </div>
                 </div>
 
-                {/* Botão de Ação Principal */}
                 <div className="pt-2">
                   <Button
                     asChild

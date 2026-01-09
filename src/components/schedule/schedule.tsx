@@ -3,8 +3,8 @@ import Paper from '../paper/paper'
 
 export default function Schedule() {
   return (
-    <section className="bg-[#f6f6f6] text-[#333] w-full py-10 px-4 laptopMd:py-20 laptopMd:pl-24">
-      <div className="flex flex-wrap items-start justify-center gap-10 w-full">
+    <section className="bg-[#f6f6f6] text-[#333] py-10 px-12 desktop4k:px-72 laptopMd:py-20">
+      <div className="flex flex-wrap items-start justify-between gap-10">
 
         <div className="w-[35rem] flex flex-col gap-10 text-left justify-start font-poppins">
           <div className="flex items-start gap-3">
@@ -26,7 +26,7 @@ export default function Schedule() {
           </div>
         </div>
 
-        <div className="flex-1 font-poppins flex justify-center">
+        <div className="font-poppins flex justify-center">
           <Paper />
         </div>
 

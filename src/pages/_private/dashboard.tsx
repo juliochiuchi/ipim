@@ -11,6 +11,8 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 
+import { LoadingPage } from '@/components/loading/global-loading'
+
 export const Route = createFileRoute('/_private/dashboard')({
   component: DashboardPage,
 })
@@ -18,11 +20,18 @@ export const Route = createFileRoute('/_private/dashboard')({
 function DashboardPage() {
   const navigate = useNavigate()
   const [userEmail, setUserEmail] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser()
-      setUserEmail(user?.email || null)
+      try {
+        const { data: { user } } = await supabase.auth.getUser()
+        setUserEmail(user?.email || null)
+      } catch (error) {
+        console.error(error)
+      } finally {
+        setIsLoading(false)
+      }
     }
     getUser()
   }, [])
@@ -36,6 +45,10 @@ function DashboardPage() {
       toast.error("Erro ao fazer logout")
       console.error(error)
     }
+  }
+
+  if (isLoading) {
+    return <LoadingPage />
   }
 
   return (

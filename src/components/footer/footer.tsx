@@ -180,7 +180,7 @@ export function Footer() {
               className="text-[13px] font-bold"
               target="_blank"
             >
-              Desenvolvido por bLeNd
+              Desenvolvido por Otherside
             </a>
           </div>
         </div>

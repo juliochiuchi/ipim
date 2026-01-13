@@ -10,25 +10,25 @@ export const CardVideo = ({
   return (
     <>
       <div className="my-2 flex flex-col gap-3 phone:gap-2">
-        <span className="text-xs text-[#8D8D99] phone:text-xs phone:text-sm font-source">{dateVideo}</span>
+        <span className="text-xs text-[#8D8D99] phone:text-sm font-source">{dateVideo}</span>
 
         <div
           className={`${standBy ? 'border-[#00875f] bg-[#00875f]' : 'border-[#323238]'
-            } cursor-pointer rounded-md border p-3 phone:p-2 phone:p-3 hover:border-[#00875f] transition-all duration-200`}
+            } cursor-pointer rounded-md border p-3 phone:p-2 hover:border-[#00875f] transition-all duration-200`}
         >
-          <div className="flex flex-row items-center justify-between phone:flex-col phone:items-start phone:gap-2 phone:flex-row phone:items-center">
+          <div className="flex flex-row items-center justify-between phone:flex-col phone:items-start phone:gap-2">
             <span
               className={`${standBy ? 'text-white' : 'text-[#81D8F7]'
-                } text-xs phone:text-xs phone:text-sm font-source`}
+                } text-xs phone:text-sm font-source`}
             >
               {detailVideo}
             </span>
 
             <span
               className={`${standBy
-                  ? 'border-white text-white'
-                  : 'border-[#00b37e] text-[#00b37e]'
-                } rounded-md border p-2 text-xs phone:text-xs phone:px-2 phone:py-1 phone:text-sm font-inter`}
+                ? 'border-white text-white'
+                : 'border-[#00b37e] text-[#00b37e]'
+                } rounded-md border p-2 text-xs phone:px-2 phone:py-1 font-inter`}
             >
               {liveVideo ? 'Ao vivo' : 'Transmitido'}
             </span>
@@ -37,7 +37,7 @@ export const CardVideo = ({
           <div className="mt-3 phone:mt-2">
             <span
               className={`${standBy ? 'text-white' : 'text-[#c4c4cc]'
-                } text-sm font-bold phone:text-xs phone:text-sm font-nunito`}
+                } text-sm font-bold phone:text-sm font-nunito`}
             >
               {messageName}
             </span>

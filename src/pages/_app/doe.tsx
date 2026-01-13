@@ -24,7 +24,7 @@ function Doe() {
     <>
       <div className="min-h-screen w-full bg-gradient-to-br from-ipimBgDark via-zinc-900 to-zinc-800 dark:from-zinc-900 dark:via-zinc-800 dark:to-zinc-700">
         {/* Header Section */}
-        <div className="w-full bg-gradient-to-r from-zinc-900/90 to-zinc-800/90 backdrop-blur-sm border-b border-zinc-700/50">
+        <div className="w-full bg-gradient-to-r from-zinc-900/90 to-zinc-800/90 backdrop-blur-sm border-b border-zinc-700/50 animate-in slide-in-from-top-4 duration-700 fade-in">
           <div className="mx-auto max-w-6xl px-6 py-12 phone:px-4 phone:py-8">
             <div className="text-center">
               <h1 className="text-5xl font-bold text-white font-poppins mb-4 phone:text-3xl phone:text-4xl laptop:text-6xl">
@@ -42,7 +42,7 @@ function Doe() {
           <div className="grid gap-8 phone:gap-6 phone:gap-8 laptop:grid-cols-2 laptop:gap-12">
 
             {/* PIX Section */}
-            <div className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm rounded-3xl border border-zinc-700/30 shadow-2xl overflow-hidden">
+            <div className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm rounded-3xl border border-zinc-700/30 shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards delay-100">
               <div className="p-8 phone:p-6 laptop:p-10">
                 <div className="text-center mb-8">
                   <div className="inline-flex items-center gap-3 bg-ipimIndigoLight/10 px-6 py-3 rounded-full mb-6">

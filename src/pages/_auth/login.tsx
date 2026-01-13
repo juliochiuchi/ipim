@@ -47,7 +47,7 @@ function LoginPage() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     try {
-      const { data: userMail, error: userMailError } = await supabase.from("usersMails").select("email").eq("email", values.email).single()
+      const { data: userMail, error: userMailError } = await supabase.from('users_mails').select("email").eq("email", values.email).single()
 
       if (!userMail) {
         toast.error("E-mail não encontrado.", {
@@ -88,7 +88,7 @@ function LoginPage() {
   }
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full max-w-md animate-in slide-in-from-bottom-4 duration-700 fade-in">
       <CardHeader>
         <CardTitle className="text-2xl font-bold text-center">Acesso Restrito</CardTitle>
         <CardDescription className="text-center">

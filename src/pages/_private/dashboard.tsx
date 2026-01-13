@@ -60,9 +60,9 @@ function DashboardPage() {
               </p>
             </CardContent>
           </Card>
-          
-          <Card>
-             <CardHeader>
+
+          <Card className="animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards delay-200">
+            <CardHeader>
               <CardTitle>Status</CardTitle>
               <CardDescription>Informações da conta</CardDescription>
             </CardHeader>

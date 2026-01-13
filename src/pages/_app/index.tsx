@@ -14,13 +14,18 @@ export const Route = createFileRoute('/_app/')({
 function Index() {
   return (
     <>
-      <Banner />
-      {/* <ChurchOnline /> */}
-      <Schedule />
-      <VisitUs />
-      {/* <Prayer /> */}
-      {/* <WorshipTimes /> */}
-      <ChurchOperation />
+      <div className="animate-in slide-in-from-top-4 duration-700 fade-in">
+        <Banner />
+      </div>
+      <div className="animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards delay-100">
+        <Schedule />
+      </div>
+      <div className="animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards delay-200">
+        <VisitUs />
+      </div>
+      <div className="animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards delay-300">
+        <ChurchOperation />
+      </div>
     </>
   )
 }

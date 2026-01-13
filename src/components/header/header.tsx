@@ -41,7 +41,7 @@ export function Header() {
 
   const menuItems = [
     { path: '/', label: 'Home' },
-    { path: '/calendar', label: 'Agenda' },
+    { path: '/calendar', label: 'Programação' },
     { path: '/doe', label: 'Doe' },
     { path: '/live', label: 'Live' },
     { path: '/acampamento', label: 'Acampamento' }
@@ -50,7 +50,7 @@ export function Header() {
   return (
     <header className="w-full bg-ipimBgSectionNextStep dark:bg-[#1f1f25] relative z-50 transition-colors duration-200">
       {/* Desktop Navigation */}
-      <div className="hidden laptop:block">
+      <div className="hidden tablet:block">
         <div className="flex items-center justify-between w-full px-4 py-4">
           {/* Logo and Menu Items - Left Side */}
           <div className="flex items-center gap-4">
@@ -80,7 +80,7 @@ export function Header() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="laptop:hidden">
+      <div className="tablet:hidden">
         {/* Mobile Header with Hamburger */}
         <div className="flex items-center justify-between px-4 py-4">
           <img

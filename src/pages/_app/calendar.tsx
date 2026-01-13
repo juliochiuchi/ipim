@@ -8,7 +8,7 @@ export const Route = createFileRoute('/_app/calendar')({
 function Calendar() {
   return (
     <>
-      <div className="min-h-screen min-w-screen w-full bg-ipimBgSectionNextStep/30 dark:bg-[#1f1f25] py-12 md:py-16 transition-colors duration-300">
+      <div className="min-h-screen min-w-screen w-full bg-ipimBgSectionNextStep/30 dark:bg-[#1a1a20] py-12 md:py-16 transition-colors duration-300">
         <div className="mx-28">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10 animate-in slide-in-from-top-4 duration-700 fade-in">
             <div>

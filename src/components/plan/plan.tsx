@@ -145,7 +145,7 @@ export default function Plan() {
 
 
   return (
-    <div className="min-h-screen min-w-screen w-full bg-ipimBgSectionNextStep/30 dark:bg-[#1f1f25] py-6 shadow-lg rounded-lg p-4">
+    <div className="min-h-auto min-w-screen w-full bg-ipimBgSectionNextStep/30 dark:bg-[#1f1f25] py-6 shadow-lg rounded-lg p-4">
       <div className="flex flex-col tablet:flex-row justify-between items-start tablet:items-end gap-6 mb-16 animate-in slide-in-from-top-4 duration-700 fade-in">
         <div className="relative group min-w-[240px]">
           <label className="block text-xs font-semibold text-gray-400 dark:text-gray-500 mb-1.5 uppercase tracking-wider ml-1">
@@ -177,20 +177,20 @@ export default function Plan() {
       </div>
 
       {/* Timeline Layout */}
-      <div className="relative space-y-12 tablet:space-y-5">
+      <div className="relative space-y-12 tablet:space-y-5 px-6">
 
         {events.map((day, index) => (
           <div
             key={index}
             className={cn(
-              "relative tablet:pl-[160px] animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards",
+              "relative tablet:pl-[107px] animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards",
               // Stagger animation based on index
               index === 0 ? "delay-0" : index === 1 ? "delay-100" : "delay-200"
             )}
           >
 
             {/* Indicador de Data (Mobile: Topo / Desktop: Lateral Esquerda) */}
-            <div className="flex tablet:absolute tablet:left-0 tablet:top-0 tablet:w-[120px] tablet:flex-col tablet:items-end tablet:text-right items-center gap-3 tablet:gap-0 mb-6 tablet:mb-0">
+            <div className="flex tablet:absolute tablet:left-0 tablet:top-0 tablet:flex-col tablet:items-end tablet:text-right items-center gap-3 tablet:gap-0 mb-6 tablet:mb-0">
 
               {/* Desktop Dot Indicator */}
               <div className="hidden tablet:block absolute -right-[45px] top-5 w-3 h-3 rounded-full border-2 border-ipimGreen bg-white dark:bg-ipimBorderDark z-10 shadow-[0_0_0_4px_white] dark:shadow-[0_0_0_4px_#09090b]" />

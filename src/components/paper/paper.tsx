@@ -62,12 +62,12 @@ export default function Paper() {
         </div>
       </div>
 
-      <div className="flex flex-col phone:flex-row gap-6">
+      <div className="flex flex-col phone:flex-row gap-6 mb-6">
         {SCHEDULES.slice(currentIndex, currentIndex + itemsPerPage).map(
           (schedule, index) => (
             <div
               key={index}
-              className="bg-white flex-1 h-72 rounded-md shadow-sm w-full phone:min-w-[18rem] transition-all duration-300"
+              className="bg-white flex-1 h-52 rounded-md shadow-sm w-full phone:min-w-[18rem] transition-all duration-300"
             >
               <div className="bg-black rounded-t-md p-4">
                 <p className="font-poppins text-white font-bold tracking-wider">
@@ -99,6 +99,12 @@ export default function Paper() {
             </div>
           )
         )}
+      </div>
+
+      <div className="text-right">
+        <a href="/calendar" className="font-poppins text-[#333] font-bold tracking-wider text-sm border p-4 rounded-md">
+          Ver Programação Completa
+        </a>
       </div>
     </div>
   )

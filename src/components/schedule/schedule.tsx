@@ -33,7 +33,7 @@ export default function Schedule() {
           </div>
         </div>
 
-        <div className="font-poppins flex justify-center w-full mt-10 tablet:mt-0 tablet:w-auto">
+        <div className="flex-1 font-poppins flex justify-center w-full mt-10 tablet:mt-0 tablet:w-auto">
           <Paper />
         </div>
 

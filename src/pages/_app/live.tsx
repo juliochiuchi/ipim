@@ -44,10 +44,7 @@ function Live() {
               Transmissão direta do YouTube &nbsp; • &nbsp; Qualidade ajustada automaticamente
             </p>
 
-            <div className="flex gap-4 w-full sm:w-auto justify-center px-4">
-
-
-
+            <div className="flex flex-col flex-wrap gap-4 w-full sm:w-auto justify-center px-4">
               <Button
                 asChild
                 size="lg"

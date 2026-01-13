@@ -155,9 +155,9 @@ export default function Plan() {
 
 
   return (
-    <div className="min-h-auto min-w-screen w-full bg-ipimBgSectionNextStep/30 dark:bg-[#1f1f25] py-6 shadow-lg rounded-lg p-4">
+    <div className="min-h-auto w-screen relative left-1/2 -translate-x-1/2 tablet:static tablet:w-full tablet:translate-x-0 tablet:left-auto bg-ipimBgSectionNextStep/30 dark:bg-[#1f1f25] py-6 shadow-lg tablet:rounded-lg px-4 phone:px-6  tablet:p-6">
       <div className="flex flex-col tablet:flex-row justify-between items-start tablet:items-end gap-6 mb-16 animate-in slide-in-from-top-4 duration-700 fade-in">
-        <div className="relative group min-w-[240px]">
+        <div className="relative group w-full tablet:w-auto tablet:min-w-[240px]">
           <label className="block text-xs font-semibold text-gray-400 dark:text-gray-500 mb-1.5 uppercase tracking-wider ml-1">
             Filtrar por mês
           </label>
@@ -187,7 +187,7 @@ export default function Plan() {
       </div>
 
       {/* Timeline Layout */}
-      <div className="relative space-y-12 tablet:space-y-5 px-6">
+      <div className="relative space-y-12 tablet:space-y-5 px-0 tablet:px-6">
 
         {isLoading ? (
           <div className="space-y-6">
@@ -208,7 +208,7 @@ export default function Plan() {
               >
 
                 {/* Indicador de Data (Mobile: Topo / Desktop: Lateral Esquerda) */}
-                <div className="flex tablet:absolute tablet:left-0 tablet:top-0 tablet:flex-col tablet:items-end tablet:text-right items-center gap-3 tablet:gap-0 mb-6 tablet:mb-0">
+                <div className="flex tablet:absolute tablet:left-0 tablet:top-0 tablet:flex-col tablet:items-end tablet:text-right items-center gap-3 tablet:gap-0 mb-6 tablet:mb-0 px-2 tablet:px-0">
 
                   {/* Desktop Dot Indicator */}
                   <div className="hidden tablet:block absolute -right-[45px] top-5 w-3 h-3 rounded-full border-2 border-ipimGreen bg-white dark:bg-ipimBorderDark z-10 shadow-[0_0_0_4px_white] dark:shadow-[0_0_0_4px_#09090b]" />
@@ -238,7 +238,7 @@ export default function Plan() {
                         <div className="flex flex-col tablet:flex-row">
 
                           {/* Time Column within Card */}
-                          <div className="tablet:w-32 bg-ipimBgSectionNextStep/50 dark:bg-black/20 p-6 flex tablet:flex-col items-center tablet:justify-center gap-2 border-b tablet:border-b-0 tablet:border-r border-gray-100 dark:border-gray-800">
+                          <div className="tablet:w-32 bg-ipimBgSectionNextStep/50 dark:bg-black/20 p-4 tablet:p-6 flex tablet:flex-col items-center tablet:justify-center gap-2 border-b tablet:border-b-0 tablet:border-r border-gray-100 dark:border-gray-800">
                             <div className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-sm text-ipimGreen">
                               <Clock className="h-5 w-5" />
                             </div>
@@ -248,7 +248,7 @@ export default function Plan() {
                           </div>
 
                           {/* Event Details */}
-                          <div className="flex-1 p-6 flex flex-col justify-center">
+                          <div className="flex-1 p-3 tablet:p-6 flex flex-col justify-center">
                             <div className="flex items-center gap-3 mb-2">
                               <span className={cn(
                                 "px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider",

@@ -33,18 +33,20 @@ function Live() {
           </div>
 
           {/* Live Player Container */}
-          <div className="bg-white dark:bg-zinc-800 rounded-3xl shadow-2xl border border-gray-200 dark:border-zinc-700 overflow-hidden transition-all duration-300 hover:shadow-3xl animate-in slide-in-from-bottom-4 fill-mode-backwards delay-100">
-            <div className="p-6 phone:p-4">
+          <div className="phone:mx-0 tablet:mx-28 bg-white dark:bg-zinc-800 rounded-3xl shadow-2xl border border-gray-200 dark:border-zinc-700 overflow-hidden transition-all duration-300 hover:shadow-3xl animate-in slide-in-from-bottom-4 fill-mode-backwards delay-100">
+            <div className="phone:p-4 tablet:p-6">
               <VideoPlayerLive />
             </div>
           </div>
 
           <div className="mt-12 flex flex-col items-center gap-8 animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards delay-200">
-            <p className="text-sm text-gray-500 dark:text-gray-400 font-source transition-colors duration-300 text-center max-w-md">
-              Transmissão direta do YouTube &nbsp; • &nbsp; Qualidade ajustada automaticamente
-            </p>
+            <div>
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-source transition-colors duration-300 text-center max-w-md">
+                Transmissão direta do YouTube &nbsp; • &nbsp; Qualidade ajustada automaticamente
+              </p>
+            </div>
 
-            <div className="flex flex-col flex-wrap gap-4 w-full sm:w-auto justify-center px-4">
+            <div className="flex flex-wrap gap-4 w-full justify-center px-4 phone:flex-col tablet:flex-row tablet:w-auto">
               <Button
                 asChild
                 size="lg"
@@ -76,8 +78,6 @@ function Live() {
                 </a>
               </Button>
             </div>
-
-
           </div>
         </div>
       </div>

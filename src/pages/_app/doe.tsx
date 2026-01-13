@@ -27,10 +27,10 @@ function Doe() {
         <div className="w-full bg-gradient-to-r from-zinc-900/90 to-zinc-800/90 backdrop-blur-sm border-b border-zinc-700/50 animate-in slide-in-from-top-4 duration-700 fade-in">
           <div className="mx-auto max-w-6xl px-6 py-12 phone:px-4 phone:py-8">
             <div className="text-center">
-              <h1 className="text-5xl font-bold text-white font-poppins mb-4 phone:text-3xl phone:text-4xl laptop:text-6xl">
+              <h1 className="text-5xl font-bold text-white font-poppins mb-4 phone:text-3xl phone:text-4xl tablet:text-6xl">
                 Contribua com a IPIM
               </h1>
-              <p className="text-xl text-zinc-300 font-source phone:text-lg phone:text-xl laptop:text-2xl max-w-3xl mx-auto">
+              <p className="text-xl text-zinc-300 font-source phone:text-lg phone:text-xl tablet:text-2xl max-w-3xl mx-auto">
                 Sua contribuição nos ajuda a continuar nossa missão de levar a palavra de Deus e servir nossa comunidade
               </p>
             </div>
@@ -38,12 +38,12 @@ function Doe() {
         </div>
 
         {/* Main Content */}
-        <div className="mx-auto max-w-6xl p-6 phone:p-4 laptop:p-8 desktop:p-12">
-          <div className="grid gap-8 phone:gap-6 phone:gap-8 laptop:grid-cols-2 laptop:gap-12">
+        <div className="mx-auto max-w-6xl p-6 phone:p-4 tablet:p-8 desktop:p-12">
+          <div className="grid gap-8 phone:gap-6 phone:gap-8 tablet:grid-cols-2 tablet:gap-12">
 
             {/* PIX Section */}
             <div className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm rounded-3xl border border-zinc-700/30 shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards delay-100">
-              <div className="p-8 phone:p-6 laptop:p-10">
+              <div className="p-8 phone:p-6 tablet:p-10">
                 <div className="text-center mb-8">
                   <div className="inline-flex items-center gap-3 bg-ipimIndigoLight/10 px-6 py-3 rounded-full mb-6">
                     <div className="w-8 h-8 bg-ipimIndigoLight rounded-full flex items-center justify-center">
@@ -153,7 +153,7 @@ function Doe() {
             <div className="space-y-6">
               {/* Bank Transfer */}
               <div className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm rounded-3xl border border-zinc-700/30 shadow-2xl overflow-hidden">
-                <div className="p-6 phone:p-5 laptop:p-8">
+                <div className="p-6 phone:p-5 tablet:p-8">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-10 h-10 bg-ipimGreen rounded-full flex items-center justify-center">
                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -191,7 +191,7 @@ function Doe() {
 
               {/* Check Payment */}
               <div className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm rounded-3xl border border-zinc-700/30 shadow-2xl overflow-hidden">
-                <div className="p-6 phone:p-5 laptop:p-8">
+                <div className="p-6 phone:p-5 tablet:p-8">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-ipimYellow rounded-full flex items-center justify-center">
                       <svg className="w-5 h-5 text-zinc-800" fill="currentColor" viewBox="0 0 24 24">
@@ -211,7 +211,7 @@ function Doe() {
 
               {/* Cash Payment */}
               <div className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm rounded-3xl border border-zinc-700/30 shadow-2xl overflow-hidden">
-                <div className="p-6 phone:p-5 laptop:p-8">
+                <div className="p-6 phone:p-5 tablet:p-8">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">

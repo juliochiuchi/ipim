@@ -16,8 +16,8 @@ export function Footer() {
     <footer className="bg-ipimBgLightFooter shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)] dark:bg-ipimBgDark dark:text-white">
       <div className="flex flex-col">
 
-        <div className="justify-center px-6 pt-12 phone:flex-col phone:px-6 laptop:flex-row laptop:px-20 desktop:px-[30rem]">
-          <div className="flex phone:items-center phone:justify-center laptop:items-start laptop:justify-start -ml-2">
+        <div className="justify-center px-6 pt-12 phone:flex-col phone:px-6 tablet:flex-row tablet:px-20 desktop:px-[30rem]">
+          <div className="flex phone:items-center phone:justify-center tablet:items-start tablet:justify-start -ml-2">
             <img
               src={IPIBIcon}
               alt="IPIB ICON"
@@ -27,9 +27,9 @@ export function Footer() {
 
           <div
             className="from-0 to-100 flex w-full gap-8 pb-10 phone:w-full
-              phone:flex-col phone:items-center phone:justify-center laptop:flex-row laptop:justify-between"
+              phone:flex-col phone:items-center phone:justify-center tablet:flex-row tablet:justify-between"
           >
-            <div className="max-w-[300px] text-[1rem] phone:text-center laptop:text-left">
+            <div className="max-w-[300px] text-[1rem] phone:text-center tablet:text-left">
               <p className="font-bold text-ipimTitleFooter dark:text-ipimBgLightFooter">
                 Igreja Presbiteriana
               </p>
@@ -49,13 +49,13 @@ export function Footer() {
               </p>
             </div>
 
-            <div className="phone:flex phone:flex-col phone:items-center phone:text-center laptop:items-start laptop:text-left">
-              <div className="phone:text-center laptop:text-left">
+            <div className="phone:flex phone:flex-col phone:items-center phone:text-center tablet:items-start tablet:text-left">
+              <div className="phone:text-center tablet:text-left">
                 <p className="text-[22px] font-bold text-ipimTitleFooter dark:text-ipimBgLightFooter">
                   Links Úteis
                 </p>
 
-                <div className="flex flex-col gap-2 text-[1rem] text-ipimTextFooter dark:text-ipimBgLightFooter phone:items-center phone:justify-center laptop:items-start laptop:justify-start">
+                <div className="flex flex-col gap-2 text-[1rem] text-ipimTextFooter dark:text-ipimBgLightFooter phone:items-center phone:justify-center tablet:items-start tablet:justify-start">
                   <a
                     href="https://ipib.org/educacaocontinuada/"
                     className="font-source mt-1"
@@ -72,14 +72,14 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="phone:flex phone:flex-col phone:items-center phone:text-center laptop:items-start laptop:text-left">
-              <div className="phone:text-center laptop:text-left">
+            <div className="phone:flex phone:flex-col phone:items-center phone:text-center tablet:items-start tablet:text-left">
+              <div className="phone:text-center tablet:text-left">
                 <p className="text-[22px] font-bold text-ipimTitleFooter dark:text-ipimBgLightFooter">
                   Nos Encontre
                 </p>
 
-                <div className="flex flex-col gap-4 text-ipimTextFooter dark:text-ipimBgLightFooter phone:items-center phone:justify-center laptop:items-start laptop:justify-start">
-                  <div className="mt-1 flex phone:flex-col phone:items-center phone:gap-1 phone:text-center laptop:flex-row laptop:gap-2 laptop:text-left">
+                <div className="flex flex-col gap-4 text-ipimTextFooter dark:text-ipimBgLightFooter phone:items-center phone:justify-center tablet:items-start tablet:justify-start">
+                  <div className="mt-1 flex phone:flex-col phone:items-center phone:gap-1 phone:text-center tablet:flex-row tablet:gap-2 tablet:text-left">
                     <div className="phone:flex phone:justify-center">
                       <FiNavigation className="mt-[5px] text-[#008785] hover:text-ipimTextFooter" />
                     </div>
@@ -93,7 +93,7 @@ export function Footer() {
                     </a>
                   </div>
 
-                  <div className="mt-1 flex items-center gap-2 phone:flex-col phone:gap-1 laptop:flex-row">
+                  <div className="mt-1 flex items-center gap-2 phone:flex-col phone:gap-1 tablet:flex-row">
                     <div className="phone:flex phone:justify-center">
                       <FiMail className="mt-1 text-[#008785] hover:text-ipimTextFooter" />
                     </div>
@@ -105,7 +105,7 @@ export function Footer() {
                     </a>
                   </div>
 
-                  <div className="mt-1 flex items-center gap-2 phone:flex-col phone:gap-1 laptop:flex-row">
+                  <div className="mt-1 flex items-center gap-2 phone:flex-col phone:gap-1 tablet:flex-row">
                     <div className="phone:flex phone:justify-center">
                       <FiPhone className="text-[#008785] hover:text-ipimTextFooter" />
                     </div>
@@ -121,13 +121,13 @@ export function Footer() {
               </div>
             </div>
 
-            <div className="phone:flex phone:flex-col phone:items-center phone:text-center laptop:items-start laptop:text-left">
-              <div className="phone:text-center laptop:text-left">
+            <div className="phone:flex phone:flex-col phone:items-center phone:text-center tablet:items-start tablet:text-left">
+              <div className="phone:text-center tablet:text-left">
                 <p className="text-[22px] font-bold text-ipimTitleFooter dark:text-ipimBgLightFooter">
                   Conecte-se
                 </p>
 
-                <div className="flex flex-col gap-2 text-[1rem] text-ipimTextFooter dark:text-ipimBgLightFooter phone:items-center laptop:items-start">
+                <div className="flex flex-col gap-2 text-[1rem] text-ipimTextFooter dark:text-ipimBgLightFooter phone:items-center tablet:items-start">
                   <a href="#" className="font-source mt-1">
                     Quem Somos
                   </a>
@@ -139,7 +139,7 @@ export function Footer() {
                   Redes Sociais
                 </p>
 
-                <div className="flex flex-row gap-3 text-[1rem] text-ipimTextFooter phone:items-center phone:justify-center laptop:items-start laptop:justify-start">
+                <div className="flex flex-row gap-3 text-[1rem] text-ipimTextFooter phone:items-center phone:justify-center tablet:items-start tablet:justify-start">
                   <a href="#" className="mt-1">
                     <FiFacebook className="h-[22px] w-[22px] text-[#008785] hover:text-ipimTextFooter" />
                   </a>
@@ -165,8 +165,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex items-center bg-ipimIndigoLight py-2 text-white phone:flex-col phone:justify-center phone:px-6 laptop:flex-row laptop:justify-between laptop:px-20 desktop:px-[30rem]">
-          <div className="flex flex-col py-3 text-[13px] phone:items-center phone:justify-center phone:text-center laptop:items-start laptop:justify-start laptop:text-left">
+        <div className="flex items-center bg-ipimIndigoLight py-2 text-white phone:flex-col phone:justify-center phone:px-6 tablet:flex-row tablet:justify-between tablet:px-20 desktop:px-[30rem]">
+          <div className="flex flex-col py-3 text-[13px] phone:items-center phone:justify-center phone:text-center tablet:items-start tablet:justify-start tablet:text-left">
             <p className="font-source">Igreja Presbiteriana Independente de Macaubal • IPIM</p>
             <p className="font-source italic">
               Todos os direitos reservados. Copyright ©{' '}
@@ -174,7 +174,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="phone:mt-1 laptop:mt-0">
+          <div className="phone:mt-1 tablet:mt-0">
             <a
               href="https://myspace-julio-chiuchi.vercel.app"
               className="text-[13px] font-bold"

@@ -28,7 +28,7 @@ export function AdminSidebar({ collapsed, onToggle, items }: AdminSidebarProps) 
     >
       <div className="flex w-full flex-col">
         <div className="flex items-center justify-between px-4 py-3">
-          <div className={cn("font-semibold tracking-tight", collapsed && "hidden")}>
+          <div className={cn("font-semibold tracking-widest font-poppins", collapsed && "hidden")}>
             IPIM Admin
           </div>
           <Button

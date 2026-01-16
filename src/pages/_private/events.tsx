@@ -2,7 +2,6 @@ import { useState } from "react"
 import { createFileRoute } from "@tanstack/react-router"
 import { Plus } from "lucide-react"
 
-import { AdminLayout } from "@/components/private/admin-layout"
 import { EventList } from "@/components/private/events/event-list"
 import { EventForm } from "@/components/private/events/event-form"
 import { Button } from "@/components/ui/button"
@@ -46,35 +45,33 @@ function EventsPage() {
   }
 
   return (
-    <AdminLayout title="Eventos">
-      <div className="flex flex-col gap-6">
-        <div className="flex justify-end">
-          <Button onClick={handleCreate} className="w-full phone:w-auto">
-            <Plus className="mr-2 h-4 w-4" />
-            Novo Evento
-          </Button>
-        </div>
-
-        <EventList onEdit={handleEdit} keyRefresh={keyRefresh} />
-
-        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar rounded-lg">
-            <DialogHeader className="text-left mb-5">
-              <DialogTitle>
-                {editingItem ? "Editar Evento" : "Novo Evento"}
-              </DialogTitle>
-              <DialogDescription>
-                Preencha os dados abaixo para {editingItem ? "atualizar" : "criar"} um evento.
-              </DialogDescription>
-            </DialogHeader>
-            <EventForm
-              initialData={editingItem}
-              onSuccess={handleSuccess}
-              onCancel={handleCancel}
-            />
-          </DialogContent>
-        </Dialog>
+    <div className="flex flex-col gap-6">
+      <div className="flex justify-end">
+        <Button onClick={handleCreate} className="w-full phone:w-auto">
+          <Plus className="mr-2 h-4 w-4" />
+          Novo Evento
+        </Button>
       </div>
-    </AdminLayout>
+
+      <EventList onEdit={handleEdit} keyRefresh={keyRefresh} />
+
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar rounded-lg">
+          <DialogHeader className="text-left mb-5">
+            <DialogTitle>
+              {editingItem ? "Editar Evento" : "Novo Evento"}
+            </DialogTitle>
+            <DialogDescription>
+              Preencha os dados abaixo para {editingItem ? "atualizar" : "criar"} um evento.
+            </DialogDescription>
+          </DialogHeader>
+          <EventForm
+            initialData={editingItem}
+            onSuccess={handleSuccess}
+            onCancel={handleCancel}
+          />
+        </DialogContent>
+      </Dialog>
+    </div>
   )
 }

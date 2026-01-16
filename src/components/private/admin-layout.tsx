@@ -4,7 +4,7 @@ import { useLocation } from "@tanstack/react-router"
 import { AdminSidebar } from "./admin-sidebar"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { LayoutDashboard, Calendar, Cog, Palette } from "lucide-react"
+import { LayoutDashboard, Calendar, Cog, Palette, LogOut, User } from "lucide-react"
 
 type AdminLayoutProps = {
   title?: string
@@ -13,7 +13,7 @@ type AdminLayoutProps = {
   children: ReactNode
 }
 
-export function AdminLayout({ title = "Dashboard", userEmail, onLogout, children }: AdminLayoutProps) {
+export function AdminLayout({ title, userEmail, onLogout, children }: AdminLayoutProps) {
   const [collapsed, setCollapsed] = useState(false)
   const location = useLocation()
 
@@ -35,33 +35,55 @@ export function AdminLayout({ title = "Dashboard", userEmail, onLogout, children
     { label: "Conteúdos", disabled: true },
   ]
 
-  return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-800">
-      <div className="flex">
-        <AdminSidebar
-          collapsed={collapsed}
-          onToggle={() => setCollapsed((v) => !v)}
-          items={items}
-        />
+  const activeItem = items.find((item) => item.active)
+  const pageTitle = title ?? activeItem?.label ?? "Dashboard"
 
-        <main className={cn("flex-1", collapsed ? "phone:px-4 tablet:px-8" : "phone:px-2 tablet:px-10")}>
-          <div className="phone:py-6 laptop:py-8">
-            <div className="flex items-center justify-between">
+  return (
+    <div className="min-h-screen bg-gray-100 dark:bg-zinc-950">
+      <div className="flex">
+        <AdminSidebar collapsed={collapsed} onToggle={() => setCollapsed((v) => !v)} items={items} />
+
+        <main className="flex-1">
+          <header className="sticky top-0 z-20 border-b bg-white/80 dark:bg-ipimBgDark/80 backdrop-blur">
+            <div
+              className={cn(
+                "flex items-center justify-between phone:py-4 laptop:py-6",
+                collapsed ? "phone:px-4 tablet:px-8" : "phone:px-2 tablet:px-10",
+              )}
+            >
               <div className="space-y-1">
-                <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
-                <p className="text-sm text-muted-foreground">
-                  {userEmail ? `Bem-vindo, ${userEmail}` : "Acesso Administrativo da IPIM"}
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                  Usuário conectado
                 </p>
+                <div className="flex items-center gap-2 text-sm text-foreground">
+                  <User className="h-4 w-4" />
+                  <span>{userEmail ?? "Usuário não identificado"}</span>
+                </div>
               </div>
               {onLogout && (
-                <Button variant="destructive" onClick={onLogout}>
-                  Sair
+                <Button
+                  variant="outline"
+                  onClick={onLogout}
+                  className="border-destructive text-destructive bg-transparent hover:bg-destructive/10"
+                >
+                  <LogOut className="h-4 w-4" />
+                  <span>Sair</span>
                 </Button>
               )}
             </div>
-            <div className="phone:mt-6 laptop:mt-8">
-              {children}
+          </header>
+
+          <div
+            className={cn(
+              "phone:py-6 laptop:py-8",
+              collapsed ? "phone:px-4 tablet:px-8" : "phone:px-2 tablet:px-10",
+            )}
+          >
+            <div className="space-y-1">
+              <h1 className="text-3xl font-bold tracking-tight">{pageTitle}</h1>
+              <p className="text-sm text-muted-foreground">Acesso Administrativo da IPIM</p>
             </div>
+            <div className="phone:mt-6 laptop:mt-8">{children}</div>
           </div>
         </main>
       </div>

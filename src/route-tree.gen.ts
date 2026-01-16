@@ -13,6 +13,7 @@ import { Route as PrivateLayoutRouteImport } from './pages/_private/layout'
 import { Route as AuthLayoutRouteImport } from './pages/_auth/layout'
 import { Route as AppLayoutRouteImport } from './pages/_app/layout'
 import { Route as AppIndexRouteImport } from './pages/_app/index'
+import { Route as PrivateEventsRouteImport } from './pages/_private/events'
 import { Route as PrivateDashboardRouteImport } from './pages/_private/dashboard'
 import { Route as AuthLoginRouteImport } from './pages/_auth/login'
 import { Route as AppLiveRouteImport } from './pages/_app/live'
@@ -37,6 +38,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppLayoutRoute,
+} as any)
+const PrivateEventsRoute = PrivateEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => PrivateLayoutRoute,
 } as any)
 const PrivateDashboardRoute = PrivateDashboardRouteImport.update({
   id: '/dashboard',
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/live': typeof AppLiveRoute
   '/login': typeof AuthLoginRoute
   '/dashboard': typeof PrivateDashboardRoute
+  '/events': typeof PrivateEventsRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/live': typeof AppLiveRoute
   '/login': typeof AuthLoginRoute
   '/dashboard': typeof PrivateDashboardRoute
+  '/events': typeof PrivateEventsRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
@@ -106,6 +114,7 @@ export interface FileRoutesById {
   '/_app/live': typeof AppLiveRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_private/dashboard': typeof PrivateDashboardRoute
+  '/_private/events': typeof PrivateEventsRoute
   '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/live'
     | '/login'
     | '/dashboard'
+    | '/events'
     | '/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/live'
     | '/login'
     | '/dashboard'
+    | '/events'
     | '/'
   id:
     | '__root__'
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/_app/live'
     | '/_auth/login'
     | '/_private/dashboard'
+    | '/_private/events'
     | '/_app/'
   fileRoutesById: FileRoutesById
 }
@@ -179,6 +191,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppLayoutRoute
+    }
+    '/_private/events': {
+      id: '/_private/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof PrivateEventsRouteImport
+      parentRoute: typeof PrivateLayoutRoute
     }
     '/_private/dashboard': {
       id: '/_private/dashboard'
@@ -268,10 +287,12 @@ const AuthLayoutRouteWithChildren = AuthLayoutRoute._addFileChildren(
 
 interface PrivateLayoutRouteChildren {
   PrivateDashboardRoute: typeof PrivateDashboardRoute
+  PrivateEventsRoute: typeof PrivateEventsRoute
 }
 
 const PrivateLayoutRouteChildren: PrivateLayoutRouteChildren = {
   PrivateDashboardRoute: PrivateDashboardRoute,
+  PrivateEventsRoute: PrivateEventsRoute,
 }
 
 const PrivateLayoutRouteWithChildren = PrivateLayoutRoute._addFileChildren(

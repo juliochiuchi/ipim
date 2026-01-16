@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Filter, CalendarDays, Clock, MapPin, ChevronRight, Calendar } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { supabase } from '@/utils/supabase';
+import { eventService } from '@/services/event.service';
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
 import { LoadingComponent } from '@/components/loading/global-loading';
@@ -69,11 +69,10 @@ export default function Plan() {
   const getEventsByMonth = async (selectedMonth: string) => {
     setIsLoading(true)
     try {
-      const { data, error } = await supabase
-        .rpc('get_events_by_month', {
-          p_year: Number(selectedMonth.split('-')[0]),
-          p_month: Number(selectedMonth.split('-')[1]),
-        })
+      const { data, error } = await eventService.getEventsByMonth(
+        Number(selectedMonth.split('-')[0]),
+        Number(selectedMonth.split('-')[1])
+      )
 
       if (error) {
         throw error
@@ -208,10 +207,10 @@ export default function Plan() {
               >
 
                 {/* Indicador de Data (Mobile: Topo / Desktop: Lateral Esquerda) */}
-                <div className="flex tablet:absolute tablet:left-0 tablet:top-0 tablet:flex-col tablet:items-end tablet:text-right items-center gap-3 tablet:gap-0 mb-6 tablet:mb-0 px-2 tablet:px-0">
+                <div className="flex tablet:absolute tablet:left-0 tablet:top-0 tablet:flex-col tablet:items-end tablet:text-right items-end gap-3 tablet:gap-0 mb-6 tablet:mb-0 px-2 tablet:px-0 w-[96px] tablet:w-[96px] shrink-0">
 
                   {/* Desktop Dot Indicator */}
-                  <div className="hidden tablet:block absolute -right-[45px] top-5 w-3 h-3 rounded-full border-2 border-ipimGreen bg-white dark:bg-ipimBorderDark z-10 shadow-[0_0_0_4px_white] dark:shadow-[0_0_0_4px_#09090b]" />
+                  <div className="hidden tablet:block absolute -right-[25px] top-5 w-3 h-3 rounded-full border-2 border-ipimGreen bg-white dark:bg-ipimBorderDark z-10 shadow-[0_0_0_4px_white] dark:shadow-[0_0_0_4px_#09090b]" />
 
                   <span className="text-5xl font-bold text-ipimBlack dark:text-white tracking-tighter leading-none">
                     {day.day}
@@ -220,14 +219,14 @@ export default function Plan() {
                     <span className="text-sm font-bold uppercase text-ipimGreen tracking-wide">
                       {day.monthLabel}
                     </span>
-                    <span className="text-base text-gray-500 dark:text-gray-400 font-medium capitalize">
+                    <span className="text-base text-gray-500 dark:text-gray-400 font-medium capitalize whitespace-nowrap">
                       {day.weekday}
                     </span>
                   </div>
                 </div>
 
                 {/* Lista de Eventos do Dia */}
-                <div className="grid gap-5">
+                <div className="grid gap-5 pl-2">
                   {day.events.map((event) => (
                     <Card
                       key={event.id}

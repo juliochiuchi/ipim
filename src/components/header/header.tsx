@@ -7,6 +7,8 @@ import {
 import { useLocation } from '@tanstack/react-router'
 import { useState } from 'react'
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { Button } from "@/components/ui/button"
+import { LogIn } from "lucide-react"
 import IPIBIcon from '../../assets/IPIB-icon.png'
 
 export function Header() {
@@ -72,8 +74,19 @@ export function Header() {
             </NavigationMenu>
           </div>
 
-          {/* Theme Toggle - Right Side */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-2">
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              aria-label="Ir para página de login"
+            >
+              <a href="/login">
+                <LogIn className="h-4 w-4" />
+                <span className="sr-only">Login</span>
+              </a>
+            </Button>
             <ThemeToggle />
           </div>
         </div>
@@ -90,8 +103,19 @@ export function Header() {
           />
 
           <div className="flex items-center gap-2">
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              aria-label="Ir para página de login"
+            >
+              <a href="/login">
+                <LogIn className="h-4 w-4" />
+                <span className="sr-only">Login</span>
+              </a>
+            </Button>
             <ThemeToggle />
-            {/* Hamburger Button */}
             <button
               onClick={toggleMenu}
               className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600"

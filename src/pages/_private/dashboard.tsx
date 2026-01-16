@@ -1,17 +1,10 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { supabase } from '@/utils/supabase'
+import { authService } from '@/services/auth.service'
 import { toast } from "sonner"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { LoadingPage } from '@/components/loading/global-loading'
+import { AdminLayout } from '@/components/private/admin-layout'
 
 export const Route = createFileRoute('/_private/dashboard')({
   component: DashboardPage,
@@ -25,7 +18,7 @@ function DashboardPage() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const { data: { user } } = await supabase.auth.getUser()
+        const { data: { user } } = await authService.getUser()
         setUserEmail(user?.email || null)
       } catch (error) {
         console.error(error)
@@ -38,7 +31,7 @@ function DashboardPage() {
 
   const handleLogout = async () => {
     try {
-      await supabase.auth.signOut()
+      await authService.signOut()
       toast.success("Logout realizado com sucesso")
       navigate({ to: '/login' })
     } catch (error) {
@@ -52,42 +45,33 @@ function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-8">
-      <div className="max-w-4xl mx-auto space-y-8">
-        <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-          <Button variant="destructive" onClick={handleLogout}>
-            Sair
-          </Button>
-        </div>
+    <AdminLayout title="Dashboard" userEmail={userEmail} onLogout={handleLogout}>
+      <div className="grid gap-4 tablet:grid-cols-2 laptop:grid-cols-3">
+        <Card className="animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards">
+          <CardHeader>
+            <CardTitle>Bem-vindo</CardTitle>
+            <CardDescription>Você está logado no sistema</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">
+              Usuário: <span className="font-medium text-foreground">{userEmail}</span>
+            </p>
+          </CardContent>
+        </Card>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle>Bem-vindo!</CardTitle>
-              <CardDescription>Você está logado no sistema.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground">
-                Usuário: <span className="font-medium text-foreground">{userEmail}</span>
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards delay-200">
-            <CardHeader>
-              <CardTitle>Status</CardTitle>
-              <CardDescription>Informações da conta</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full bg-green-500" />
-                <span className="text-sm">Ativo</span>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+        <Card className="animate-in slide-in-from-bottom-4 duration-700 fill-mode-backwards delay-150">
+          <CardHeader>
+            <CardTitle>Status</CardTitle>
+            <CardDescription>Informações da conta</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <div className="h-2 w-2 rounded-full bg-green-500" />
+              <span className="text-sm">Ativo</span>
+            </div>
+          </CardContent>
+        </Card>
       </div>
-    </div>
+    </AdminLayout>
   )
 }

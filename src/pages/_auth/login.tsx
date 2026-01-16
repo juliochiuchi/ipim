@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -21,7 +21,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { supabase } from '@/utils/supabase'
+import { authService } from "@/services/auth.service"
+import { userService } from "@/services/user.service"
 import { toast } from "sonner"
 
 export const Route = createFileRoute('/_auth/login')({
@@ -35,6 +36,7 @@ const formSchema = z.object({
 })
 
 function LoginPage() {
+  const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -47,7 +49,7 @@ function LoginPage() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true)
     try {
-      const { data: userMail, error: userMailError } = await supabase.from('users_mails').select("email").eq("email", values.email).single()
+      const { data: userMail, error: userMailError } = await userService.checkEmail(values.email)
 
       if (!userMail) {
         toast.error("E-mail não encontrado.", {
@@ -61,12 +63,10 @@ function LoginPage() {
         return
       }
 
-      const { error } = await supabase.auth.signInWithOtp({
-        email: values.email,
-        options: {
-          emailRedirectTo: `${window.location.origin}/dashboard`,
-        },
-      })
+      const { error } = await authService.signInWithOtp(
+        values.email,
+        `${window.location.origin}/dashboard`
+      )
 
       if (error) {
         toast.error("Erro ao enviar link de login", {
@@ -111,9 +111,19 @@ function LoginPage() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Enviando..." : "Enviar Link de Acesso"}
-            </Button>
+            <div className="flex w-full flex-col justify-center items-center gap-3">
+              <Button type="submit" className="w-full" disabled={isLoading}>
+                {isLoading ? "Enviando..." : "Enviar Link de Acesso"}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full"
+                onClick={() => navigate({ to: '/' })}
+              >
+                Voltar para página inicial
+              </Button>
+            </div>
           </form>
         </Form>
       </CardContent>

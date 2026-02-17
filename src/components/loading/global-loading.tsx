@@ -13,7 +13,7 @@ export function LoadingPage() {
         <Skeleton className="h-4 w-[250px]" />
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 tablet:grid-cols-2 laptop:grid-cols-3">
         {Array.from({ length: 3 }).map((_, i) => (
           <div key={i} className="flex flex-col space-y-3">
             <Skeleton className="h-[125px] w-full rounded-xl" />

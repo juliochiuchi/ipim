@@ -154,7 +154,7 @@ export default function Plan() {
 
 
   return (
-    <div className="min-h-auto w-screen relative left-1/2 -translate-x-1/2 tablet:static tablet:w-full tablet:translate-x-0 tablet:left-auto bg-ipimBgSectionNextStep/30 dark:bg-[#1f1f25] py-6 shadow-lg tablet:rounded-lg px-4 phone:px-6  tablet:p-6">
+    <div className="min-h-auto w-screen relative left-1/2 -translate-x-1/2 tablet:static tablet:w-full tablet:translate-x-0 tablet:left-auto bg-[#f6f6f6] dark:bg-[#1f1f25] py-6 shadow-lg tablet:rounded-lg px-4 phone:px-6  tablet:p-6">
       <div className="flex flex-col tablet:flex-row justify-between items-start tablet:items-end gap-6 mb-16 animate-in slide-in-from-top-4 duration-700 fade-in">
         <div className="relative group w-full tablet:w-auto tablet:min-w-[240px]">
           <label className="block text-xs font-semibold text-gray-400 dark:text-gray-500 mb-1.5 uppercase tracking-wider ml-1">

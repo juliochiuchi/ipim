@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/carousel"
 import { Button } from "@/components/ui/button"
 import jesusBanner from '../../assets/jesus-banner.jpg'
-import capaHome from '../../assets/capa-home.png'
+import bannerDefault from '../../assets/banner-default.jpg'
 import { cn } from "@/lib/utils"
 
 export function HeroCarousel() {
@@ -25,18 +25,18 @@ export function HeroCarousel() {
 
   const slides = [
     {
-      image: jesusBanner,
-      title: "Bem-vindo à IPIM",
-      subtitle: "Uma igreja viva para o Deus vivo",
-      action: "Saiba mais",
-      actionLink: "/visit-us"
+      image: bannerDefault,
+      title: undefined,
+      subtitle: undefined,
+      action: undefined,
+      actionLink: undefined,
     },
     {
-      image: capaHome,
+      image: jesusBanner,
       title: "Junte-se a nós",
       subtitle: "Cultos todos os domingos às 19h",
       action: "Ver programação",
-      actionLink: "/calendar"
+      actionLink: "/calendar",
     }
   ]
 
@@ -81,27 +81,31 @@ export function HeroCarousel() {
             </div>
 
             <div className="relative h-full flex flex-col items-center justify-center text-center text-white p-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 fill-mode-forwards">
-              <h2 className="text-4xl md:text-6xl font-poppins font-bold mb-4 drop-shadow-lg tracking-tight">
+              <h2 className="text-4xl tablet:text-6xl font-poppins font-bold mb-4 drop-shadow-lg tracking-tight">
                 {slide.title}
               </h2>
-              <p className="text-lg md:text-2xl font-nunito mb-8 max-w-2xl drop-shadow-md opacity-90">
+
+              <p className="text-lg tablet:text-2xl font-nunito mb-8 max-w-2xl drop-shadow-md opacity-90">
                 {slide.subtitle}
               </p>
-              <Button
-                size="lg"
-                className="bg-ipimGreen hover:bg-ipimGreenHover text-white font-semibold px-8 py-6 text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg border-0"
-                asChild
-              >
-                <a href={slide.actionLink}>{slide.action}</a>
-              </Button>
+
+              {slide.action && slide.actionLink && (
+                <Button
+                  size="lg"
+                  className="bg-ipimGreen hover:bg-ipimGreenHover text-white font-semibold px-8 py-6 text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg border-0"
+                  asChild
+                >
+                  <a href={slide.actionLink}>{slide.action}</a>
+                </Button>
+              )}
             </div>
           </CarouselItem>
         ))}
       </CarouselContent>
 
       {/* Navigation Buttons */}
-      <CarouselPrevious className="left-4 bg-transparent border-2 border-white/50 text-white hover:bg-white/20 hover:text-white hover:border-white hidden md:flex h-12 w-12 transition-all z-20" />
-      <CarouselNext className="right-4 bg-transparent border-2 border-white/50 text-white hover:bg-white/20 hover:text-white hover:border-white hidden md:flex h-12 w-12 transition-all z-20" />
+      <CarouselPrevious className="left-4 bg-transparent border-2 border-white/50 text-white hover:bg-white/20 hover:text-white hover:border-white hidden tablet:flex h-12 w-12 transition-all z-20" />
+      <CarouselNext className="right-4 bg-transparent border-2 border-white/50 text-white hover:bg-white/20 hover:text-white hover:border-white hidden tablet:flex h-12 w-12 transition-all z-20" />
 
       {/* Indicators and Progress Container */}
       <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col items-center gap-4">

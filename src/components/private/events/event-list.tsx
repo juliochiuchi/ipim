@@ -151,11 +151,13 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </AlertDialogTrigger>
-                        <AlertDialogContent className="rounded-lg">
+                        <AlertDialogContent className="rounded-lg dark:bg-gray-900">
                           <AlertDialogHeader>
                             <AlertDialogTitle>Excluir Programação</AlertDialogTitle>
                             <AlertDialogDescription>
-                              Tem certeza que deseja excluir "{item.title}"? Esta ação não pode ser desfeita.
+                              <p>Tem certeza que deseja excluir "{item.title}"?</p>
+
+                              <p className="font-bold mt-6">Esta ação não pode ser desfeita.</p>
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>

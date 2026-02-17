@@ -82,4 +82,15 @@
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-muted-foreground/40;
   }
+
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    display: none;
+  }
+
+  input[type="time"]::-webkit-inner-spin-button,
+  input[type="time"]::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+  }
 }

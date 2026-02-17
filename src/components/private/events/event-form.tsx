@@ -4,7 +4,7 @@ import type { Resolver } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { format } from "date-fns"
-import { CalendarIcon, Loader2 } from "lucide-react"
+import { CalendarIcon, Clock, Loader2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -171,12 +171,12 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
           )}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-col gap-4 tablet:flex-row">
           <FormField
             control={form.control}
             name="category_id"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex-1">
                 <FormLabel>Categoria</FormLabel>
                 <Select
                   onValueChange={field.onChange}
@@ -205,7 +205,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
             control={form.control}
             name="location"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex-1">
                 <FormLabel>Local</FormLabel>
                 <FormControl>
                   <Input placeholder="Ex: Templo Principal" {...field} />
@@ -216,12 +216,12 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-col gap-4 tablet:flex-row">
           <FormField
             control={form.control}
             name="start_date"
             render={({ field }) => (
-              <FormItem className="flex flex-col">
+              <FormItem className="flex flex-1 flex-col">
                 <FormLabel>Data de Início</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
@@ -260,7 +260,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
             control={form.control}
             name="end_date"
             render={({ field }) => (
-              <FormItem className="flex flex-col">
+              <FormItem className="flex flex-1 flex-col">
                 <FormLabel>Data de Término</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
@@ -296,15 +296,22 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-col gap-4 tablet:flex-row">
           <FormField
             control={form.control}
             name="start_time"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex-1">
                 <FormLabel>Horário de Início</FormLabel>
                 <FormControl>
-                  <Input type="time" {...field} />
+                  <div className="relative">
+                    <Input
+                      type="time"
+                      className="appearance-none pr-10"
+                      {...field}
+                    />
+                    <Clock className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 opacity-50" />
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -315,10 +322,17 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
             control={form.control}
             name="end_time"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="flex-1">
                 <FormLabel>Horário de Término</FormLabel>
                 <FormControl>
-                  <Input type="time" {...field} />
+                  <div className="relative">
+                    <Input
+                      type="time"
+                      className="appearance-none pr-10"
+                      {...field}
+                    />
+                    <Clock className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 opacity-50" />
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>

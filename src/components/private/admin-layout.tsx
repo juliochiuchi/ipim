@@ -39,7 +39,7 @@ export function AdminLayout({ title, userEmail, onLogout, children }: AdminLayou
   const pageTitle = title ?? activeItem?.label ?? "Dashboard"
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-zinc-950">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <div className="flex">
         <AdminSidebar collapsed={collapsed} onToggle={() => setCollapsed((v) => !v)} items={items} />
 

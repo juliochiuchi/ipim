@@ -8,7 +8,7 @@ import { useLocation } from '@tanstack/react-router'
 import { useState } from 'react'
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Button } from "@/components/ui/button"
-import { LogIn } from "lucide-react"
+import { LogIn, ChartColumn, BarChart2 } from "lucide-react"
 import IPIBIcon from '../../assets/IPIB-icon.png'
 
 export function Header() {
@@ -87,6 +87,18 @@ export function Header() {
                 <span className="sr-only">Login</span>
               </a>
             </Button>
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              aria-label="Abrir financeiro (Lumina)"
+            >
+              <a href="https://lumina-omega-one.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <ChartColumn className="h-4 w-4" />
+                <span className="sr-only">Financeiro</span>
+              </a>
+            </Button>
             <ThemeToggle />
           </div>
         </div>
@@ -113,6 +125,18 @@ export function Header() {
               <a href="/login">
                 <LogIn className="h-4 w-4" />
                 <span className="sr-only">Login</span>
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              aria-label="Abrir financeiro (Lumina)"
+            >
+              <a href="https://lumina-omega-one.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <BarChart2 className="h-4 w-4" />
+                <span className="sr-only">Financeiro</span>
               </a>
             </Button>
             <ThemeToggle />

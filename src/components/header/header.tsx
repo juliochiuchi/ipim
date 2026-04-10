@@ -8,7 +8,7 @@ import { useLocation } from '@tanstack/react-router'
 import { useState } from 'react'
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Button } from "@/components/ui/button"
-import { LogIn, ChartColumn, BarChart2 } from "lucide-react"
+import { LogIn, ChartColumn } from "lucide-react"
 import IPIBIcon from '../../assets/IPIB-icon.png'
 
 export function Header() {
@@ -135,7 +135,7 @@ export function Header() {
               aria-label="Abrir financeiro (Lumina)"
             >
               <a href="https://lumina-omega-one.vercel.app/" target="_blank" rel="noopener noreferrer">
-                <BarChart2 className="h-4 w-4" />
+                <ChartColumn className="h-4 w-4" />
                 <span className="sr-only">Financeiro</span>
               </a>
             </Button>

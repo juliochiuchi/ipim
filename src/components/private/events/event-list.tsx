@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import { format } from "date-fns"
+import { format, parse } from "date-fns"
 import { Edit2, Trash2, ChevronLeft, ChevronRight, Loader2 } from "lucide-react"
 
 import {
@@ -121,7 +121,7 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
                     {item.event_categories?.name || "-"}
                   </TableCell>
                   <TableCell>
-                    {format(new Date(item.start_date), "dd/MM/yyyy")}
+                    {format(parse(item.start_date, "yyyy-MM-dd", new Date()), "dd/MM/yyyy")}
                   </TableCell>
                   <TableCell>
                     {item.start_time ? item.start_time.slice(0, 5) : "-"}

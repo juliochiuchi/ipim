@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import type { Resolver } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { format } from "date-fns"
+import { format, parse } from "date-fns"
 import { CalendarIcon, Clock, Loader2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -103,8 +103,8 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
         title: initialData.title,
         description: initialData.description || "",
         category_id: initialData.category_id ?? undefined,
-        start_date: initialData.start_date ? new Date(initialData.start_date) : undefined,
-        end_date: initialData.end_date ? new Date(initialData.end_date) : undefined,
+        start_date: initialData.start_date ? parse(initialData.start_date, "yyyy-MM-dd", new Date()) : undefined,
+        end_date: initialData.end_date ? parse(initialData.end_date, "yyyy-MM-dd", new Date()) : undefined,
         start_time: initialData.start_time || "",
         end_time: initialData.end_time || "",
         location: initialData.location || "",
@@ -120,8 +120,8 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
         title: values.title,
         description: values.description || null,
         category_id: values.category_id || null,
-        start_date: values.start_date.toISOString().split("T")[0], // Format as YYYY-MM-DD
-        end_date: values.end_date ? values.end_date.toISOString().split("T")[0] : null,
+        start_date: format(values.start_date, "yyyy-MM-dd"),
+        end_date: values.end_date ? format(values.end_date, "yyyy-MM-dd") : null,
         start_time: values.start_time || null,
         end_time: values.end_time || null,
         location: values.location || null,

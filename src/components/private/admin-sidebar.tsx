@@ -22,7 +22,7 @@ export function AdminSidebar({ collapsed, onToggle, items }: AdminSidebarProps) 
   return (
     <aside
       className={cn(
-        "flex h-screen border-r bg-background/60 backdrop-blur supports-[backdrop-filter]:bg-background/40",
+        "flex min-h-screen border-r bg-background/60 backdrop-blur supports-[backdrop-filter]:bg-background/40",
         collapsed ? "w-16" : "w-[260px]"
       )}
     >

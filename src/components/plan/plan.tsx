@@ -41,6 +41,7 @@ interface DaySchedule {
 }
 
 const currentYear = new Date().getFullYear()
+const currentMonth = new Date().getMonth() + 1
 
 const MONTHS = [
   { value: `${currentYear}-1`, label: `Janeiro/${currentYear}` },
@@ -58,7 +59,7 @@ const MONTHS = [
 ];
 
 export default function Plan() {
-  const [selectedMonth, setSelectedMonth] = useState(`${currentYear}-1`)
+  const [selectedMonth, setSelectedMonth] = useState(`${currentYear}-${currentMonth}`)
   const [events, setEvents] = useState<DaySchedule[]>([])
   const [isLoading, setIsLoading] = useState(true)
 

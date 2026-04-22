@@ -64,6 +64,10 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
   const [categories, setCategories] = useState<EventCategory[]>([])
   const [isLoadingCategories, setIsLoadingCategories] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
+  const fieldClassName =
+    "bg-muted/25 border-border/70 shadow-none focus-visible:ring-1 focus-visible:ring-ipimGreen/30 dark:bg-white/[0.06] dark:border-white/10 dark:hover:bg-white/[0.08]"
+  const fieldButtonClassName =
+    "bg-muted/25 border-border/70 shadow-none hover:bg-muted/35 dark:bg-white/[0.06] dark:border-white/10 dark:hover:bg-white/[0.09]"
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema) as Resolver<FormValues>,
@@ -164,7 +168,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
             <FormItem>
               <FormLabel>Título</FormLabel>
               <FormControl>
-                <Input placeholder="Ex: Culto de Domingo" {...field} />
+                <Input placeholder="Ex: Culto de Domingo" className={fieldClassName} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -184,7 +188,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
                   disabled={isLoadingCategories}
                 >
                   <FormControl>
-                    <SelectTrigger>
+                    <SelectTrigger className={fieldClassName}>
                       <SelectValue placeholder={isLoadingCategories ? "Carregando..." : "Selecione uma categoria"} />
                     </SelectTrigger>
                   </FormControl>
@@ -208,7 +212,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
               <FormItem className="flex-1">
                 <FormLabel>Local</FormLabel>
                 <FormControl>
-                  <Input placeholder="Ex: Templo Principal" {...field} />
+                  <Input placeholder="Ex: Templo Principal" className={fieldClassName} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -230,6 +234,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
                         variant={"outline"}
                         className={cn(
                           "w-full pl-3 text-left font-normal",
+                          fieldButtonClassName,
                           !field.value && "text-muted-foreground"
                         )}
                       >
@@ -269,6 +274,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
                         variant={"outline"}
                         className={cn(
                           "w-full pl-3 text-left font-normal",
+                          fieldButtonClassName,
                           !field.value && "text-muted-foreground"
                         )}
                       >
@@ -307,7 +313,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
                   <div className="relative">
                     <Input
                       type="time"
-                      className="appearance-none pr-10"
+                      className={cn("appearance-none pr-10", fieldClassName)}
                       {...field}
                     />
                     <Clock className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 opacity-50" />
@@ -328,7 +334,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
                   <div className="relative">
                     <Input
                       type="time"
-                      className="appearance-none pr-10"
+                      className={cn("appearance-none pr-10", fieldClassName)}
                       {...field}
                     />
                     <Clock className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 opacity-50" />
@@ -349,7 +355,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
               <FormControl>
                 <Textarea
                   placeholder="Detalhes sobre a programação..."
-                  className="resize-none"
+                  className={cn("resize-none", fieldClassName)}
                   {...field}
                 />
               </FormControl>

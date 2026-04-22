@@ -85,8 +85,8 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-xl border bg-card/70 text-card-foreground shadow-sm overflow-hidden">
-        <div className="flex items-start justify-between gap-4 border-b bg-background/40 px-4 py-3">
+      <div className="rounded-xl border border-border/70 bg-card/70 text-card-foreground shadow-sm overflow-hidden dark:border-white/10 dark:bg-[#111214]/70">
+        <div className="flex items-start justify-between gap-4 border-b border-border/60 bg-muted/20 px-4 py-3 dark:border-white/10 dark:bg-white/[0.04]">
           <div className="space-y-0.5">
             <p className="text-sm font-semibold tracking-tight">Eventos cadastrados</p>
             <p className="text-xs text-muted-foreground">
@@ -94,9 +94,9 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
             </p>
           </div>
         </div>
-        <Table>
-          <TableHeader>
-            <TableRow>
+        <Table className="bg-background/30 dark:bg-white/[0.02]">
+          <TableHeader className="bg-transparent">
+            <TableRow className="bg-muted/30 hover:bg-muted/30 dark:bg-white/[0.04] dark:hover:bg-white/[0.04]">
               <TableHead>Título</TableHead>
               <TableHead>Categoria</TableHead>
               <TableHead>Data</TableHead>
@@ -124,7 +124,10 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
               </TableRow>
             ) : (
               programations.map((item) => (
-                <TableRow key={item.id} className="hover:bg-muted/40">
+                <TableRow
+                  key={item.id}
+                  className="odd:bg-muted/10 hover:bg-muted/25 dark:odd:bg-white/[0.02] dark:hover:bg-white/[0.06]"
+                >
                   <TableCell className="font-medium">{item.title}</TableCell>
                   <TableCell>
                     {item.event_categories?.name || "-"}
@@ -164,7 +167,7 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </AlertDialogTrigger>
-                        <AlertDialogContent className="rounded-xl bg-background">
+                        <AlertDialogContent>
                           <AlertDialogHeader>
                             <AlertDialogTitle>Excluir Programação</AlertDialogTitle>
                             <AlertDialogDescription>

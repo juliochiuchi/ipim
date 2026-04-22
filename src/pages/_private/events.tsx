@@ -65,7 +65,7 @@ function EventsPage() {
       <EventList onEdit={handleEdit} keyRefresh={keyRefresh} />
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="bg-background max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar rounded-xl">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
           <DialogHeader className="text-left mb-5">
             <DialogTitle>
               {editingItem ? "Editar Evento" : "Novo Evento"}

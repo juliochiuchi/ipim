@@ -22,7 +22,7 @@ export function AdminSidebar({ collapsed, onToggle, items }: AdminSidebarProps) 
   return (
     <aside
       className={cn(
-        "flex min-h-screen border-r bg-background/60 backdrop-blur supports-[backdrop-filter]:bg-background/40",
+        "relative flex min-h-screen border-r border-border/60 bg-card/70 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-card/55 dark:border-white/10 dark:bg-[#0f1012]/85 supports-[backdrop-filter]:dark:bg-[#0f1012]/70 before:pointer-events-none before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/10 before:to-transparent before:opacity-40 dark:before:opacity-25",
         collapsed ? "w-16" : "w-[264px]"
       )}
     >

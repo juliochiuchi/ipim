@@ -12,6 +12,14 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -34,19 +42,51 @@ interface EventListProps {
 
 const ITEMS_PER_PAGE = 10
 
+function useDebouncedValue<T>(value: T, delayMilliseconds: number) {
+  const [debouncedValue, setDebouncedValue] = useState(value)
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => setDebouncedValue(value), delayMilliseconds)
+    return () => clearTimeout(timeoutId)
+  }, [value, delayMilliseconds])
+
+  return debouncedValue
+}
+
 export function EventList({ onEdit, keyRefresh }: EventListProps) {
   const [programations, setProgramations] = useState<Event[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [page, setPage] = useState(1)
   const [totalCount, setTotalCount] = useState(0)
   const [deletingId, setDeletingId] = useState<string | null>(null)
+  const [selectedMonth, setSelectedMonth] = useState("all")
+  const [titleSearch, setTitleSearch] = useState("")
+
+  const debouncedTitleSearch = useDebouncedValue(titleSearch, 350)
+
+  const selectedMonthNumber = (() => {
+    if (selectedMonth === "all") return undefined
+    const monthNumber = Number(selectedMonth)
+    if (!Number.isFinite(monthNumber)) return undefined
+    if (monthNumber < 1 || monthNumber > 12) return undefined
+    return monthNumber
+  })()
+
+  useEffect(() => {
+    setPage(1)
+  }, [selectedMonth, debouncedTitleSearch])
 
   const fetchProgramations = useCallback(async () => {
     setIsLoading(true)
 
     try {
       // Get data and count
-      const { data, error, count } = await eventService.getAll(page, ITEMS_PER_PAGE)
+      const { data, error, count } = await eventService.getAll({
+        page,
+        itemsPerPage: ITEMS_PER_PAGE,
+        month: selectedMonthNumber,
+        title: debouncedTitleSearch,
+      })
 
       if (error) throw error
 
@@ -58,7 +98,7 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
     } finally {
       setIsLoading(false)
     }
-  }, [page])
+  }, [debouncedTitleSearch, page, selectedMonthNumber])
 
   useEffect(() => {
     fetchProgramations()
@@ -86,12 +126,54 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
   return (
     <div className="space-y-4">
       <div className="rounded-xl border border-border/70 bg-card/70 text-card-foreground shadow-sm overflow-hidden dark:border-white/10 dark:bg-[#111214]/70">
-        <div className="flex items-start justify-between gap-4 border-b border-border/60 bg-muted/20 px-4 py-3 dark:border-white/10 dark:bg-white/[0.04]">
+        <div className="flex flex-col gap-3 border-b border-border/60 bg-muted/20 px-4 py-3 dark:border-white/10 dark:bg-white/[0.04] tablet:flex-row tablet:items-end tablet:justify-between">
           <div className="space-y-0.5">
             <p className="text-sm font-semibold tracking-tight">Eventos cadastrados</p>
             <p className="text-xs text-muted-foreground">
               {isLoading ? "Carregando registros..." : `${totalCount} ${totalCount === 1 ? "registro" : "registros"}`}
             </p>
+          </div>
+          <div className="flex flex-col gap-2 tablet:flex-row tablet:items-center">
+            <Select value={selectedMonth} onValueChange={setSelectedMonth}>
+              <SelectTrigger className="tablet:w-[180px] border-border/60 bg-background/60 backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03]">
+                <SelectValue placeholder="Todos" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Todos</SelectItem>
+                <SelectItem value="1">Janeiro</SelectItem>
+                <SelectItem value="2">Fevereiro</SelectItem>
+                <SelectItem value="3">Março</SelectItem>
+                <SelectItem value="4">Abril</SelectItem>
+                <SelectItem value="5">Maio</SelectItem>
+                <SelectItem value="6">Junho</SelectItem>
+                <SelectItem value="7">Julho</SelectItem>
+                <SelectItem value="8">Agosto</SelectItem>
+                <SelectItem value="9">Setembro</SelectItem>
+                <SelectItem value="10">Outubro</SelectItem>
+                <SelectItem value="11">Novembro</SelectItem>
+                <SelectItem value="12">Dezembro</SelectItem>
+              </SelectContent>
+            </Select>
+            <Input
+              type="text"
+              value={titleSearch}
+              placeholder="Buscar por título"
+              onChange={(event) => setTitleSearch(event.target.value)}
+              className="tablet:w-[260px] border-border/60 bg-background/60 backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.03]"
+            />
+            {(selectedMonth !== "all" || titleSearch) && (
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  setSelectedMonth("all")
+                  setTitleSearch("")
+                }}
+              >
+                Limpar
+              </Button>
+            )}
           </div>
         </div>
         <Table className="bg-background/30 dark:bg-white/[0.02]">

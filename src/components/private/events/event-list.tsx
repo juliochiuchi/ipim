@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react"
 import { format, parse } from "date-fns"
 import { Edit2, Trash2, ChevronLeft, ChevronRight, Loader2 } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import {
   Table,
   TableBody,
@@ -84,7 +85,15 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-md border bg-card text-card-foreground shadow-sm">
+      <div className="rounded-xl border bg-card/70 text-card-foreground shadow-sm overflow-hidden">
+        <div className="flex items-start justify-between gap-4 border-b bg-background/40 px-4 py-3">
+          <div className="space-y-0.5">
+            <p className="text-sm font-semibold tracking-tight">Eventos cadastrados</p>
+            <p className="text-xs text-muted-foreground">
+              {isLoading ? "Carregando registros..." : `${totalCount} ${totalCount === 1 ? "registro" : "registros"}`}
+            </p>
+          </div>
+        </div>
         <Table>
           <TableHeader>
             <TableRow>
@@ -115,7 +124,7 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
               </TableRow>
             ) : (
               programations.map((item) => (
-                <TableRow key={item.id}>
+                <TableRow key={item.id} className="hover:bg-muted/40">
                   <TableCell className="font-medium">{item.title}</TableCell>
                   <TableCell>
                     {item.event_categories?.name || "-"}
@@ -128,10 +137,14 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
                   </TableCell>
                   <TableCell>{item.location || "-"}</TableCell>
                   <TableCell>
-                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${item.is_active
-                      ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400"
-                      : "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-400"
-                      }`}>
+                    <span
+                      className={cn(
+                        "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium",
+                        item.is_active
+                          ? "bg-ipimGreen/10 text-ipimGreen dark:bg-ipimGreen/15"
+                          : "bg-muted text-muted-foreground"
+                      )}
+                    >
                       {item.is_active ? "Ativo" : "Inativo"}
                     </span>
                   </TableCell>
@@ -151,7 +164,7 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </AlertDialogTrigger>
-                        <AlertDialogContent className="rounded-lg dark:bg-gray-900">
+                        <AlertDialogContent className="rounded-xl bg-background">
                           <AlertDialogHeader>
                             <AlertDialogTitle>Excluir Programação</AlertDialogTitle>
                             <AlertDialogDescription>
@@ -187,7 +200,7 @@ export function EventList({ onEdit, keyRefresh }: EventListProps) {
 
       {/* Pagination */}
       {!isLoading && totalCount > 0 && (
-        <div className="flex items-center justify-end space-x-2 py-4">
+        <div className="flex items-center justify-end space-x-2 py-2">
           <div className="flex-1 text-sm text-muted-foreground">
             Página {page} de {totalPages} ({totalCount} registros)
           </div>

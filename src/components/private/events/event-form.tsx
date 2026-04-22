@@ -362,7 +362,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
           control={form.control}
           name="is_active"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+            <FormItem className="flex flex-row items-center justify-between rounded-xl border bg-card/40 p-4">
               <div className="space-y-0.5">
                 <FormLabel>Ativo</FormLabel>
                 <FormDescription>
@@ -383,7 +383,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
           <Button type="button" variant="outline" onClick={onCancel}>
             Cancelar
           </Button>
-          <Button type="submit" disabled={isSaving}>
+          <Button type="submit" disabled={isSaving} className="bg-ipimGreen hover:bg-ipimGreenHover text-white">
             {isSaving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {initialData ? "Atualizar" : "Criar"}
           </Button>

@@ -23,7 +23,7 @@ export function AdminSidebar({ collapsed, onToggle, items }: AdminSidebarProps) 
     <aside
       className={cn(
         "flex min-h-screen border-r bg-background/60 backdrop-blur supports-[backdrop-filter]:bg-background/40",
-        collapsed ? "w-16" : "w-[260px]"
+        collapsed ? "w-16" : "w-[264px]"
       )}
     >
       <div className="flex w-full flex-col">
@@ -50,22 +50,35 @@ export function AdminSidebar({ collapsed, onToggle, items }: AdminSidebarProps) 
               <Button
                 variant={item.active ? "secondary" : "ghost"}
                 className={cn(
-                  "w-full h-10 justify-start gap-3",
+                  "w-full h-10 justify-start gap-3 transition-colors",
+                  item.active && "bg-ipimGreen/10 text-foreground hover:bg-ipimGreen/15 dark:bg-ipimGreen/15 dark:hover:bg-ipimGreen/20",
                   collapsed && "px-0 justify-center",
                   item.disabled && "opacity-50"
                 )}
                 disabled={item.disabled}
               >
-                <span className="text-muted-foreground">{Icon}</span>
+                <span className={cn("text-muted-foreground", item.active && "text-ipimGreen")}>{Icon}</span>
                 <span className={cn("truncate", collapsed && "hidden")}>{item.label}</span>
               </Button>
             )
 
             if (item.to) {
               return (
-                <Link to={item.to} key={item.label} className="rounded-md">
-                  {content}
-                </Link>
+                <Button
+                  key={item.label}
+                  asChild
+                  variant={item.active ? "secondary" : "ghost"}
+                  className={cn(
+                    "w-full h-10 justify-start gap-3 transition-colors",
+                    item.active && "bg-ipimGreen/10 text-foreground hover:bg-ipimGreen/15 dark:bg-ipimGreen/15 dark:hover:bg-ipimGreen/20",
+                    collapsed && "px-0 justify-center"
+                  )}
+                >
+                  <Link to={item.to}>
+                    <span className={cn("text-muted-foreground", item.active && "text-ipimGreen")}>{Icon}</span>
+                    <span className={cn("truncate", collapsed && "hidden")}>{item.label}</span>
+                  </Link>
+                </Button>
               )
             }
             return (

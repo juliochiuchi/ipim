@@ -46,8 +46,17 @@ function EventsPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex justify-end">
-        <Button onClick={handleCreate} className="w-full phone:w-auto">
+      <div className="flex flex-col gap-3 tablet:flex-row tablet:items-center tablet:justify-between">
+        <div className="space-y-1">
+          <p className="text-sm font-medium">Gerencie as programações e eventos exibidos no site.</p>
+          <p className="text-sm text-muted-foreground">
+            Crie, edite ou desative eventos sem precisar alterar código.
+          </p>
+        </div>
+        <Button
+          onClick={handleCreate}
+          className="w-full phone:w-auto bg-ipimGreen hover:bg-ipimGreenHover text-white"
+        >
           <Plus className="mr-2 h-4 w-4" />
           Novo Evento
         </Button>
@@ -56,7 +65,7 @@ function EventsPage() {
       <EventList onEdit={handleEdit} keyRefresh={keyRefresh} />
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="dark:bg-gray-900 max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar rounded-lg">
+        <DialogContent className="bg-background max-w-2xl max-h-[90vh] overflow-y-auto custom-scrollbar rounded-xl">
           <DialogHeader className="text-left mb-5">
             <DialogTitle>
               {editingItem ? "Editar Evento" : "Novo Evento"}

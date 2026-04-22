@@ -37,53 +37,66 @@ export function AdminLayout({ title, userEmail, onLogout, children }: AdminLayou
 
   const activeItem = items.find((item) => item.active)
   const pageTitle = title ?? activeItem?.label ?? "Dashboard"
+  const pageIcon = activeItem?.icon ?? <LayoutDashboard className="h-5 w-5" />
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-ipimWhiteSnow via-background to-background dark:from-ipimBgDark dark:via-background dark:to-background">
       <div className="flex">
         <AdminSidebar collapsed={collapsed} onToggle={() => setCollapsed((v) => !v)} items={items} />
 
         <main className="flex-1">
-          <header className="sticky top-0 z-20 border-b bg-white/80 dark:bg-ipimBgDark/80 backdrop-blur">
+          <header className="sticky top-0 z-20 border-b bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/55">
             <div
               className={cn(
-                "flex items-center justify-between phone:py-4 laptop:py-6",
-                collapsed ? "phone:px-4 tablet:px-8" : "phone:px-2 tablet:px-10",
+                "flex items-center justify-between phone:py-4 laptop:py-5",
+                collapsed ? "phone:px-4 tablet:px-8" : "phone:px-3 tablet:px-10",
               )}
             >
-              <div className="space-y-1">
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-                  Usuário conectado
-                </p>
-                <div className="flex items-center gap-2 text-sm text-foreground">
-                  <User className="h-4 w-4" />
-                  <span>{userEmail ?? "Usuário não identificado"}</span>
+              <div className="flex items-center gap-3">
+                <div className="h-9 w-9 rounded-xl bg-ipimGreen/10 text-ipimGreen grid place-items-center">
+                  {pageIcon}
+                </div>
+                <div className="leading-tight">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                    Área Administrativa
+                  </p>
+                  <p className="text-sm font-medium text-foreground">{pageTitle}</p>
                 </div>
               </div>
-              {onLogout && (
-                <Button
-                  variant="outline"
-                  onClick={onLogout}
-                  className="border-destructive text-destructive bg-transparent hover:bg-destructive/10"
-                >
-                  <LogOut className="h-4 w-4" />
-                  <span>Sair</span>
-                </Button>
-              )}
+              <div className="flex items-center gap-2">
+                <div className="hidden tablet:flex items-center gap-2 rounded-full border bg-background/70 px-3 py-2 text-sm text-foreground">
+                  <User className="h-4 w-4 text-muted-foreground" />
+                  <span className="max-w-[260px] truncate">{userEmail ?? "Usuário não identificado"}</span>
+                </div>
+                {onLogout && (
+                  <Button
+                    variant="outline"
+                    onClick={onLogout}
+                    className="border-destructive text-destructive bg-transparent hover:bg-destructive/10"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span className="hidden tablet:inline">Sair</span>
+                  </Button>
+                )}
+              </div>
             </div>
           </header>
 
           <div
             className={cn(
               "phone:py-6 laptop:py-8",
-              collapsed ? "phone:px-4 tablet:px-8" : "phone:px-2 tablet:px-10",
+              collapsed ? "phone:px-4 tablet:px-8" : "phone:px-3 tablet:px-10",
             )}
           >
-            <div className="space-y-1">
-              <h1 className="text-3xl font-bold tracking-tight">{pageTitle}</h1>
-              <p className="text-sm text-muted-foreground">Acesso Administrativo da IPIM</p>
+            <div className="mx-auto w-full max-w-[1200px]">
+              <div className="space-y-1">
+                <h1 className="text-3xl font-bold tracking-tight">{pageTitle}</h1>
+                <p className="text-sm text-muted-foreground">
+                  Gerencie conteúdos e configurações do site da IPIM.
+                </p>
+              </div>
+              <div className="phone:mt-6 laptop:mt-8">{children}</div>
             </div>
-            <div className="phone:mt-6 laptop:mt-8">{children}</div>
           </div>
         </main>
       </div>

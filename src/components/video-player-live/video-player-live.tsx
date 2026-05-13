@@ -1,4 +1,6 @@
 export default function VideoPlayerLive() {
+  const LIVE_STREAM_KEY_URL = import.meta.env.VITE_LIVE_STREAM_KEY_URL_IPIM
+
   return (
     <div className="w-full">
       <div className="relative w-full rounded-2xl overflow-hidden shadow-inner bg-zinc-900">
@@ -8,7 +10,7 @@ export default function VideoPlayerLive() {
                     phone:h-[400px] 
                     laptop:h-[500px] 
                     desktop:h-[600px]"
-          src="https://www.youtube.com/embed/live_stream?channel=UCKhKw97cqyvDtaXrljUcL0A&autoplay=0&mute=0"
+          src={LIVE_STREAM_KEY_URL}
           title="IPIM - Transmissão ao Vivo"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"

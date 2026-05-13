@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { Link } from "@tanstack/react-router"
 
 interface LinkWhiteProps {
   url: string | '/'
@@ -8,17 +8,19 @@ interface LinkWhiteProps {
 }
 
 export function LinkWhite({ url, newTab, text, classLink }: LinkWhiteProps) {
-  classLink +=
-    ' border border-ipimIndigoLight bg-white rounded text-ipimIndigoLight'
+  const classes = `${classLink ?? ''} border border-ipimIndigoLight bg-white rounded text-ipimIndigoLight`
+  const isInternalRoute = url.startsWith('/') && !newTab
 
-  let targetTab: string = '_self'
-  
-  useEffect(() => {
-    if (newTab) targetTab = "_blank"
-  }, [])
+  if (isInternalRoute) {
+    return (
+      <Link to={url} className={classes}>
+        {text}
+      </Link>
+    )
+  }
 
   return (
-    <a href={url} target={targetTab} className={classLink}>
+    <a href={url} target={newTab ? "_blank" : "_self"} rel={newTab ? "noreferrer" : undefined} className={classes}>
       {text}
     </a>
   )

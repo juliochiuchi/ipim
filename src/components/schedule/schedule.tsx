@@ -1,4 +1,5 @@
 import { Video } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
 import Paper from '../paper/paper'
 
 export default function Schedule() {
@@ -26,9 +27,9 @@ export default function Schedule() {
                 Confira nossa agenda presencial e também acompanhe as transmissões ao vivo de onde estiver usando a internet. Veja a programação a seguir:
               </p>
 
-              <a href="/live" className="bg-black text-white w-[90%] tablet:w-80 px-4 py-2 rounded-md text-sm font-bold text-center">
+              <Link to="/live" className="bg-black text-white w-[90%] tablet:w-80 px-4 py-2 rounded-md text-sm font-bold text-center">
                 Ver transmissões ao vivo
-              </a>
+              </Link>
             </div>
           </div>
         </div>

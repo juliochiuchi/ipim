@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { Link } from "@tanstack/react-router"
 
 interface LinkIndigoProps {
   url: string | '/'
@@ -8,17 +8,19 @@ interface LinkIndigoProps {
 }
 
 export function LinkIndigo({ url, newTab, text, classLink }: LinkIndigoProps) {
-  classLink +=
-    ' rounded-xl bg-ipimIndigoLight text-ipimWhiteSnowforButton hover:bg-ipimIndigoDark hover:text-white'
+  const classes = `${classLink ?? ''} rounded-xl bg-ipimIndigoLight text-ipimWhiteSnowforButton hover:bg-ipimIndigoDark hover:text-white`
+  const isInternalRoute = url.startsWith('/') && !newTab
 
-  let targetTab: string = "_self"
-  
-  useEffect(() => {
-    if (newTab) targetTab = "_blank"
-  }, [])
+  if (isInternalRoute) {
+    return (
+      <Link to={url} className={classes}>
+        {text}
+      </Link>
+    )
+  }
 
   return (
-    <a href={url} target={targetTab} className={classLink}>
+    <a href={url} target={newTab ? "_blank" : "_self"} rel={newTab ? "noreferrer" : undefined} className={classes}>
       {text}
     </a>
   )

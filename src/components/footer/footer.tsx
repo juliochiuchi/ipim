@@ -8,6 +8,7 @@ import {
 } from 'react-icons/fi'
 import { FaWhatsapp } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
+import { Link } from '@tanstack/react-router'
 
 import IPIBIcon from '../../assets/IPIB-icon.png'
 
@@ -132,7 +133,7 @@ export function Footer() {
                     Quem Somos
                   </a>
                   <a href="#" className="font-source">Voluntarie-se</a>
-                  <a href="/live" className="font-source">Culto Online</a>
+                  <Link to="/live" className="font-source">Culto Online</Link>
                 </div>
 
                 <p className="mt-6 text-[22px] font-bold text-ipimTitleFooter dark:text-ipimBgLightFooter">

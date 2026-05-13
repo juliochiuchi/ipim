@@ -4,7 +4,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu"
-import { useLocation } from '@tanstack/react-router'
+import { Link, useLocation } from '@tanstack/react-router'
 import { useState } from 'react'
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Button } from "@/components/ui/button"
@@ -66,7 +66,12 @@ export function Header() {
                 {menuItems.map((item) => (
                   <NavigationMenuItem key={item.path}>
                     <NavigationMenuLink asChild className={getNavItemClasses(item.path)}>
-                      <a href={item.path} className={isActive(item.path) ? "text-ipimIndigoLight dark:text-ipimIndigoLight" : "dark:text-white"}>{item.label}</a>
+                      <Link
+                        to={item.path}
+                        className={isActive(item.path) ? "text-ipimIndigoLight dark:text-ipimIndigoLight" : "dark:text-white"}
+                      >
+                        {item.label}
+                      </Link>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}
@@ -82,10 +87,10 @@ export function Header() {
               className="h-9 w-9 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
               aria-label="Ir para página de login"
             >
-              <a href="/login">
+              <Link to="/login">
                 <LogIn className="h-4 w-4" />
                 <span className="sr-only">Login</span>
-              </a>
+              </Link>
             </Button>
             <Button
               asChild
@@ -122,10 +127,10 @@ export function Header() {
               className="h-9 w-9 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
               aria-label="Ir para página de login"
             >
-              <a href="/login">
+              <Link to="/login">
                 <LogIn className="h-4 w-4" />
                 <span className="sr-only">Login</span>
-              </a>
+              </Link>
             </Button>
             <Button
               asChild
@@ -188,8 +193,8 @@ export function Header() {
             <ul className="space-y-2">
               {menuItems.map((item) => (
                 <li key={item.path}>
-                  <a
-                    href={item.path}
+                  <Link
+                    to={item.path}
                     onClick={closeMenu}
                     className={`block w-full text-left p-4 rounded-md transition-all duration-200 font-inter text-base ${isActive(item.path)
                       ? 'bg-indigo-100 dark:bg-indigo-900/30 text-ipimIndigoLight dark:text-ipimIndigoLight font-medium'
@@ -197,7 +202,7 @@ export function Header() {
                       }`}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

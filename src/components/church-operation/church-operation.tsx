@@ -1,3 +1,5 @@
+import { Link } from '@tanstack/react-router'
+
 export default function ChurchOperation() {
   return (
     <section className="bg-ipimBgSectionNextStep pt-14 dark:bg-zinc-900">
@@ -89,11 +91,11 @@ export default function ChurchOperation() {
         </div>
 
         <div>
-          <a
-            href="/doe"
+          <Link
+            to="/doe"
             className="inline-block bg-transparent border border-white text-white px-6 py-3 rounded-full font-bold tracking-widest transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#008785] hover:shadow-lg active:scale-95">
             OFERTAR AGORA
-          </a>
+          </Link>
         </div>
       </div>
 

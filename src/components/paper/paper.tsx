@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Clock2, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Link } from '@tanstack/react-router'
 
 const SCHEDULES = [
   {
@@ -102,9 +103,9 @@ export default function Paper() {
       </div>
 
       <div className="text-right">
-        <a href="/calendar" className="font-poppins text-[#333] font-bold tracking-wider text-sm border p-4 rounded-md">
+        <Link to="/calendar" className="font-poppins text-[#333] font-bold tracking-wider text-sm border p-4 rounded-md">
           Ver Programação Completa
-        </a>
+        </Link>
       </div>
     </div>
   )

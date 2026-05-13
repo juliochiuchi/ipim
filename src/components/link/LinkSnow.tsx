@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { Link } from "@tanstack/react-router"
 
 interface LinkSnowProps {
   url: string | '/'
@@ -8,17 +8,19 @@ interface LinkSnowProps {
 }
 
 export function LinkSnow({ url, newTab, text, classLink }: LinkSnowProps) {
-  classLink +=
-    ' bg-ipimSnowButton hover:bg-ipimSnowButtonHover rounded-xl text-ipimIndigoLight hover:text-ipimIndigoDark'
+  const classes = `${classLink ?? ''} bg-ipimSnowButton hover:bg-ipimSnowButtonHover rounded-xl text-ipimIndigoLight hover:text-ipimIndigoDark`
+  const isInternalRoute = url.startsWith('/') && !newTab
 
-  let targetTab: string = '_self'
-  
-  useEffect(() => {
-    if (newTab) targetTab = "_blank"
-  }, [])
+  if (isInternalRoute) {
+    return (
+      <Link to={url} className={classes}>
+        {text}
+      </Link>
+    )
+  }
 
   return (
-    <a href={url} target={targetTab} className={classLink}>
+    <a href={url} target={newTab ? "_blank" : "_self"} rel={newTab ? "noreferrer" : undefined} className={classes}>
       {text}
     </a>
   )

@@ -26,6 +26,8 @@ export function HeroCarousel() {
   const slides = [
     {
       image: bannerDefault,
+      alt: 'Banner da IPIM',
+      kicker: undefined,
       title: undefined,
       subtitle: undefined,
       action: undefined,
@@ -33,6 +35,8 @@ export function HeroCarousel() {
     },
     {
       image: jesusBanner,
+      alt: 'Junte-se a nós',
+      kicker: 'Cultos & Encontros',
       title: "Junte-se a nós",
       subtitle: "Cultos todos os domingos às 19h",
       action: "Ver programação",
@@ -74,20 +78,31 @@ export function HeroCarousel() {
             <div className="absolute inset-0">
               <img
                 src={slide.image}
-                alt={slide.title}
+                alt={slide.alt}
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-black/40" />
             </div>
 
             <div className="relative h-full flex flex-col items-center justify-center text-center text-white p-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 fill-mode-forwards">
-              <h2 className="text-4xl tablet:text-6xl font-poppins font-bold mb-4 drop-shadow-lg tracking-tight">
-                {slide.title}
-              </h2>
+              {slide.kicker ? (
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] backdrop-blur">
+                  <span className="h-1.5 w-1.5 rounded-full bg-ipimGreen" />
+                  {slide.kicker}
+                </div>
+              ) : null}
 
-              <p className="text-lg tablet:text-2xl font-nunito mb-8 max-w-2xl drop-shadow-md opacity-90">
-                {slide.subtitle}
-              </p>
+              {slide.title ? (
+                <h2 className="text-3xl tablet:text-5xl font-poppins font-bold mb-4 drop-shadow-lg tracking-tight leading-tight max-w-3xl">
+                  {slide.title}
+                </h2>
+              ) : null}
+
+              {slide.subtitle ? (
+                <p className="text-base tablet:text-xl font-nunito mb-8 max-w-2xl drop-shadow-md opacity-90">
+                  {slide.subtitle}
+                </p>
+              ) : null}
 
               {slide.action && slide.actionLink && (
                 <Button

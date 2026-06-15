@@ -2,85 +2,97 @@ import { Link } from '@tanstack/react-router'
 
 export default function ChurchOperation() {
   return (
-    <section className="bg-ipimBgSectionNextStep pt-14 dark:bg-zinc-900">
-      <div className="flex justify-center laptop:justify-between flex-wrap gap-3 px-6">
-        <div className="w-full max-w-[400px] text-center">
-          <p className="flex flex-col gap-2 items-center justify-center text-5xl font-bold font-poppins font-stretch-extra-expanded leading-tight">
-            <span>MAS COMO TUDO ISSO</span>
-            <span className="text-[#008785]">FUNCIONA</span>
-            <span className="text-[55px]">NA PRÁTICA?</span>
-          </p>
-        </div>
-
-        <div className="w-full max-w-[300px] flex flex-col gap-9 items-center text-center mt-10 laptop:mt-0 laptop:items-start laptop:text-left">
-          <p className="text-[#008785] text-6xl font-bold font-poppins font-stretch-extra-expanded">
-            CULTOS
-          </p>
-
-          <p className="text-sm font-poppins font-stretch-extra-expanded">
-            Nossos cultos são momentos de comunhão, adoração e ensino da Palavra. Um tempo separado para buscar a Deus, fortalecer a fé e viver a presença dEle juntos como igreja.
-          </p>
-        </div>
-
-        <div className="w-full max-w-[300px] flex flex-col gap-9 items-center text-center mt-10 laptop:mt-0 laptop:items-start laptop:text-left">
-          <p className="text-[#008785] text-6xl font-bold font-poppins font-stretch-extra-expanded">
-            EBDS
-          </p>
-
-          <p className="text-sm font-poppins font-stretch-extra-expanded">
-            A Escola Dominical é um espaço de aprendizado e crescimento espiritual. Por meio do estudo bíblico, somos edificados, fortalecidos na fé e preparados para viver o evangelho no dia a dia.
-          </p>
-        </div>
-
-        <div className="w-full max-w-[300px] flex flex-col gap-9 items-center text-center mt-10 laptop:mt-0 laptop:items-start laptop:text-left">
-          <p className="text-[#008785] text-6xl font-bold font-poppins font-stretch-extra-expanded">
-            SERVIÇO
-          </p>
-
-          <p className="text-sm font-poppins font-stretch-extra-expanded">
-            Servir a Deus é responder ao Seu amor com dedicação e obediência. Quando servimos, participamos da obra do Senhor, abençoamos pessoas e descobrimos nosso propósito no corpo de Cristo.
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-10 flex items-start justify-center laptop:justify-start flex-wrap gap-3 px-6">
-        <div className="rounded-3xl border overflow-hidden">
-          <img
-            src="https://static.wixstatic.com/media/609d6f_307957701c8e450f87cefc4e69d6dae1~mv2.png/v1/fill/w_1534,h_1224,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/609d6f_307957701c8e450f87cefc4e69d6dae1~mv2.png"
-            width={700}
-            height={600}
-            alt="Church"
-          />
-        </div>
-
-        <div className="flex flex-col gap-10 flex-1 text-center">
-          <p className="text-5xl laptop:text-7xl font-poppins font-stretch-extra-expanded font-extrabold">
-            Estamos te esperando!
-          </p>
-
-          <div className="flex flex-col gap-3">
-            <p className="text-3xl laptop:text-5xl font-poppins font-stretch-extra-expanded font-bold">IPI</p>
-            <p className="text-2xl laptop:text-4xl font-poppins font-stretch-extra-expanded font-bold">MACAUBAL</p>
+    <section className="bg-ipimBgSectionNextStep pt-16 pb-1 dark:bg-zinc-900">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-10 text-center laptop:text-left">
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-zinc-200/70 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-700 shadow-sm backdrop-blur dark:mx-0 dark:border-zinc-800/60 dark:bg-zinc-950/30 dark:text-zinc-200">
+            <span className="h-1.5 w-1.5 rounded-full bg-ipimGreen" />
+            Como funciona
           </div>
-
-          <p className="text-lg laptop:text-2xl font-poppins font-stretch-extra-expanded underline">
-            Rua Jeronimo Narciso Ramos 889
+          <h2 className="mt-5 font-poppins text-3xl font-bold leading-tight tracking-tight text-zinc-900 dark:text-white tablet:text-4xl">
+            Na prática, como vivemos a fé
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl font-source text-base leading-relaxed text-zinc-600 dark:text-zinc-300 tablet:text-lg laptop:mx-0">
+            Três pilares simples que sustentam nossa caminhada como igreja: adoração, aprendizado e serviço.
           </p>
+        </div>
 
-          <div className="flex flex-col gap-3">
-            <p className="text-xl laptop:text-3xl font-poppins font-stretch-extra-expanded font-bold">
-              QUARTA 19h30
-            </p>
-
-            <p className="text-xl laptop:text-3xl font-poppins font-stretch-extra-expanded font-bold">
-              DOMINGO 9h
-            </p>
-
-            <p className="text-xl laptop:text-3xl font-poppins font-stretch-extra-expanded font-bold">
-              DOMINGO 19h30
+        <div className="grid gap-5 tablet:grid-cols-3">
+          <div className="rounded-2xl border border-zinc-200/60 bg-white/70 p-6 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
+            <h3 className="font-poppins text-xl font-bold tracking-tight text-ipimGreen">Cultos</h3>
+            <p className="mt-3 font-source text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              Momentos de comunhão, adoração e ensino da Palavra. Um tempo separado para buscar a Deus e fortalecer a fé juntos.
             </p>
           </div>
 
+          <div className="rounded-2xl border border-zinc-200/60 bg-white/70 p-6 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
+            <h3 className="font-poppins text-xl font-bold tracking-tight text-ipimGreen">EBD</h3>
+            <p className="mt-3 font-source text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              Um espaço de aprendizado e crescimento espiritual. Estudo bíblico para viver o evangelho com profundidade no dia a dia.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-zinc-200/60 bg-white/70 p-6 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
+            <h3 className="font-poppins text-xl font-bold tracking-tight text-ipimGreen">Serviço</h3>
+            <p className="mt-3 font-source text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              Servir é responder ao amor de Deus com dedicação. Abençoamos pessoas, participamos da obra do Senhor e encontramos propósito.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 grid items-start gap-8 laptop:grid-cols-[1.1fr_0.9fr]">
+          <div className="relative overflow-hidden rounded-3xl border border-zinc-200/60 bg-white/60 shadow-sm dark:border-zinc-800/60 dark:bg-zinc-950/20">
+            <img
+              src="https://static.wixstatic.com/media/609d6f_307957701c8e450f87cefc4e69d6dae1~mv2.png/v1/fill/w_1534,h_1224,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/609d6f_307957701c8e450f87cefc4e69d6dae1~mv2.png"
+              width={900}
+              height={700}
+              alt="Igreja"
+              className="h-full w-full object-cover"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-black/0" />
+          </div>
+
+          <div className="rounded-3xl border border-zinc-200/60 bg-white/70 p-7 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30 tablet:p-8">
+            <h3 className="font-poppins text-2xl font-bold tracking-tight text-zinc-900 dark:text-white tablet:text-3xl">
+              Estamos te esperando
+            </h3>
+            <p className="mt-3 font-source text-base leading-relaxed text-zinc-600 dark:text-zinc-300">
+              Venha nos visitar e participar dos nossos encontros. A IPIM Macaubal fica na Rua Jeronimo Narciso Ramos, 889.
+            </p>
+
+            <div className="mt-6 grid gap-3 rounded-2xl border border-zinc-200/60 bg-white/60 p-4 dark:border-zinc-800/60 dark:bg-zinc-950/20">
+              <div className="flex items-center justify-between gap-4">
+                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
+                  Quarta
+                </span>
+                <span className="font-poppins text-sm font-semibold text-zinc-900 dark:text-zinc-100">19h30</span>
+              </div>
+              <div className="flex items-center justify-between gap-4">
+                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
+                  Domingo
+                </span>
+                <span className="font-poppins text-sm font-semibold text-zinc-900 dark:text-zinc-100">9h (EBD) • 19h30</span>
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="https://maps.app.goo.gl/64dCtoF9D114BzPn8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-xl border border-zinc-200/70 bg-white/70 px-5 py-3 font-poppins text-sm font-semibold text-zinc-900 shadow-sm transition-all hover:translate-y-[-1px] hover:bg-white dark:border-zinc-800/60 dark:bg-zinc-950/20 dark:text-zinc-100 dark:hover:bg-zinc-950/30"
+              >
+                Como chegar
+              </a>
+
+              <Link
+                to="/doe"
+                className="inline-flex items-center justify-center rounded-xl bg-ipimGreen px-5 py-3 font-poppins text-sm font-semibold text-white shadow-sm shadow-ipimGreen/20 transition-all hover:translate-y-[-1px] hover:bg-ipimGreenHover"
+              >
+                Ofertar agora
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 

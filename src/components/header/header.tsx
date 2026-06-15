@@ -6,14 +6,19 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Link, useLocation } from '@tanstack/react-router'
 import { useState } from 'react'
+import { PageContainer } from '@/components/page-container/page-container'
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { useTheme } from "@/hooks/use-theme"
 import { Button } from "@/components/ui/button"
 import { LogIn, ChartColumn } from "lucide-react"
-import IPIBIcon from '../../assets/logo-ipim-cinza.png'
+import logoDark from '../../assets/logo-ipim-branco.png'
+import logoLight from '../../assets/logo-ipim-cinza.png'
 
 export function Header() {
   const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { theme } = useTheme()
+  const currentLogo = theme === 'dark' ? logoDark : logoLight
 
   const isActive = (path: string) => {
     if (path === '/' && location.pathname === '/') {
@@ -53,11 +58,11 @@ export function Header() {
     <header className="w-full bg-ipimBgSectionNextStep dark:bg-[#1f1f25] relative z-50 transition-colors duration-200">
       {/* Desktop Navigation */}
       <div className="hidden tablet:block">
-        <div className="flex items-center justify-between w-full px-4 py-4">
+        <PageContainer className="flex items-center justify-between py-4">
           {/* Logo and Menu Items - Left Side */}
           <div className="flex items-center gap-4">
             <img
-              src={IPIBIcon}
+              src={currentLogo}
               alt="IPIB Icon"
               className="h-10 w-10"
             />
@@ -106,15 +111,15 @@ export function Header() {
             </Button>
             <ThemeToggle />
           </div>
-        </div>
+        </PageContainer>
       </div>
 
       {/* Mobile Navigation */}
       <div className="tablet:hidden">
         {/* Mobile Header with Hamburger */}
-        <div className="flex items-center justify-between px-4 py-4">
+        <PageContainer className="flex items-center justify-between py-4">
           <img
-            src={IPIBIcon}
+            src={currentLogo}
             alt="IPIB Icon"
             className="h-8 w-8"
           />
@@ -158,7 +163,7 @@ export function Header() {
               </div>
             </button>
           </div>
-        </div>
+        </PageContainer>
 
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (

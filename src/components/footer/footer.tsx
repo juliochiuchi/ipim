@@ -10,6 +10,7 @@ import { FaWhatsapp } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { Link } from '@tanstack/react-router'
 
+import { PageContainer } from '@/components/page-container/page-container'
 import IPIBIcon from '../../assets/logo-ipim-verde.png'
 
 export function Footer() {
@@ -17,8 +18,8 @@ export function Footer() {
     <footer className="bg-ipimBgLightFooter shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)] dark:bg-ipimBgDark dark:text-white">
       <div className="flex flex-col">
 
-        <div className="justify-center px-6 pt-12 phone:flex-col phone:px-6 tablet:flex-row tablet:px-20 desktop:px-[30rem]">
-          <div className="flex phone:items-center phone:justify-center tablet:items-start tablet:justify-start -ml-2">
+        <PageContainer className="justify-center pt-12 phone:flex-col tablet:flex-row">
+          <div className="flex phone:items-center phone:justify-center tablet:items-start tablet:justify-start -ml-3">
             <img
               src={IPIBIcon}
               alt="IPIB ICON"
@@ -164,26 +165,28 @@ export function Footer() {
               </div>
             </div>
           </div>
-        </div>
+        </PageContainer>
 
-        <div className="flex items-center bg-ipimIndigoLight py-2 text-white phone:flex-col phone:justify-center phone:px-6 tablet:flex-row tablet:justify-between tablet:px-20 desktop:px-[30rem]">
-          <div className="flex flex-col py-3 text-[13px] phone:items-center phone:justify-center phone:text-center tablet:items-start tablet:justify-start tablet:text-left">
-            <p className="font-source">Igreja Presbiteriana Independente de Macaubal • IPIM</p>
-            <p className="font-source italic">
-              Todos os direitos reservados. Copyright ©{' '}
-              {new Date().getFullYear()}.
-            </p>
-          </div>
+        <div className="w-full bg-ipimIndigoLight">
+          <PageContainer className="flex items-center py-2 text-white phone:flex-col phone:justify-center tablet:flex-row tablet:justify-between">
+            <div className="flex flex-col py-3 text-[13px] phone:items-center phone:justify-center phone:text-center tablet:items-start tablet:justify-start tablet:text-left">
+              <p className="font-source">Igreja Presbiteriana Independente de Macaubal • IPIM</p>
+              <p className="font-source italic">
+                Todos os direitos reservados. Copyright ©{' '}
+                {new Date().getFullYear()}.
+              </p>
+            </div>
 
-          <div className="phone:mt-1 tablet:mt-0">
-            <a
-              href="https://msjc.vercel.app"
-              className="text-[13px] font-bold"
-              target="_blank"
-            >
-              Desenvolvido por Otherside
-            </a>
-          </div>
+            <div className="phone:mt-1 tablet:mt-0">
+              <a
+                href="https://msjc.vercel.app"
+                className="text-[13px] font-bold"
+                target="_blank"
+              >
+                Desenvolvido por Otherside
+              </a>
+            </div>
+          </PageContainer>
         </div>
       </div>
     </footer>

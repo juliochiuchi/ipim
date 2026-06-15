@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { CardVideo } from '@/components/card-video/card-video'
+import { PageContainer } from '@/components/page-container/page-container'
 import { PlayerVideo } from '@/components/player-video/player-video'
 import { availableVideos } from '@/mock/card-video/card-video.mock'
 import type { IPlayerVideoProps } from '@/global-types/player-video/player-video.types'
@@ -38,7 +39,7 @@ function CatalogoAcampamento() {
       <div ref={myRef}>
         <div className="min-h-screen w-full bg-gradient-to-br from-ipimBgDark via-zinc-900 to-zinc-800">
           {/* Main Content */}
-          <div className="mx-auto max-w-[1800px] p-6 phone:p-4 tablet:p-8 desktop:p-12">
+          <PageContainer size="wide" className="py-4 tablet:py-8 desktop:py-12">
             <div className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-sm rounded-3xl border border-zinc-700/30 shadow-2xl overflow-hidden animate-in fade-in duration-700">
               <div className="p-6 phone:p-4 tablet:p-8 desktop:p-12">
                 <div className="flex w-full gap-6 phone:flex-col phone:gap-4 tablet:flex-row tablet:gap-8 desktop:gap-12">
@@ -63,7 +64,7 @@ function CatalogoAcampamento() {
                                 <path d="M8 5v14l11-7z" />
                               </svg>
                             </div>
-                            <span className="text-lg text-zinc-400 font-source phone:text-sm phone:text-base tablet:text-xl">
+                            <span className="text-lg text-zinc-400 font-source phone:text-base tablet:text-xl">
                               Selecione um vídeo para assistir
                             </span>
                             <p className="text-sm text-zinc-500 mt-2 font-source phone:text-xs">
@@ -118,7 +119,7 @@ function CatalogoAcampamento() {
                 </div>
               </div>
             </div>
-          </div>
+          </PageContainer>
         </div>
       </div>
     </>

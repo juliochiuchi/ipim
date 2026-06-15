@@ -1,3 +1,5 @@
+import { PageContainer } from '@/components/page-container/page-container'
+import { PageHero } from '@/components/page-hero/page-hero'
 import VideoPlayerLive from '@/components/video-player-live/video-player-live'
 import { createFileRoute } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
@@ -17,23 +19,26 @@ function Live() {
 
   return (
     <>
-      <div className="min-h-screen bg-ipimWhiteSnow dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 py-8 px-4 transition-colors duration-300">
-        <div className="mx-auto max-w-7xl">
+      <div className="min-h-screen bg-ipimWhiteSnow dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 py-8 transition-colors duration-300">
+        <PageContainer>
           {/* Header */}
-          <div className="mb-8 text-center animate-in slide-in-from-top-4 duration-700 fade-in">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white font-poppins mb-2 transition-colors duration-300">
-              Transmissão ao Vivo
-            </h1>
-            <p className="text-gray-600 dark:text-gray-300 font-source transition-colors duration-300">
-              Acompanhe os cultos e eventos da IPIM em tempo real
-            </p>
-            <span className="text-xs text-gray-600 dark:text-gray-300 font-source">
-              O vídeo estará disponível enquanto o canal estiver transmitindo
-            </span>
+          <div className="mb-8 animate-in slide-in-from-top-4 duration-700 fade-in">
+            <PageHero
+              eyebrow="Ao Vivo"
+              title="Transmissão ao Vivo"
+              description={
+                <>
+                  Acompanhe os cultos e eventos da IPIM em tempo real.
+                  <span className="mt-2 block text-xs text-gray-600 dark:text-gray-300">
+                    O vídeo estará disponível enquanto o canal estiver transmitindo.
+                  </span>
+                </>
+              }
+            />
           </div>
 
           {/* Live Player Container */}
-          <div className="phone:mx-0 tablet:mx-28 bg-white dark:bg-zinc-800 rounded-3xl shadow-2xl border border-gray-200 dark:border-zinc-700 overflow-hidden transition-all duration-300 hover:shadow-3xl animate-in slide-in-from-bottom-4 fill-mode-backwards delay-100">
+          <div className="bg-white dark:bg-zinc-800 rounded-3xl shadow-2xl border border-gray-200 dark:border-zinc-700 overflow-hidden transition-all duration-300 hover:shadow-3xl animate-in slide-in-from-bottom-4 fill-mode-backwards delay-100">
             <div className="phone:p-4 tablet:p-6">
               <VideoPlayerLive />
             </div>
@@ -79,7 +84,7 @@ function Live() {
               </Button>
             </div>
           </div>
-        </div>
+        </PageContainer>
       </div>
     </>
   )

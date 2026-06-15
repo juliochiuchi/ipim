@@ -1,11 +1,13 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useEffect } from 'react'
-import { Banknote, FileText, Landmark } from 'lucide-react'
+import { Banknote, FileText, HeartHandshake, Landmark, ShieldCheck } from 'lucide-react'
 import { toast } from 'sonner'
 
 import QRCodePixIPIM from '@/assets/qrcode-pix.png'
+import { PageContainer } from '@/components/page-container/page-container'
 import PixDonationCard from '@/components/doe/pix-donation-card'
 import StripeOfferCard from '@/components/doe/stripe-offer-card'
+import { PageHero } from '@/components/page-hero/page-hero'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 export const Route = createFileRoute('/_app/doe')({
@@ -35,24 +37,23 @@ function Doe() {
 
   return (
     <div className="min-h-screen w-full bg-ipimBgSectionNextStep/30 dark:bg-[#1a1a20] transition-colors duration-300">
-      <div className="mx-auto max-w-6xl px-6 py-10 phone:px-4 tablet:py-12">
-        <header className="mx-auto max-w-3xl text-center">
-          <h1 className="font-poppins text-4xl font-bold tracking-tight text-zinc-900 dark:text-white phone:text-3xl tablet:text-5xl">
-            Contribua com a IPIM
-          </h1>
-          <p className="mt-3 font-source text-lg text-zinc-600 dark:text-zinc-300 phone:text-base">
-            Sua contribuição nos ajuda a continuar nossa missão de levar a Palavra de Deus e servir nossa comunidade.
-          </p>
-        </header>
+      <PageContainer className="py-10 tablet:py-12">
+        <div className="animate-in slide-in-from-top-4 duration-700 fade-in">
+          <PageHero
+            eyebrow="Doações"
+            title="Contribua com a IPIM"
+            description="Sua contribuição nos ajuda a continuar nossa missão de levar a Palavra de Deus e servir nossa comunidade."
+          />
+        </div>
 
-        <div className="mt-8 grid gap-5 tablet:grid-cols-2 tablet:items-stretch">
+        <div className="mt-6 grid gap-5 tablet:mt-8 tablet:grid-cols-2 tablet:items-stretch animate-in slide-in-from-bottom-4 duration-700 delay-100 fade-in fill-mode-backwards">
           <StripeOfferCard />
           <PixDonationCard pixKey={pixKey} qrCodeSrc={QRCodePixIPIM} />
         </div>
 
-        <hr className="my-10 border-zinc-200/70 dark:border-zinc-800/60" />
+        <hr className="my-10 border-zinc-200/70 transition-colors dark:border-zinc-800/60 animate-in fade-in duration-700 delay-150 fill-mode-backwards" />
 
-        <div className="grid gap-5 tablet:grid-cols-2 tablet:items-start">
+        <div className="grid gap-5 tablet:grid-cols-2 tablet:items-start animate-in slide-in-from-bottom-4 duration-700 delay-200 fade-in fill-mode-backwards">
           <Card className="border-zinc-200/60 bg-white/70 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
             <CardHeader className="space-y-1.5 pb-4">
               <CardTitle className="flex items-center gap-2 font-poppins text-2xl">
@@ -109,13 +110,56 @@ function Doe() {
           </div>
         </div>
 
-        <Card className="mx-auto mt-6 max-w-4xl border-zinc-200/60 bg-white/70 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
-          <CardContent className="space-y-1 p-5 text-center font-source text-sm text-zinc-600 dark:text-zinc-300">
-            <p>Sua contribuição é fundamental para continuarmos nossa missão de servir a Deus e nossa comunidade.</p>
-            <p>As doações são utilizadas para manutenção da igreja, projetos sociais e evangelização.</p>
+        <Card className="mt-6 w-full overflow-hidden border-zinc-200/60 bg-white/75 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30 animate-in slide-in-from-bottom-4 duration-700 delay-300 fade-in fill-mode-backwards">
+          <div className="h-1 w-full bg-gradient-to-r from-ipimGreen via-ipimIndigoLight to-ipimYellow" />
+          <CardContent className="relative p-6 tablet:p-7">
+            <div className="pointer-events-none absolute -right-12 -top-12 h-28 w-28 rounded-full bg-ipimGreen/10 blur-3xl dark:bg-ipimGreen/15" />
+            <div className="pointer-events-none absolute -bottom-12 -left-12 h-28 w-28 rounded-full bg-ipimIndigoLight/10 blur-3xl dark:bg-ipimIndigoLight/15" />
+
+            <div className="relative space-y-5">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full border border-ipimGreen/20 bg-ipimGreen/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-ipimGreen dark:border-ipimGreen/30 dark:bg-ipimGreen/15">
+                  <HeartHandshake className="h-3.5 w-3.5" />
+                  Impacto da sua contribuição
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200/70 bg-white/70 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-zinc-500 dark:border-zinc-800/60 dark:bg-zinc-950/20 dark:text-zinc-400">
+                  <ShieldCheck className="h-3.5 w-3.5 text-ipimIndigoLight" />
+                  Transparência e cuidado
+                </span>
+              </div>
+
+              <div className="max-w-2xl space-y-2">
+                <h3 className="font-poppins text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
+                  Sua generosidade fortalece a missão da IPIM
+                </h3>
+                <p className="font-source text-sm leading-relaxed text-zinc-600 dark:text-zinc-300 tablet:text-base">
+                  Cada contribuição ajuda a igreja a servir pessoas com constância, responsabilidade e presença real na comunidade.
+                </p>
+              </div>
+
+              <div className="grid gap-4 tablet:grid-cols-2">
+                <div className="rounded-2xl border border-zinc-200/70 bg-white/70 p-4 shadow-sm dark:border-zinc-800/60 dark:bg-zinc-950/20">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
+                    Por que sua doação importa
+                  </p>
+                  <p className="mt-2 font-source text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">
+                    Sua contribuição é fundamental para continuarmos nossa missão de servir a Deus e nossa comunidade.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-zinc-200/70 bg-white/70 p-4 shadow-sm dark:border-zinc-800/60 dark:bg-zinc-950/20">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
+                    Como os recursos são aplicados
+                  </p>
+                  <p className="mt-2 font-source text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">
+                    As doações são utilizadas para manutenção da igreja, projetos sociais e ações de evangelização.
+                  </p>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
-      </div>
+      </PageContainer>
     </div>
   )
 }

@@ -19,31 +19,37 @@ function Acampamento() {
         Seu navegador não suporta o elemento de vídeo.
       </video>
 
-      <div className="absolute inset-0 bg-black bg-opacity-70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/80" />
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 phone:px-3 laptop:px-8">
-        <div className="animate-in slide-in-from-top-4 duration-700 fade-in text-center">
-          <h1 className="font-poppins text-6xl phone:text-3xl laptop:text-6xl desktop:text-8xl font-bold mb-4 phone:mb-3 text-shadow-lg leading-tight phone:leading-tight">
-            Acampamento 25
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-white phone:px-4">
+        <div className="w-full max-w-2xl animate-in slide-in-from-top-4 duration-700 fade-in">
+          <div className="mx-auto w-fit rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] backdrop-blur">
+            Acampamento
+          </div>
+
+          <h1 className="mt-5 text-center font-poppins text-4xl font-bold leading-[1.05] tracking-tight phone:text-3xl tablet:text-6xl desktop:text-7xl">
+            <span className="text-white/90">Acampamento</span>{' '}
+            <span className="text-ipimGreen">25</span>
           </h1>
 
-          <h2 className="text-center font-nunito text-2xl phone:text-lg laptop:text-2xl desktop:text-3xl font-light mb-12 phone:mb-8 text-shadow-md">
+          <p className="mx-auto mt-4 max-w-xl text-center font-source text-base leading-relaxed text-white/80 phone:text-sm tablet:text-lg">
             Caminhando com Jesus
-          </h2>
+          </p>
+
+          <div className="mt-10 flex justify-center animate-in slide-in-from-bottom-4 duration-700 fade-in delay-200">
+            <Link
+              to="/catalogo-acampamento"
+              className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-4 font-poppins text-base font-semibold text-zinc-950 shadow-lg shadow-black/20 transition-all duration-300 hover:translate-y-[-1px] hover:bg-white/90 active:translate-y-0 phone:px-7 phone:py-3"
+            >
+              Acessar catálogo
+            </Link>
+          </div>
         </div>
 
-        <div className="animate-in slide-in-from-bottom-4 duration-700 fade-in delay-200">
-          <Link
-            to="/catalogo-acampamento"
-            className="font-inter bg-white text-black px-8 py-4 phone:px-6 phone:py-3 rounded-lg font-semibold text-lg phone:text-base hover:bg-gray-100 active:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 min-w-[200px] phone:min-w-[180px]"
-          >
-            Acessar
-          </Link>
-        </div>
-
-        <div className="absolute bottom-8 phone:bottom-6 animate-bounce">
-          <div className="w-6 h-10 phone:w-5 phone:h-8 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 phone:w-0.5 phone:h-2 bg-white rounded-full mt-2 phone:mt-1.5 animate-pulse"></div>
+        <div className="absolute bottom-8 flex flex-col items-center gap-2 text-white/70 phone:bottom-6">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.22em]">Role</span>
+          <div className="h-10 w-6 rounded-full border border-white/30 p-1">
+            <div className="h-2 w-2 animate-bounce rounded-full bg-white/80" />
           </div>
         </div>
       </div>

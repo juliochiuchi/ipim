@@ -83,8 +83,8 @@ export default function StripeOfferCard() {
         </button>
       </CardFooter>
 
-      <CardContent className="pt-4 text-[.9rem] italic text-left leading-relaxed text-zinc-600 dark:text-zinc-300">
-        <p>Pagamento processado em ambiente seguro pela Stripe.</p>
+      <CardContent className="pt-4 text-[.82rem] font-light italic text-left leading-relaxed text-zinc-500 dark:text-zinc-400">
+        <p>Pagamento processado em ambiente seguro.</p>
       </CardContent>
     </Card>
   )

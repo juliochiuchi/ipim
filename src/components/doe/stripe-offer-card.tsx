@@ -37,7 +37,7 @@ export default function StripeOfferCard() {
         </div>
       </CardHeader>
 
-      <CardFooter className="flex items-stretch gap-4 pt-0">
+      <CardFooter className="flex flex-col items-stretch gap-4 pt-0 tablet:flex-row">
         <a
           href="https://donate.stripe.com/7sY4gs0bv4wA0sv3mNdQQ00"
           target="_blank"

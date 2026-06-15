@@ -39,7 +39,7 @@ export default function StripeOfferCard() {
 
       <CardFooter className="flex items-stretch gap-4 pt-0">
         <a
-          href="https://donate.stripe.com/test_14A4gs9M98U2bAn9Ird7q00"
+          href="https://donate.stripe.com/7sY4gs0bv4wA0sv3mNdQQ00"
           target="_blank"
           rel="noreferrer"
           className="group flex min-h-[10rem] min-w-0 flex-1 flex-col justify-between rounded-2xl border border-zinc-200/70 bg-white/60 p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:bg-white/80 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ipimIndigoLight/40 dark:border-zinc-800/60 dark:bg-zinc-950/20 dark:hover:bg-zinc-950/30"

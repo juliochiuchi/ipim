@@ -9,7 +9,7 @@ import { useState } from 'react'
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Button } from "@/components/ui/button"
 import { LogIn, ChartColumn } from "lucide-react"
-import IPIBIcon from '../../assets/IPIB-icon.png'
+import IPIBIcon from '../../assets/logo-ipim-cinza.png'
 
 export function Header() {
   const location = useLocation()

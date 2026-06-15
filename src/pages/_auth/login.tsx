@@ -89,7 +89,14 @@ function LoginPage() {
 
   return (
     <Card className="w-full max-w-md animate-in slide-in-from-bottom-4 duration-700 fade-in">
-      <CardHeader>
+      <CardHeader className="space-y-5">
+        <div className="flex justify-center">
+          <img
+            src="/logo-ipim-preto-grafite.png"
+            alt="Logo da Igreja Presbiteriana Independente de Macaubal"
+            className="h-36 w-auto"
+          />
+        </div>
         <CardTitle className="text-2xl font-bold text-center">Acesso Restrito</CardTitle>
         <CardDescription className="text-center">
           Digite seu e-mail para receber um link de acesso mágico.

@@ -10,7 +10,7 @@ import { FaWhatsapp } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
 import { Link } from '@tanstack/react-router'
 
-import IPIBIcon from '../../assets/IPIB-icon.png'
+import IPIBIcon from '../../assets/logo-ipim-verde.png'
 
 export function Footer() {
   return (
@@ -177,7 +177,7 @@ export function Footer() {
 
           <div className="phone:mt-1 tablet:mt-0">
             <a
-              href="https://myspace-julio-chiuchi.vercel.app"
+              href="https://msjc.vercel.app"
               className="text-[13px] font-bold"
               target="_blank"
             >

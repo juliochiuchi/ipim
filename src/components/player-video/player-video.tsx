@@ -1,5 +1,5 @@
 import type { IPlayerVideoProps } from '../../global-types/player-video/player-video.types'
-import IPIBImage from '../../assets/IPIB-icon.png'
+import IPIBImage from '../../assets/logo-ipim-cinza.png'
 
 export const PlayerVideo = ({
   id,

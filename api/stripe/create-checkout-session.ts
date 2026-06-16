@@ -28,17 +28,25 @@ function getOrigin(req: RequestLike) {
 }
 
 export default async function handler(req: RequestLike, res: ResponseLike) {
+  let stage = "method-check"
+
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST")
     return res.status(405).json({ error: "Method not allowed" })
   }
 
   try {
+    stage = "origin"
     const origin = getOrigin(req)
+
+    stage = "checkout-session"
     const url = await createOfferCheckoutSessionUrl(origin)
+
+    res.setHeader("x-checkout-stage", "success")
     return res.status(200).json({ url })
   } catch (error) {
     const message = error instanceof Error ? error.message : "Failed to create checkout session"
-    return res.status(500).json({ error: message })
+    res.setHeader("x-checkout-stage", stage)
+    return res.status(500).json({ error: message, stage })
   }
 }

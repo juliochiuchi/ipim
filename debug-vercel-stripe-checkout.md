@@ -12,14 +12,19 @@
 ## Hypotheses & Verification
 | ID | Hypothesis | Likelihood | Effort | Evidence |
 |----|------------|------------|--------|----------|
-| A | `STRIPE_SECRET_KEY` nao esta configurada em producao e o handler lanca erro antes de criar a sessao | High | Low | Pending |
-| B | O endpoint de oferta nao esta exportado/encaminhado corretamente no runtime da Vercel e falha ao invocar a funcao | Med | Med | Pending |
-| C | O uso de `VITE_STRIPE_SECRET_KEY` como fallback mascara configuracao incorreta entre cliente e servidor | Med | Low | Pending |
-| D | O objeto enviado ao Stripe para a oferta falha apenas em producao por validacao de conta/moeda/origem | Low | Med | Pending |
-| E | O `origin` recebido no handler esta invalido em producao e causa excecao ao montar URLs de retorno | Low | Low | Pending |
+| A | `STRIPE_SECRET_KEY` nao esta configurada em producao e o handler lanca erro antes de criar a sessao | High | Low | Partially confirmed: usuario informou que Production usa apenas `VITE_*`; codigo foi ajustado para exigir `STRIPE_SECRET_KEY` em producao |
+| B | O endpoint de oferta nao esta exportado/encaminhado corretamente no runtime da Vercel e falha ao invocar a funcao | Med | Med | Rejected: rota local `POST /api/stripe/create-checkout-session` respondeu `200` com URL do checkout |
+| C | O uso de `VITE_STRIPE_SECRET_KEY` como fallback mascara configuracao incorreta entre cliente e servidor | Med | Low | Confirmed: ambiente local funcionava via fallback; isso escondia divergencia entre dev e runtime serverless |
+| D | O objeto enviado ao Stripe para a oferta falha apenas em producao por validacao de conta/moeda/origem | Low | Med | Rejected: mesma criacao de sessao funcionou localmente com o fluxo atual |
+| E | O `origin` recebido no handler esta invalido em producao e causa excecao ao montar URLs de retorno | Low | Low | Rejected: nenhum indicio local; erro mais provavel esta na configuracao da chave server-side |
 
 ## Log Evidence
-[Aguardando coleta]
+- `curl -X POST http://127.0.0.1:5173/api/stripe/create-checkout-session` retornou `200 OK` com `url` do Stripe Checkout.
+- `.env` local continha apenas variaveis `VITE_STRIPE_*`, o que funcionava no dev middleware do Vite.
+- Usuario confirmou que a Vercel Production tambem estava configurada apenas com `VITE_*`.
+- Build local `npm run build` passou apos a correcao.
 
 ## Verification Conclusion
-[Aguardando comparacao pre-fix vs post-fix]
+- Causa raiz mais provavel: configuracao de chave secreta do Stripe acoplada a `VITE_*`, adequada ao dev local mas inadequada para o runtime server-side da Vercel.
+- Correcao aplicada: `api/stripe/create-offer-checkout-session.ts` agora exige `STRIPE_SECRET_KEY` em producao e carrega o SDK do Stripe de forma lazy dentro da funcao.
+- Acao pendente para verificacao final: configurar `STRIPE_SECRET_KEY` em Production na Vercel e redeployar.

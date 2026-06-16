@@ -1,17 +1,22 @@
-import Stripe from "stripe"
-
-function getStripeServerClient() {
+async function getStripeServerClient() {
   const stripeSecretKey =
-    process.env.STRIPE_SECRET_KEY ?? process.env.VITE_STRIPE_SECRET_KEY
+    process.env.STRIPE_SECRET_KEY ??
+    (process.env.NODE_ENV === "production"
+      ? undefined
+      : process.env.VITE_STRIPE_SECRET_KEY)
+
   if (!stripeSecretKey) {
-    throw new Error("Stripe secret key not configured")
+    throw new Error(
+      "Stripe secret key not configured. Set STRIPE_SECRET_KEY for server-side checkout."
+    )
   }
 
+  const { default: Stripe } = await import("stripe")
   return new Stripe(stripeSecretKey)
 }
 
 export async function createOfferCheckoutSessionUrl(origin: string) {
-  const stripe = getStripeServerClient()
+  const stripe = await getStripeServerClient()
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",

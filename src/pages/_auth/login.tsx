@@ -91,11 +91,18 @@ function LoginPage() {
     <Card className="w-full max-w-md animate-in slide-in-from-bottom-4 duration-700 fade-in">
       <CardHeader className="space-y-5">
         <div className="flex justify-center">
-          <img
-            src="/logo-ipim-preto-grafite.png"
-            alt="Logo da Igreja Presbiteriana Independente de Macaubal"
-            className="h-36 w-auto"
-          />
+          <div className="flex items-center justify-center">
+            <img
+              src="/logo-ipim-preto-grafite.png"
+              alt="Logo da Igreja Presbiteriana Independente de Macaubal"
+              className="h-36 w-auto dark:hidden"
+            />
+            <img
+              src="/logo-ipim-branco.png"
+              alt="Logo da Igreja Presbiteriana Independente de Macaubal"
+              className="hidden h-36 w-auto dark:block"
+            />
+          </div>
         </div>
         <CardTitle className="text-2xl font-bold text-center">Acesso Restrito</CardTitle>
         <CardDescription className="text-center">

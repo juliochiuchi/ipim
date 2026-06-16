@@ -25,8 +25,8 @@ export async function createOfferCheckoutSessionUrl(origin: string) {
         quantity: 1,
         price_data: {
           currency: "brl",
-          unit_amount: 1000,
-          product_data: { name: "Oferta 10" },
+          unit_amount: 10000,
+          product_data: { name: "Oferta 100" },
         },
       },
     ],

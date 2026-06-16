@@ -51,10 +51,10 @@ function Doe() {
           <PixDonationCard pixKey={pixKey} qrCodeSrc={QRCodePixIPIM} />
         </div>
 
-        <hr className="my-10 border-zinc-200/70 transition-colors dark:border-zinc-800/60 animate-in fade-in duration-700 delay-150 fill-mode-backwards" />
+        <div className="my-10 transition-colors animate-in fade-in duration-700 delay-150 fill-mode-backwards" />
 
         <div className="grid gap-5 tablet:grid-cols-2 tablet:items-start animate-in slide-in-from-bottom-4 duration-700 delay-200 fade-in fill-mode-backwards">
-          <Card className="border-zinc-200/60 bg-white/70 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
+          <Card className="border-zinc-200/80 bg-ipimBgSectionNextStep shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
             <CardHeader className="space-y-1.5 pb-4">
               <CardTitle className="flex items-center gap-2 font-poppins text-2xl">
                 <Landmark className="text-ipimGreen" />
@@ -65,26 +65,38 @@ function Doe() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <dl className="grid grid-cols-2 gap-x-6 gap-y-4 rounded-xl border border-zinc-200/70 bg-white/60 p-4 dark:border-zinc-800/60 dark:bg-zinc-950/20">
+              <dl className="grid grid-cols-1 gap-x-6 gap-y-4 rounded-xl border border-zinc-200/80 bg-white/85 p-4 phone:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] tablet:grid-cols-2 dark:border-zinc-800/60 dark:bg-zinc-950/20">
                 {bankDetails.map((item) => (
                   <div key={item.label} className="min-w-0 space-y-1">
                     <dt className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
                       {item.label}
                     </dt>
-                    <dd className="truncate whitespace-nowrap font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                    <dd
+                      className={`font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100 ${item.label === 'CNPJ' ? 'whitespace-nowrap' : 'truncate whitespace-nowrap'
+                        }`}
+                    >
                       {item.value}
                     </dd>
                   </div>
                 ))}
               </dl>
-              <div className="rounded-xl border border-zinc-200/70 bg-white/60 p-4 text-center text-sm text-zinc-700 dark:border-zinc-800/60 dark:bg-zinc-950/20 dark:text-zinc-200">
-                Igreja Presbiteriana Independente de Macaubal
+              <div className="relative overflow-hidden rounded-xl border border-zinc-200/80 bg-white/85 p-4 dark:border-zinc-800/60 dark:bg-zinc-950/20">
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ipimGreen/35 to-transparent dark:via-ipimGreen/45" />
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
+                  Favorecido
+                </p>
+                <p className="mt-1 font-poppins text-base font-semibold tracking-tight text-zinc-900 dark:text-white">
+                  Igreja Presbiteriana Independente de Macaubal
+                </p>
+                <p className="mt-0.5 font-source text-sm text-zinc-600 dark:text-zinc-300">
+                  Macaubal · SP
+                </p>
               </div>
             </CardContent>
           </Card>
 
           <div className="grid gap-5">
-            <Card className="border-zinc-200/60 bg-white/70 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
+            <Card className="border-zinc-200/80 bg-ipimBgSectionNextStep shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
               <CardHeader className="space-y-1.5">
                 <CardTitle className="flex items-center gap-2 font-poppins text-xl">
                   <FileText className="text-ipimYellow" />
@@ -96,7 +108,7 @@ function Doe() {
               </CardHeader>
             </Card>
 
-            <Card className="border-zinc-200/60 bg-white/70 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
+            <Card className="border-zinc-200/80 bg-ipimBgSectionNextStep shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30">
               <CardHeader className="space-y-1.5">
                 <CardTitle className="flex items-center gap-2 font-poppins text-xl">
                   <Banknote className="text-ipimGreen" />
@@ -110,7 +122,9 @@ function Doe() {
           </div>
         </div>
 
-        <Card className="mt-6 w-full overflow-hidden border-zinc-200/60 bg-white/75 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30 animate-in slide-in-from-bottom-4 duration-700 delay-300 fade-in fill-mode-backwards">
+        <div className="my-10 transition-colors animate-in fade-in duration-700 delay-150 fill-mode-backwards" />
+
+        <Card className="mt-6 w-full overflow-hidden border-zinc-200/80 bg-ipimBgSectionNextStep shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30 animate-in slide-in-from-bottom-4 duration-700 delay-300 fade-in fill-mode-backwards">
           <div className="h-1 w-full bg-gradient-to-r from-ipimGreen via-ipimIndigoLight to-ipimYellow" />
           <CardContent className="relative p-6 tablet:p-7">
             <div className="pointer-events-none absolute -right-12 -top-12 h-28 w-28 rounded-full bg-ipimGreen/10 blur-3xl dark:bg-ipimGreen/15" />
@@ -122,7 +136,7 @@ function Doe() {
                   <HeartHandshake className="h-3.5 w-3.5" />
                   Impacto da sua contribuição
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200/70 bg-white/70 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-zinc-500 dark:border-zinc-800/60 dark:bg-zinc-950/20 dark:text-zinc-400">
+                <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-white/85 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-zinc-500 dark:border-zinc-800/60 dark:bg-zinc-950/20 dark:text-zinc-400">
                   <ShieldCheck className="h-3.5 w-3.5 text-ipimIndigoLight" />
                   Transparência e cuidado
                 </span>
@@ -138,7 +152,7 @@ function Doe() {
               </div>
 
               <div className="grid gap-4 tablet:grid-cols-2">
-                <div className="rounded-2xl border border-zinc-200/70 bg-white/70 p-4 shadow-sm dark:border-zinc-800/60 dark:bg-zinc-950/20">
+                <div className="rounded-2xl border border-zinc-200/80 bg-white/85 p-4 shadow-sm dark:border-zinc-800/60 dark:bg-zinc-950/20">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
                     Por que sua doação importa
                   </p>
@@ -147,7 +161,7 @@ function Doe() {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-zinc-200/70 bg-white/70 p-4 shadow-sm dark:border-zinc-800/60 dark:bg-zinc-950/20">
+                <div className="rounded-2xl border border-zinc-200/80 bg-white/85 p-4 shadow-sm dark:border-zinc-800/60 dark:bg-zinc-950/20">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
                     Como os recursos são aplicados
                   </p>

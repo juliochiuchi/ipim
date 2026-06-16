@@ -65,14 +65,14 @@ function Doe() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <dl className="grid grid-cols-1 gap-x-6 gap-y-4 rounded-xl border border-zinc-200/80 bg-white/85 p-4 phone:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] tablet:grid-cols-2 dark:border-zinc-800/60 dark:bg-zinc-950/20">
+              <dl className="grid grid-cols-1 gap-x-6 gap-y-4 rounded-xl border border-zinc-200/80 bg-white/85 p-4 tablet:grid-cols-2 dark:border-zinc-800/60 dark:bg-zinc-950/20">
                 {bankDetails.map((item) => (
                   <div key={item.label} className="min-w-0 space-y-1">
                     <dt className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
                       {item.label}
                     </dt>
                     <dd
-                      className={`font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100 ${item.label === 'CNPJ' ? 'whitespace-nowrap' : 'truncate whitespace-nowrap'
+                      className={`font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100 ${item.label === 'CNPJ' ? 'break-all tablet:whitespace-nowrap' : 'break-words tablet:truncate tablet:whitespace-nowrap'
                         }`}
                     >
                       {item.value}

@@ -1,5 +1,3 @@
-import { createOfferCheckoutSessionUrl } from "./create-offer-checkout-session"
-
 type RequestLike = {
   method?: string
   headers?: Record<string, string | string[] | undefined>
@@ -38,6 +36,11 @@ export default async function handler(req: RequestLike, res: ResponseLike) {
   try {
     stage = "origin"
     const origin = getOrigin(req)
+
+    stage = "import"
+    const { createOfferCheckoutSessionUrl } = await import(
+      "./create-offer-checkout-session.js"
+    )
 
     stage = "checkout-session"
     const url = await createOfferCheckoutSessionUrl(origin)

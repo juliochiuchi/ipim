@@ -50,7 +50,7 @@ export default function StripeOfferCard() {
 
         <OfferActionCard
           as="a"
-          href="https://donate.stripe.com/7sY4gs0bv4wA0sv3mNdQQ00"
+          href="https://buy.stripe.com/8x2bJ2d6VdTeem98zj1ZS00"
           target="_blank"
           rel="noreferrer"
           variant="indigo"

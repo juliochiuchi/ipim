@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { zodResolver } from "@hookform/resolvers/zod"
-import { ArrowLeft, Mail } from "lucide-react"
+import { ArrowLeft, ChartColumn, Mail, Send } from "lucide-react"
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -123,7 +123,7 @@ function LoginPage() {
                 Entre na sua conta
               </CardTitle>
               <CardDescription className="mx-auto italic max-w-md text-sm leading-6 text-slate-600 dark:text-slate-300">
-                Utilize um e-mail autorizado.
+                Use um e-mail autorizado.
               </CardDescription>
             </div>
           </CardHeader>
@@ -162,7 +162,24 @@ function LoginPage() {
                       className="h-12 w-full rounded-xl bg-slate-900 text-base font-medium text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
                       disabled={isLoading}
                     >
+                      <Send className="mr-2 h-4 w-4" />
                       {isLoading ? "Enviando link..." : "Receber link de acesso"}
+                    </Button>
+
+                    <Button
+                      asChild
+                      type="button"
+                      variant="outline"
+                      className="h-12 w-full rounded-xl border-slate-200 bg-white/70 text-base shadow-none dark:border-slate-800 dark:bg-slate-900/60"
+                    >
+                      <a
+                        href="https://lumina-omega-one.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ChartColumn className="mr-2 h-4 w-4" />
+                        Acessar Lumina
+                      </a>
                     </Button>
 
                     <Button

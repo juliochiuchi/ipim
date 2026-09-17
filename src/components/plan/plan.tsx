@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Filter, CalendarDays, Clock, MapPin, ChevronRight, Calendar } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 import { eventService } from '@/services/event.service';
 import dayjs from 'dayjs';
@@ -157,32 +164,29 @@ export default function Plan() {
   return (
     <div className="min-h-auto w-full bg-[#f6f6f6] dark:bg-[#1f1f25] py-6 px-4 tablet:p-6 shadow-lg rounded-lg">
       <div className="flex flex-col tablet:flex-row justify-between items-start tablet:items-end gap-6 mb-16 animate-in slide-in-from-top-4 duration-700 fade-in">
-        <div className="relative group w-full tablet:w-auto tablet:min-w-[240px]">
+        <div className="w-full tablet:w-auto tablet:min-w-[280px]">
           <label className="block text-xs font-semibold text-gray-400 dark:text-gray-500 mb-1.5 uppercase tracking-wider ml-1">
             Filtrar por mês
           </label>
 
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none z-10">
-              <Calendar className="h-4 w-4 text-ipimGreen" />
-            </div>
-
-            <select
-              value={selectedMonth}
-              onChange={(e) => setSelectedMonth(e.target.value)}
-              className="appearance-none w-full bg-white dark:bg-ipimBorderDark border border-gray-200 dark:border-ipimBorderDark hover:border-ipimGreen/50 text-ipimBlack dark:text-white font-medium py-3 pl-10 pr-10 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ipimGreen/20 focus:border-ipimGreen cursor-pointer"
-            >
+          <Select value={selectedMonth} onValueChange={setSelectedMonth}>
+            <SelectTrigger className="relative h-11 pl-10 pr-10 w-full bg-white dark:bg-ipimBorderDark border-gray-200 dark:border-ipimBorderDark hover:border-ipimGreen/50 rounded-xl shadow-sm hover:shadow-md transition-all duration-200 focus:ring-ipimGreen/20 focus:border-ipimGreen">
+              <div className="absolute left-3.5 flex items-center pointer-events-none">
+                <Calendar className="h-4 w-4 text-ipimGreen" />
+              </div>
+              <SelectValue placeholder="Selecione o mês" />
+              <div className="absolute right-3 flex items-center pointer-events-none text-gray-400 dark:text-gray-500">
+                <Filter className="h-4 w-4" />
+              </div>
+            </SelectTrigger>
+            <SelectContent>
               {MONTHS.map((month) => (
-                <option key={month.value} value={month.value}>
+                <SelectItem key={month.value} value={month.value}>
                   {month.label}
-                </option>
+                </SelectItem>
               ))}
-            </select>
-
-            <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-gray-400 dark:text-gray-500 group-hover:text-ipimGreen transition-colors">
-              <Filter className="h-4 w-4" />
-            </div>
-          </div>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 

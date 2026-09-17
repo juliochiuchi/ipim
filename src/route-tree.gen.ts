@@ -15,6 +15,7 @@ import { Route as AppLayoutRouteImport } from './pages/_app/layout'
 import { Route as AppIndexRouteImport } from './pages/_app/index'
 import { Route as PrivateEventsRouteImport } from './pages/_private/events'
 import { Route as PrivateDashboardRouteImport } from './pages/_private/dashboard'
+import { Route as PrivateAttendanceControlRouteImport } from './pages/_private/attendance-control'
 import { Route as AuthLoginRouteImport } from './pages/_auth/login'
 import { Route as AppLiveRouteImport } from './pages/_app/live'
 import { Route as AppDoeRouteImport } from './pages/_app/doe'
@@ -49,6 +50,12 @@ const PrivateDashboardRoute = PrivateDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => PrivateLayoutRoute,
 } as any)
+const PrivateAttendanceControlRoute =
+  PrivateAttendanceControlRouteImport.update({
+    id: '/attendance-control',
+    path: '/attendance-control',
+    getParentRoute: () => PrivateLayoutRoute,
+  } as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -87,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/doe': typeof AppDoeRoute
   '/live': typeof AppLiveRoute
   '/login': typeof AuthLoginRoute
+  '/attendance-control': typeof PrivateAttendanceControlRoute
   '/dashboard': typeof PrivateDashboardRoute
   '/events': typeof PrivateEventsRoute
   '/': typeof AppIndexRoute
@@ -98,6 +106,7 @@ export interface FileRoutesByTo {
   '/doe': typeof AppDoeRoute
   '/live': typeof AppLiveRoute
   '/login': typeof AuthLoginRoute
+  '/attendance-control': typeof PrivateAttendanceControlRoute
   '/dashboard': typeof PrivateDashboardRoute
   '/events': typeof PrivateEventsRoute
   '/': typeof AppIndexRoute
@@ -113,6 +122,7 @@ export interface FileRoutesById {
   '/_app/doe': typeof AppDoeRoute
   '/_app/live': typeof AppLiveRoute
   '/_auth/login': typeof AuthLoginRoute
+  '/_private/attendance-control': typeof PrivateAttendanceControlRoute
   '/_private/dashboard': typeof PrivateDashboardRoute
   '/_private/events': typeof PrivateEventsRoute
   '/_app/': typeof AppIndexRoute
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/doe'
     | '/live'
     | '/login'
+    | '/attendance-control'
     | '/dashboard'
     | '/events'
     | '/'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '/doe'
     | '/live'
     | '/login'
+    | '/attendance-control'
     | '/dashboard'
     | '/events'
     | '/'
@@ -151,6 +163,7 @@ export interface FileRouteTypes {
     | '/_app/doe'
     | '/_app/live'
     | '/_auth/login'
+    | '/_private/attendance-control'
     | '/_private/dashboard'
     | '/_private/events'
     | '/_app/'
@@ -204,6 +217,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof PrivateDashboardRouteImport
+      parentRoute: typeof PrivateLayoutRoute
+    }
+    '/_private/attendance-control': {
+      id: '/_private/attendance-control'
+      path: '/attendance-control'
+      fullPath: '/attendance-control'
+      preLoaderRoute: typeof PrivateAttendanceControlRouteImport
       parentRoute: typeof PrivateLayoutRoute
     }
     '/_auth/login': {
@@ -286,11 +306,13 @@ const AuthLayoutRouteWithChildren = AuthLayoutRoute._addFileChildren(
 )
 
 interface PrivateLayoutRouteChildren {
+  PrivateAttendanceControlRoute: typeof PrivateAttendanceControlRoute
   PrivateDashboardRoute: typeof PrivateDashboardRoute
   PrivateEventsRoute: typeof PrivateEventsRoute
 }
 
 const PrivateLayoutRouteChildren: PrivateLayoutRouteChildren = {
+  PrivateAttendanceControlRoute: PrivateAttendanceControlRoute,
   PrivateDashboardRoute: PrivateDashboardRoute,
   PrivateEventsRoute: PrivateEventsRoute,
 }

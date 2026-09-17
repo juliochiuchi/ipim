@@ -63,8 +63,19 @@
   * {
     @apply border-border;
   }
+  html {
+    overflow-x: clip !important;
+    width: 100%;
+  }
   body {
+    overflow-x: clip !important;
+    width: 100%;
     @apply bg-background text-foreground;
+  }
+  #root {
+    width: 100%;
+    overflow-x: clip;
+    position: relative;
   }
 }
 

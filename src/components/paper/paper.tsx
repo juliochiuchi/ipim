@@ -35,62 +35,64 @@ export default function Paper() {
   }
 
   return (
-    <div className="w-full mx-auto px-4 phone:max-w-[35rem] phone:px-0 laptop:max-w-[35rem] laptop:w-[35rem] desktop:max-w-[60rem] desktop:w-[60rem] desktop:px-0">
-      <div className="flex items-center justify-between mb-2 px-1">
+    <div className="w-full">
+      <div className="flex items-center justify-between mb-3 px-0.5">
         <div>
-          <p className="font-poppins text-[#333] font-bold tracking-wider text-sm">
+          <p className="font-poppins font-bold tracking-[0.14em] text-sm text-ipimNavy dark:text-white uppercase">
             Programação
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <button
             onClick={prev}
             disabled={currentIndex === 0}
-            className="p-1.5 rounded-full hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-[#333]"
+            className="p-2 rounded-full hover:bg-ipimCream dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-ipimNavy dark:text-gray-300"
             aria-label="Anterior"
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={20} strokeWidth={2.2} />
           </button>
           <button
             onClick={next}
             disabled={currentIndex >= SCHEDULES.length - itemsPerPage}
-            className="p-1.5 rounded-full hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-[#333]"
+            className="p-2 rounded-full hover:bg-ipimCream dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-ipimNavy dark:text-gray-300"
             aria-label="Próximo"
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={20} strokeWidth={2.2} />
           </button>
         </div>
       </div>
 
-      <div className="flex flex-col phone:flex-row gap-6 mb-6">
+      <div className="mb-5">
         {SCHEDULES.slice(currentIndex, currentIndex + itemsPerPage).map(
           (schedule, index) => (
             <div
               key={index}
-              className="bg-white flex-1 h-52 rounded-md shadow-sm w-full phone:min-w-[18rem] transition-all duration-300"
+              className="bg-white dark:bg-zinc-900/50 flex-1 rounded-2xl border border-zinc-100 dark:border-zinc-800 shadow-sm overflow-hidden transition-all duration-300 w-full"
             >
-              <div className="bg-black rounded-t-md p-4">
-                <p className="font-poppins text-white font-bold tracking-wider">
+              <div className="bg-gradient-to-r from-ipimNavy to-ipimNavyLight dark:from-ipimNavyDark dark:to-ipimNavy px-5 py-4">
+                <p className="font-poppins text-white font-bold tracking-[0.18em] text-sm">
                   {schedule.day}
                 </p>
               </div>
 
-              <div className="flex flex-col p-4">
+              <div className="flex flex-col p-5">
                 {schedule.events.map((event, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center justify-between py-2 border-b border-[#f6f6f6] last:border-b-0"
+                    className="flex items-center justify-between py-3 border-b border-zinc-100 dark:border-zinc-800 last:border-b-0"
                   >
-                    <div>
-                      <span className="font-poppins text-[#333] font-bold tracking-wider text-sm m-0 p-0">
+                    <div className="min-w-0 pr-3">
+                      <span className="font-poppins font-semibold tracking-tight text-sm text-ipimNavy dark:text-gray-100 m-0 p-0 block">
                         {event.name}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                      <Clock2 size={20} color="#333" />
-                      <span className="font-poppins text-[#333] font-bold tracking-wider text-sm m-0 p-0">
+                    <div className="flex items-center gap-2.5 shrink-0">
+                      <div className="w-9 h-9 rounded-full bg-ipimGreen/10 dark:bg-ipimGreen/15 flex items-center justify-center">
+                        <Clock2 size={17} className="text-ipimGreen dark:text-ipimGreenLight" />
+                      </div>
+                      <span className="font-poppins font-bold tracking-tight text-sm text-ipimNavy dark:text-gray-100 m-0 p-0">
                         {event.time}
                       </span>
                     </div>
@@ -102,8 +104,11 @@ export default function Paper() {
         )}
       </div>
 
-      <div className="text-right">
-        <Link to="/calendar" className="font-poppins text-[#333] font-bold tracking-wider text-sm border p-4 rounded-md">
+      <div className="text-left">
+        <Link
+          to="/calendar"
+          className="inline-flex items-center justify-center px-6 py-3 rounded-xl border-2 border-ipimNavy/15 dark:border-white/10 text-ipimNavy dark:text-white font-poppins font-semibold text-sm tracking-wide hover:bg-ipimNavy hover:text-white dark:hover:bg-white dark:hover:text-ipimNavy hover:border-ipimNavy dark:hover:border-white transition-all duration-200 active:scale-[0.98]"
+        >
           Ver Programação Completa
         </Link>
       </div>

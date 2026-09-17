@@ -1,9 +1,10 @@
 import { Link } from '@tanstack/react-router'
+import { PageContainer } from '@/components/page-container/page-container'
 
 export default function ChurchOperation() {
   return (
-    <section className="bg-ipimBgSectionNextStep pt-16 pb-1 dark:bg-zinc-900">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="bg-ipimBgSectionNextStep pt-14 pb-0 dark:bg-zinc-900">
+      <PageContainer className="pb-10">
         <div className="mb-10 text-center laptop:text-left">
           <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-zinc-200/70 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-700 shadow-sm backdrop-blur dark:mx-0 dark:border-zinc-800/60 dark:bg-zinc-950/30 dark:text-zinc-200">
             <span className="h-1.5 w-1.5 rounded-full bg-ipimGreen" />
@@ -52,7 +53,7 @@ export default function ChurchOperation() {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-black/0" />
           </div>
 
-          <div className="rounded-3xl border border-zinc-200/60 bg-white/70 p-7 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30 tablet:p-8">
+          <div className="rounded-3xl border border-zinc-200/60 bg-white/70 p-6 shadow-sm backdrop-blur dark:border-zinc-800/60 dark:bg-zinc-950/30 tablet:p-8">
             <h3 className="font-poppins text-2xl font-bold tracking-tight text-zinc-900 dark:text-white tablet:text-3xl">
               Estamos te esperando
             </h3>
@@ -94,38 +95,40 @@ export default function ChurchOperation() {
             </div>
           </div>
         </div>
-      </div>
+      </PageContainer>
 
-      <div className="bg-[#008785] color-white py-14 flex flex-wrap items-center justify-around mt-10 gap-6 px-6">
-        <div className="flex flex-col gap-3 items-center text-center laptop:items-start laptop:text-left">
-          <p className="font-poppins text-4xl font-bold underline text-white">Doações</p>
-          <p className="font-poppins text-sm text-white">Generosidade é um privilégio diante de um Deus generoso.</p>
-        </div>
+      <div className="bg-ipimGreen py-12">
+        <PageContainer className="flex flex-wrap items-center justify-between gap-6">
+          <div className="flex flex-col gap-3 items-center text-center laptop:items-start laptop:text-left">
+            <p className="font-poppins text-3xl tablet:text-4xl font-bold underline text-white underline-offset-4 decoration-ipimGoldLight decoration-2">Doações</p>
+            <p className="font-poppins text-sm text-white/90 max-w-md">Generosidade é um privilégio diante de um Deus generoso.</p>
+          </div>
 
-        <div>
           <Link
             to="/doe"
-            className="inline-block bg-transparent border border-white text-white px-6 py-3 rounded-full font-bold tracking-widest transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#008785] hover:shadow-lg active:scale-95">
+            className="inline-flex items-center bg-transparent border-2 border-white text-white px-7 py-3 rounded-full font-poppins font-bold tracking-widest text-sm transition-all duration-300 hover:scale-[1.02] hover:bg-white hover:text-ipimGreen hover:shadow-xl active:scale-[0.98]">
             OFERTAR AGORA
           </Link>
-        </div>
+        </PageContainer>
       </div>
 
-      <div className="bg-[#000] color-white py-14 flex flex-wrap items-center justify-center gap-6 px-6">
-        <div className="flex flex-col gap-3 max-w-[600px] items-center text-center laptop:items-start laptop:text-left">
-          <p className="font-poppins text-xl font-bold underline text-[#008785]">Quer conversar?</p>
-          <p className="font-poppins text-sm text-white">
-            Nós estamos muito interessados no que você tem a dizer, criamos este espaço especialmente para você fazer seus comentários ou sugestões.
-          </p>
-        </div>
+      <div className="bg-ipimBlack py-12">
+        <PageContainer className="flex flex-wrap items-center justify-between gap-6">
+          <div className="flex flex-col gap-3 max-w-xl items-center text-center laptop:items-start laptop:text-left">
+            <p className="font-poppins text-xl tablet:text-2xl font-bold underline text-ipimGreenLight underline-offset-4 decoration-ipimGold/40">Quer conversar?</p>
+            <p className="font-poppins text-sm text-white/85 leading-relaxed">
+              Nós estamos muito interessados no que você tem a dizer, criamos este espaço especialmente para você fazer seus comentários ou sugestões.
+            </p>
+          </div>
 
-        <div>
           <a
             href="https://wa.me/5517997147817"
-            target="_blank" className="inline-block bg-[#008785] text-white text-base px-6 py-3 rounded-full font-bold tracking-widest border border-transparent transition-all duration-300 hover:scale-105 hover:bg-white hover:text-[#008785] hover:border-[#008785] hover:shadow-lg active:scale-95">
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center bg-ipimGreen text-white text-sm px-7 py-3 rounded-full font-poppins font-bold tracking-widest border-2 border-transparent transition-all duration-300 hover:scale-[1.02] hover:bg-white hover:text-ipimGreen hover:border-ipimGreen hover:shadow-xl active:scale-[0.98]">
             CLIQUE AQUI
           </a>
-        </div>
+        </PageContainer>
       </div>
     </section>
   )

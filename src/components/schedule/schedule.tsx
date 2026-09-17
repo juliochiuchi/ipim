@@ -1,44 +1,51 @@
 import { Video } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
 import Paper from '../paper/paper'
+import { PageContainer } from '@/components/page-container/page-container'
 
 export default function Schedule() {
   return (
-    <section className="bg-[#f6f6f6] text-[#333] py-10 px-4 phone:px-12 tablet:py-20 tablet:px-20 desktop:px-72">
-      <div className="flex flex-wrap items-start justify-center tablet:justify-between gap-10">
+    <section className="bg-ipimBgSectionNextStep text-zinc-800 py-12 tablet:py-20 dark:bg-zinc-900 dark:text-zinc-100">
+      <PageContainer>
+        <div className="flex flex-wrap items-start justify-center laptop:justify-between gap-10 laptop:gap-16">
 
-        <div className="w-full max-w-[35rem] flex flex-col gap-10 items-center text-center justify-start font-poppins tablet:items-start tablet:text-left">
-          <div className="flex items-start gap-3 w-full justify-center tablet:justify-start">
-            <div className="hidden tablet:flex">
-              <Video size={44} />
-            </div>
-
-            <div className="flex flex-col gap-10 items-center text-center tablet:items-start tablet:text-left font-poppins mt-1.5">
-              <div className="flex items-center gap-2">
-                <div className="flex tablet:hidden">
-                  <Video size={44} />
-                </div>
-
-                <h2 className="text-2xl font-bold">Com você em qualquer lugar</h2>
+          <div className="w-full max-w-xl flex flex-col gap-8 items-center text-center justify-start font-poppins laptop:items-start laptop:text-left">
+            <div className="flex items-start gap-3 w-full justify-center laptop:justify-start">
+              <div className="hidden laptop:flex items-center justify-center w-14 h-14 rounded-2xl bg-ipimGreen/10 text-ipimGreen shrink-0">
+                <Video size={36} strokeWidth={1.75} />
               </div>
 
+              <div className="flex flex-col gap-6 items-center text-center laptop:items-start laptop:text-left font-poppins">
+                <div className="flex items-center gap-3">
+                  <div className="flex laptop:hidden items-center justify-center w-12 h-12 rounded-2xl bg-ipimGreen/10 text-ipimGreen shrink-0">
+                    <Video size={32} strokeWidth={1.75} />
+                  </div>
 
-              <p>
-                Confira nossa agenda presencial e também acompanhe as transmissões ao vivo de onde estiver usando a internet. Veja a programação a seguir:
-              </p>
+                  <h2 className="text-2xl tablet:text-3xl font-bold text-ipimNavy dark:text-white leading-tight">Com você em qualquer lugar</h2>
+                </div>
 
-              <Link to="/live" className="bg-black text-white w-[90%] tablet:w-80 px-4 py-2 rounded-md text-sm font-bold text-center">
-                Ver transmissões ao vivo
-              </Link>
+                <p className="font-source text-base tablet:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                  Confira nossa agenda presencial e também acompanhe as transmissões ao vivo de onde estiver usando a internet. Veja a programação a seguir:
+                </p>
+
+                <Link
+                  to="/live"
+                  className="inline-flex items-center justify-center bg-ipimNavy text-white px-8 py-3.5 rounded-xl font-poppins font-semibold text-sm shadow-lg shadow-ipimNavy/15 hover:bg-ipimNavyLight hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 active:translate-y-0"
+                >
+                  Ver transmissões ao vivo
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="flex-1 font-poppins flex justify-center w-full mt-10 tablet:mt-0 tablet:w-auto">
-          <Paper />
-        </div>
+          <div className="flex-1 font-poppins flex justify-center w-full mt-6 laptop:mt-0 laptop:w-auto min-w-0">
+            <div className="w-full max-w-lg">
+              <Paper />
+            </div>
+          </div>
 
-      </div>
+        </div>
+      </PageContainer>
     </section>
   )
 }

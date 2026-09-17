@@ -1,99 +1,75 @@
-import Dots from '../../assets/dots.png'
 import { LinkIndigo } from '../link/LinkIndigo'
 import { LinkSnow } from '../link/LinkSnow'
+import { PageContainer } from '@/components/page-container/page-container'
 
 export default function ChurchOnline() {
   return (
-    <section className="flex h-auto w-full items-center bg-[#1f1f25] pt-24 pb-16 phone:flex-wrap phone:justify-start phone:gap-5 laptop:flex-nowrap laptop:justify-around">
-      <div
-        className="flex 
-      phone:mb-12 phone:w-full phone:justify-center 
-      laptop:mb-0 laptop:w-[25%] laptop:justify-end"
-      >
-        <img
-          src={Dots}
-          alt="dots"
-          className="tabletMod:w-[150px] absolute mr-14 mt-[-70px] phone:h-[170px] phone:w-[100px] laptop:h-[220px]"
-        />
+    <section className="flex h-auto w-full items-center bg-[#1f1f25] dark:bg-zinc-900 py-16 tablet:py-20 laptop:py-24">
+      <PageContainer size="wide">
+        <div className="grid laptop:grid-cols-[auto_1fr_auto] items-center gap-10 laptop:gap-12 text-center laptop:text-left">
+          <div className="hidden laptop:flex items-center justify-center relative">
+            <div className="opacity-40 -mr-6 -mt-24 relative">
+              <img
+                className="h-[180px] w-auto"
+                src="https://novaigreja.com/wp-content/uploads/2021/10/globo_outline_White-21.png"
+                alt="Globo Outline"
+                loading="lazy"
+              />
+            </div>
+          </div>
 
-        <span>
-          <img
-            className="relative phone:max-w-[150px] laptop:max-w-[280px]"
-            loading="lazy"
-            decoding="async"
-            width="890"
-            height="885"
-            src="https://novaigreja.com/wp-content/uploads/2021/10/globo_outline_White-21.png"
-            alt="web browser"
-            sizes="(max-width: 910px) 100vw, 910px"
-            aria-label="globo_outline_White-21"
-          />
-        </span>
-      </div>
+          <div className="text-center">
+            <div className="laptop:hidden mb-6 flex items-center justify-center">
+              <img
+                className="h-[130px] w-auto opacity-60"
+                src="https://novaigreja.com/wp-content/uploads/2021/10/globo_outline_White-21.png"
+                alt="Globo Outline"
+                loading="lazy"
+              />
+            </div>
 
-      <div className="text-center phone:w-full laptop:w-[50%]">
-        <span className="font-medium text-ipimWhiteSnowTwo phone:text-[2.3rem] laptop:text-[3rem] font-poppins">
-          A <span className="font-bold">IPIM</span> está <br />
-          <span className="mt-0 font-bold text-ipimYellow phone:text-[3.5rem] laptop:text-[5rem] laptop:text-[7rem]">
-            O N L I N E
-          </span>
-        </span>
+            <h2 className="font-poppins font-medium text-ipimWhiteSnowTwo text-3xl tablet:text-4xl laptop:text-[2.75rem] leading-[1.1]">
+              A <span className="font-bold text-white">IPIM</span> está <br className="hidden phone:block" />
+              <span className="mt-1 font-bold text-ipimYellow block text-4xl tablet:text-5xl laptop:text-6xl tracking-[0.15em]">
+                ONLINE
+              </span>
+            </h2>
 
-        <p
-          className="font-source font-light text-ipimWhiteSnowTwo 
-        phone:mt-6 phone:px-6 
-        phone:text-[1.2rem] laptop:mt-0 laptop:px-0
-        laptop:text-[1rem]"
-        >
-          A IPIM Online é uma comunidade de pessoas ao redor do mundo, que{' '}
-          <br />
-          se conectam online para experimentar uma vida cristã abundante, um{' '}
-          <br />
-          relacionamento pleno com Deus e conectar-se com outras pessoas.
-        </p>
+            <p className="font-source font-light text-ipimWhiteSnowTwo/90 mt-6 text-base tablet:text-lg leading-relaxed max-w-2xl mx-auto laptop:mx-0">
+              A IPIM Online é uma comunidade de pessoas ao redor do mundo que se conectam
+              para experimentar uma vida cristã abundante, um relacionamento pleno com
+              Deus e se conectar com outras pessoas.
+            </p>
 
-        <div
-          className="mt-10 flex items-center justify-center gap-5 phone:mx-4
-        phone:flex-wrap phone:flex-nowrap laptop:mx-0
-        laptop:flex-nowrap"
-        >
-          <LinkIndigo
-            url="https://youtube.com/ipimacaubal"
-            newTab={true}
-            classLink="text-[1rem] px-14 py-4 mt-5 mx-3 
-            phone:w-full phone:w-auto laptop:w-auto font-inter"
-            text="Ir para a Igreja Online"
-          />
+            <div className="mt-10 flex flex-col tablet:flex-row items-center justify-center laptop:justify-start gap-4 w-full">
+              <LinkIndigo
+                url="https://youtube.com/ipimacaubal"
+                newTab={true}
+                classLink="w-full tablet:w-auto inline-flex items-center justify-center text-base px-8 py-4 font-poppins font-semibold"
+                text="Ir para a Igreja Online"
+              />
 
-          <LinkSnow
-            url="https://maps.app.goo.gl/64dCtoF9D114BzPn8"
-            newTab={true}
-            classLink="text-[1rem] px-14 py-4 mt-5 mx-3 
-            phone:flex phone:items-center phone:justify-center phone:w-full phone:w-auto laptop:w-auto font-inter"
-            text="Achar um local perto de mim"
-          />
+              <LinkSnow
+                url="https://maps.app.goo.gl/64dCtoF9D114BzPn8"
+                newTab={true}
+                classLink="w-full tablet:w-auto inline-flex items-center justify-center text-base px-8 py-4 font-poppins font-semibold"
+                text="Achar um local perto de mim"
+              />
+            </div>
+          </div>
+
+          <div className="hidden laptop:flex items-center justify-center">
+            <div className="opacity-40 -ml-6 relative">
+              <img
+                className="h-[200px] w-auto"
+                src="https://novaigreja.com/wp-content/uploads/2021/10/webwindow_Outline_White-17.png"
+                alt="Janela Web Outline"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div
-        className="flex 
-      phone:mt-16 phone:w-full phone:justify-center 
-      laptop:mt-0 laptop:w-[25%] laptop:justify-start"
-      >
-        <span>
-          <img
-            className="max-w-[280px]"
-            loading="lazy"
-            decoding="async"
-            width="2553"
-            height="1310"
-            src="https://novaigreja.com/wp-content/uploads/2021/10/webwindow_Outline_White-17.png"
-            alt="web browser"
-            sizes="(max-width: 2553px) 100vw, 2553px"
-            aria-label="webwindow_Outline_White-17"
-          />
-        </span>
-      </div>
+      </PageContainer>
     </section>
   )
 }

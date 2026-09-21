@@ -98,7 +98,7 @@ export default function ChurchOperation() {
       </PageContainer>
 
       <div className="bg-ipimGreen py-12">
-        <PageContainer className="flex flex-wrap items-center justify-between gap-6">
+        <PageContainer className="flex flex-col items-center justify-center text-center gap-6 laptop:flex-row laptop:items-center laptop:justify-between laptop:text-left">
           <div className="flex flex-col gap-3 items-center text-center laptop:items-start laptop:text-left">
             <p className="font-poppins text-3xl tablet:text-4xl font-bold underline text-white underline-offset-4 decoration-ipimGoldLight decoration-2">Doações</p>
             <p className="font-poppins text-sm text-white/90 max-w-md">Generosidade é um privilégio diante de um Deus generoso.</p>
@@ -113,7 +113,7 @@ export default function ChurchOperation() {
       </div>
 
       <div className="bg-ipimBlack py-12">
-        <PageContainer className="flex flex-wrap items-center justify-between gap-6">
+        <PageContainer className="flex flex-col items-center justify-center text-center gap-6 laptop:flex-row laptop:items-center laptop:justify-between laptop:text-left">
           <div className="flex flex-col gap-3 max-w-xl items-center text-center laptop:items-start laptop:text-left">
             <p className="font-poppins text-xl tablet:text-2xl font-bold underline text-ipimGreenLight underline-offset-4 decoration-ipimGold/40">Quer conversar?</p>
             <p className="font-poppins text-sm text-white/85 leading-relaxed">

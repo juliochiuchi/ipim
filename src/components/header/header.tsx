@@ -56,8 +56,8 @@ export function Header() {
   ]
 
   const quickContacts = [
-    { icon: Phone, label: '(17) 3256-1234' },
-    { icon: Mail, label: 'contato@ipim.org.br' },
+    { icon: Phone, label: '+55 (17) 9 9714 7817' },
+    { icon: Mail, label: 'macaubalipi@gmail.com' },
   ]
 
   const PAD_OUTER = 'px-4 tablet:px-12 laptop:px-20 desktop:px-28 ultrawide:px-36'
@@ -65,11 +65,10 @@ export function Header() {
 
   return (
     <header className="w-full relative z-50 sticky top-0">
-      <div className={`bg-ipimHeaderBg dark:bg-ipimBgDark border-b border-ipimHeaderBorder dark:border-ipimBorderDark transition-all duration-300 ${PAD_OUTER} ${
-        isScrolled
-          ? 'shadow-[0_6px_28px_-10px_rgba(30,58,95,0.22)] dark:shadow-[0_6px_28px_-10px_rgba(0,0,0,0.48)] py-3 tablet:py-3.5 laptop:py-4'
-          : 'shadow-[0_1px_0_0_rgba(184,134,11,0.12),0_2px_14px_-8px_rgba(30,58,95,0.10)] dark:shadow-[0_1px_0_0_rgba(184,134,11,0.18),0_2px_14px_-8px_rgba(0,0,0,0.25)] py-4 tablet:py-5 laptop:py-6'
-      }`}>
+      <div className={`bg-ipimHeaderBg dark:bg-ipimBgDark border-b border-ipimHeaderBorder dark:border-ipimBorderDark transition-all duration-300 ${PAD_OUTER} ${isScrolled
+        ? 'shadow-[0_6px_28px_-10px_rgba(30,58,95,0.22)] dark:shadow-[0_6px_28px_-10px_rgba(0,0,0,0.48)] py-3 tablet:py-3.5 laptop:py-4'
+        : 'shadow-[0_1px_0_0_rgba(184,134,11,0.12),0_2px_14px_-8px_rgba(30,58,95,0.10)] dark:shadow-[0_1px_0_0_rgba(184,134,11,0.18),0_2px_14px_-8px_rgba(0,0,0,0.25)] py-4 tablet:py-5 laptop:py-6'
+        }`}>
         <div className={`${INNER_ALIGN}`}>
           <div className="hidden tablet:block">
             <div className="flex items-center justify-between">
@@ -114,15 +113,15 @@ export function Header() {
 
               <div className="flex items-center gap-1.5 tablet:gap-2 laptop:gap-2.5">
                 <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => window.dispatchEvent(new CustomEvent('open-ipim-command-palette'))}
-                className="hidden tablet:flex sr-only h-9 tablet:h-10 w-9 tablet:w-10 rounded-xl hover:bg-ipimGreenLight/30 dark:hover:bg-ipimGreen/10 text-ipimNavy dark:text-gray-200 hover:text-ipimGreen dark:hover:text-ipimGreenLight transition-all duration-200 border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-white/[0.03]"
-                aria-label="Abrir atalhos e painéis administrativos (⌘, ⌘⌘, Shift Shift, ⌘K / Ctrl+K)"
-              >
-                <CmdIcon className="h-[16px] tablet:h-[17px] w-[16px] tablet:w-[17px]" />
-                <span className="sr-only">Abrir painel de atalhos</span>
-              </Button>
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-ipim-command-palette'))}
+                  className="hidden tablet:flex sr-only h-9 tablet:h-10 w-9 tablet:w-10 rounded-xl hover:bg-ipimGreenLight/30 dark:hover:bg-ipimGreen/10 text-ipimNavy dark:text-gray-200 hover:text-ipimGreen dark:hover:text-ipimGreenLight transition-all duration-200 border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-white/[0.03]"
+                  aria-label="Abrir atalhos e painéis administrativos (⌘, ⌘⌘, Shift Shift, ⌘K / Ctrl+K)"
+                >
+                  <CmdIcon className="h-[16px] tablet:h-[17px] w-[16px] tablet:w-[17px]" />
+                  <span className="sr-only">Abrir painel de atalhos</span>
+                </Button>
                 <ThemeToggle />
               </div>
             </div>
@@ -133,9 +132,9 @@ export function Header() {
               <Link to="/" className="flex items-center gap-3">
                 <img src={currentLogo} alt="Logo IPIM" className="h-11 w-11 drop-shadow-sm" />
                 <div className="flex flex-col leading-tight">
-                  <span className="font-poppins font-bold text-lg text-ipimNavy dark:text-white tracking-tight">IPIM</span>
-                  <span className="font-nunito text-[10px] text-ipimTextFooter dark:text-gray-400 uppercase tracking-[0.15em] font-semibold">
-                    Presbiteriana
+                  <span className="font-poppins font-bold text-[15px] text-ipimNavy dark:text-white tracking-tight whitespace-nowrap">Igreja Presbiteriana</span>
+                  <span className="font-nunito text-[9px] text-ipimTextFooter dark:text-gray-400 font-semibold whitespace-nowrap">
+                    Independente de Macaubal
                   </span>
                 </div>
               </Link>
@@ -165,18 +164,17 @@ export function Header() {
       )}
 
       <div
-        className={`fixed top-0 right-0 h-full w-[90%] max-w-sm bg-white dark:bg-ipimBgDark shadow-2xl z-50 transform transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        className={`fixed top-0 right-0 h-full w-[90%] max-w-sm bg-white dark:bg-ipimBgDark shadow-2xl z-50 transform transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100 dark:border-gray-800 bg-gradient-to-r from-ipimNavy to-ipimNavyLight dark:from-ipimNavyDark dark:to-ipimNavy">
             <div className="flex items-center gap-3.5">
-              <div className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center">
-                <span className="text-2xl text-ipimGoldLight">✝</span>
+              <div className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center overflow-hidden p-1">
+                <img src={currentLogo} alt="Logo IPIM" className="w-full h-full object-contain drop-shadow-sm" />
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="font-poppins font-bold text-lg text-white">Menu</span>
+                <span className="font-poppins font-bold text-lg text-white">IPIM</span>
                 <span className="font-nunito text-[11px] text-white/70">Navegação do site</span>
               </div>
             </div>
@@ -208,18 +206,16 @@ export function Header() {
                   <Link
                     to={item.path}
                     onClick={closeMenu}
-                    className={`flex items-center justify-between w-full px-5 py-4 rounded-xl transition-all duration-200 group ${
-                      isActive(item.path)
-                        ? 'bg-gradient-to-r from-ipimGreenLight/40 to-ipimGold/10 text-ipimGreen dark:from-ipimGreen/15 dark:to-ipimGold/10 dark:text-ipimGreenLight shadow-sm'
-                        : 'text-ipimNavy dark:text-gray-200 hover:bg-ipimGreenLight/20 dark:hover:bg-ipimGreen/5 active:bg-ipimGreenLight/30'
-                    }`}
+                    className={`flex items-center justify-between w-full px-5 py-4 rounded-xl transition-all duration-200 group ${isActive(item.path)
+                      ? 'bg-gradient-to-r from-ipimGreenLight/40 to-ipimGold/10 text-ipimGreen dark:from-ipimGreen/15 dark:to-ipimGold/10 dark:text-ipimGreenLight shadow-sm'
+                      : 'text-ipimNavy dark:text-gray-200 hover:bg-ipimGreenLight/20 dark:hover:bg-ipimGreen/5 active:bg-ipimGreenLight/30'
+                      }`}
                   >
                     <div className="flex items-center gap-4">
-                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-200 ${
-                        isActive(item.path)
-                          ? 'bg-ipimGreen text-white dark:bg-ipimGreenLight dark:text-ipimNavy shadow-md'
-                          : 'bg-ipimCream dark:bg-gray-800 text-ipimNavy dark:text-gray-300 group-hover:bg-ipimGreen group-hover:text-white dark:group-hover:bg-ipimGreen'
-                      }`}>
+                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-200 ${isActive(item.path)
+                        ? 'bg-ipimGreen text-white dark:bg-ipimGreenLight dark:text-ipimNavy shadow-md'
+                        : 'bg-ipimCream dark:bg-gray-800 text-ipimNavy dark:text-gray-300 group-hover:bg-ipimGreen group-hover:text-white dark:group-hover:bg-ipimGreen'
+                        }`}>
                         <item.icon className="w-[22px] h-[22px]" />
                       </div>
                       <div className="flex flex-col leading-tight">
@@ -229,11 +225,10 @@ export function Header() {
                         </span>
                       </div>
                     </div>
-                    <ChevronRight className={`w-5 h-5 transition-all duration-200 ${
-                      isActive(item.path)
-                        ? 'text-ipimGreen dark:text-ipimGreenLight translate-x-0.5'
-                        : 'text-gray-300 dark:text-gray-600 group-hover:text-ipimGreen group-hover:translate-x-0.5'
-                    }`} />
+                    <ChevronRight className={`w-5 h-5 transition-all duration-200 ${isActive(item.path)
+                      ? 'text-ipimGreen dark:text-ipimGreenLight translate-x-0.5'
+                      : 'text-gray-300 dark:text-gray-600 group-hover:text-ipimGreen group-hover:translate-x-0.5'
+                      }`} />
                   </Link>
                 </li>
               ))}
@@ -273,8 +268,8 @@ export function Header() {
 
           <div className="px-6 py-5 border-t border-gray-100 dark:border-gray-800 bg-ipimCream/30 dark:bg-gray-900/30">
             <div className="flex items-center gap-3.5 mb-4">
-              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-ipimGreen/20 to-ipimGold/20 flex items-center justify-center">
-                <span className="text-xl text-ipimGreen">✝</span>
+              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-ipimGreen/20 to-ipimGold/20 flex items-center justify-center overflow-hidden p-1">
+                <img src={currentLogo} alt="Logo IPIM" className="w-full h-full object-contain drop-shadow-sm" />
               </div>
               <div className="flex-1">
                 <p className="font-poppins font-semibold text-sm text-ipimNavy dark:text-gray-200 leading-tight">

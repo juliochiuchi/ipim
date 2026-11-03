@@ -1,6 +1,5 @@
 import { PageContainer } from '@/components/page-container/page-container'
 import Plan from '@/components/plan/plan'
-import { PageHero } from '@/components/page-hero/page-hero'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/_app/calendar')({
@@ -10,16 +9,8 @@ export const Route = createFileRoute('/_app/calendar')({
 function Calendar() {
   return (
     <>
-      <div className="min-h-screen w-full bg-ipimBgSectionNextStep/30 dark:bg-[#1a1a20] pt-12 tablet:py-16 transition-colors duration-300">
+      <div className="min-h-screen w-full bg-ipimBgSectionNextStep/30 dark:bg-[#1a1a20] py-10 tablet:py-16 transition-colors duration-300">
         <PageContainer>
-          <div className="mb-8 animate-in slide-in-from-top-4 duration-700 fade-in">
-            <PageHero
-              eyebrow="Agenda & Eventos"
-              title="Programação"
-              description="Fique por dentro de todas as atividades, cultos e eventos especiais da nossa comunidade."
-            />
-          </div>
-
           <div>
             <Plan />
           </div>

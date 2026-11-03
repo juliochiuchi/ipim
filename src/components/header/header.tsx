@@ -86,8 +86,9 @@ export function Header() {
                     <span className="font-poppins font-bold text-[17px] tablet:text-lg laptop:text-xl text-ipimNavy dark:text-white tracking-tight">
                       IPIM
                     </span>
-                    <span className="font-nunito text-[9px] tablet:text-[10px] laptop:text-[11px] text-ipimTextFooter dark:text-gray-400 uppercase tracking-[0.14em] tablet:tracking-[0.15em] laptop:tracking-[0.18em] font-semibold">
-                      Igreja Presbiteriana
+                    <span className="flex flex-col font-nunito text-[9px] tablet:text-[10px] laptop:text-[11px] text-ipimTextFooter dark:text-gray-400 uppercase tracking-[0.14em] tablet:tracking-[0.15em] laptop:tracking-[0.18em] font-semibold">
+                      <span>Igreja Presbiteriana</span>
+                      <span>Independente de Macaubal</span>
                     </span>
                   </div>
                 </Link>

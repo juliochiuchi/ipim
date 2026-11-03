@@ -7,7 +7,6 @@ import QRCodePixIPIM from '@/assets/qrcode-pix.png'
 import { PageContainer } from '@/components/page-container/page-container'
 import PixDonationCard from '@/components/doe/pix-donation-card'
 import StripeOfferCard from '@/components/doe/stripe-offer-card'
-import { PageHero } from '@/components/page-hero/page-hero'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 
 export const Route = createFileRoute('/_app/doe')({
@@ -38,15 +37,7 @@ function Doe() {
   return (
     <div className="min-h-screen w-full bg-ipimBgSectionNextStep/30 dark:bg-[#1a1a20] transition-colors duration-300">
       <PageContainer className="py-10 tablet:py-12">
-        <div className="animate-in slide-in-from-top-4 duration-700 fade-in">
-          <PageHero
-            eyebrow="Doações"
-            title="Contribua com a IPIM"
-            description="Sua contribuição nos ajuda a continuar nossa missão de levar a Palavra de Deus e servir nossa comunidade."
-          />
-        </div>
-
-        <div className="mt-6 grid gap-5 tablet:mt-8 tablet:grid-cols-2 tablet:items-stretch animate-in slide-in-from-bottom-4 duration-700 delay-100 fade-in fill-mode-backwards">
+        <div className="grid gap-5 tablet:grid-cols-2 tablet:items-stretch animate-in slide-in-from-bottom-4 duration-700 delay-100 fade-in fill-mode-backwards">
           <StripeOfferCard />
           <PixDonationCard pixKey={pixKey} qrCodeSrc={QRCodePixIPIM} />
         </div>

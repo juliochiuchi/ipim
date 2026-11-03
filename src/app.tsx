@@ -3,7 +3,10 @@ import { routeTree } from "./route-tree.gen"
 import { ThemeProvider } from "@/hooks/use-theme"
 import { Toaster } from "@/components/ui/sonner"
 
-const router = createRouter({ routeTree })
+const router = createRouter({
+  routeTree,
+  scrollRestoration: true,
+})
 
 export function App() {
   return (

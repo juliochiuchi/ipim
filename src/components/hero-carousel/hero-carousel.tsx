@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button"
 import jesusBanner from '../../assets/jesus-banner.jpg'
 import bannerDefault from '../../assets/banner-default.jpg'
 import { cn } from "@/lib/utils"
+import { LIVE_URL } from "@/lib/site-links"
 
 type HeroSlide = {
   image?: string
@@ -23,6 +24,7 @@ type HeroSlide = {
   action?: string
   actionLink?: string
   actionIcon?: React.ReactNode
+  actionExternal?: boolean
   live?: boolean
 }
 
@@ -42,8 +44,9 @@ export function HeroCarousel() {
       title: 'Culto Online',
       subtitle: 'Acompanhe os cultos e eventos da IPIM em tempo real, de onde você estiver.',
       action: 'Assistir ao vivo',
-      actionLink: '/live',
+      actionLink: LIVE_URL,
       actionIcon: <Play className="h-4 w-4 fill-current" />,
+      actionExternal: true,
       live: true,
     },
     {
@@ -149,7 +152,12 @@ export function HeroCarousel() {
                   className="bg-ipimGreen hover:bg-ipimGreenHover text-white font-semibold px-8 py-6 text-lg rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg border-0"
                   asChild
                 >
-                  <a href={slide.actionLink} className="inline-flex items-center gap-2">
+                  <a
+                    href={slide.actionLink}
+                    target={slide.actionExternal ? '_blank' : undefined}
+                    rel={slide.actionExternal ? 'noopener noreferrer' : undefined}
+                    className="inline-flex items-center gap-2"
+                  >
                     {slide.actionIcon}
                     {slide.action}
                   </a>

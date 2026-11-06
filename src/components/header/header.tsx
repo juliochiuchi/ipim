@@ -15,6 +15,7 @@ import {
 } from "lucide-react"
 import logoDark from '../../assets/logo-ipim-verde.png'
 import logoLight from '../../assets/logo-ipim-verde.png'
+import { LIVE_URL } from '@/lib/site-links'
 
 export function Header() {
   const location = useLocation()
@@ -51,7 +52,7 @@ export function Header() {
     { path: '/', label: 'Início', icon: Home },
     { path: '/calendar', label: 'Programação', icon: Calendar },
     { path: '/doe', label: 'Contribuir', icon: Heart },
-    { path: '/live', label: 'Culto Online', icon: Radio },
+    { path: '/live', label: 'Culto Online', icon: Radio, external: true },
     { path: '/acampamento', label: 'Acampamento', icon: Tent },
   ]
 
@@ -98,13 +99,20 @@ export function Header() {
                     {menuItems.map((item) => (
                       <NavigationMenuItem key={item.path}>
                         <NavigationMenuLink asChild className={getNavItemClasses(item.path)}>
-                          <Link to={item.path}>
-                            <item.icon className="w-[14px] tablet:w-4 laptop:w-[17px] h-[14px] tablet:h-4 laptop:h-[17px]" />
-                            <span>{item.label}</span>
-                            {isActive(item.path) && (
-                              <span className="absolute -bottom-[1px] left-1/2 -translate-x-1/2 w-10 h-0.5 bg-gradient-to-r from-ipimGreen via-ipimGold to-ipimGreen rounded-full" />
-                            )}
-                          </Link>
+                          {item.external ? (
+                            <a href={LIVE_URL} target="_blank" rel="noopener noreferrer">
+                              <item.icon className="w-[14px] tablet:w-4 laptop:w-[17px] h-[14px] tablet:h-4 laptop:h-[17px]" />
+                              <span>{item.label}</span>
+                            </a>
+                          ) : (
+                            <Link to={item.path}>
+                              <item.icon className="w-[14px] tablet:w-4 laptop:w-[17px] h-[14px] tablet:h-4 laptop:h-[17px]" />
+                              <span>{item.label}</span>
+                              {isActive(item.path) && (
+                                <span className="absolute -bottom-[1px] left-1/2 -translate-x-1/2 w-10 h-0.5 bg-gradient-to-r from-ipimGreen via-ipimGold to-ipimGreen rounded-full" />
+                              )}
+                            </Link>
+                          )}
                         </NavigationMenuLink>
                       </NavigationMenuItem>
                     ))}
@@ -202,18 +210,16 @@ export function Header() {
 
           <nav className="flex-1 px-4 py-5 overflow-y-auto custom-scrollbar">
             <ul className="space-y-2.5">
-              {menuItems.map((item) => (
-                <li key={item.path}>
-                  <Link
-                    to={item.path}
-                    onClick={closeMenu}
-                    className={`flex items-center justify-between w-full px-5 py-4 rounded-xl transition-all duration-200 group ${isActive(item.path)
-                      ? 'bg-gradient-to-r from-ipimGreenLight/40 to-ipimGold/10 text-ipimGreen dark:from-ipimGreen/15 dark:to-ipimGold/10 dark:text-ipimGreenLight shadow-sm'
-                      : 'text-ipimNavy dark:text-gray-200 hover:bg-ipimGreenLight/20 dark:hover:bg-ipimGreen/5 active:bg-ipimGreenLight/30'
-                      }`}
-                  >
+              {menuItems.map((item) => {
+                const active = isActive(item.path)
+                const itemClassName = `flex items-center justify-between w-full px-5 py-4 rounded-xl transition-all duration-200 group ${active
+                  ? 'bg-gradient-to-r from-ipimGreenLight/40 to-ipimGold/10 text-ipimGreen dark:from-ipimGreen/15 dark:to-ipimGold/10 dark:text-ipimGreenLight shadow-sm'
+                  : 'text-ipimNavy dark:text-gray-200 hover:bg-ipimGreenLight/20 dark:hover:bg-ipimGreen/5 active:bg-ipimGreenLight/30'
+                  }`
+                const itemContent = (
+                  <>
                     <div className="flex items-center gap-4">
-                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-200 ${isActive(item.path)
+                      <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-200 ${active
                         ? 'bg-ipimGreen text-white dark:bg-ipimGreenLight dark:text-ipimNavy shadow-md'
                         : 'bg-ipimCream dark:bg-gray-800 text-ipimNavy dark:text-gray-300 group-hover:bg-ipimGreen group-hover:text-white dark:group-hover:bg-ipimGreen'
                         }`}>
@@ -222,17 +228,40 @@ export function Header() {
                       <div className="flex flex-col leading-tight">
                         <span className="font-poppins font-semibold text-[15px]">{item.label}</span>
                         <span className="font-nunito text-[11px] text-ipimTextFooter dark:text-gray-500 mt-0.5">
-                          {isActive(item.path) ? 'Página atual' : 'Acessar seção'}
+                          {active ? 'Página atual' : 'Acessar seção'}
                         </span>
                       </div>
                     </div>
-                    <ChevronRight className={`w-5 h-5 transition-all duration-200 ${isActive(item.path)
+                    <ChevronRight className={`w-5 h-5 transition-all duration-200 ${active
                       ? 'text-ipimGreen dark:text-ipimGreenLight translate-x-0.5'
                       : 'text-gray-300 dark:text-gray-600 group-hover:text-ipimGreen group-hover:translate-x-0.5'
                       }`} />
-                  </Link>
-                </li>
-              ))}
+                  </>
+                )
+                return (
+                  <li key={item.path}>
+                    {item.external ? (
+                      <a
+                        href={LIVE_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={closeMenu}
+                        className={itemClassName}
+                      >
+                        {itemContent}
+                      </a>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        onClick={closeMenu}
+                        className={itemClassName}
+                      >
+                        {itemContent}
+                      </Link>
+                    )}
+                  </li>
+                )
+              })}
             </ul>
 
             <div className="mt-8 space-y-3.5">

@@ -1,7 +1,7 @@
 import { Video } from 'lucide-react'
-import { Link } from '@tanstack/react-router'
 import Paper from '../paper/paper'
 import { PageContainer } from '@/components/page-container/page-container'
+import { LIVE_URL } from '@/lib/site-links'
 
 export default function Schedule() {
   return (
@@ -28,12 +28,14 @@ export default function Schedule() {
                   Confira nossa agenda presencial e também acompanhe as transmissões ao vivo de onde estiver usando a internet. Veja a programação a seguir:
                 </p>
 
-                <Link
-                  to="/live"
+                <a
+                  href={LIVE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center bg-ipimNavy text-white px-8 py-3.5 rounded-xl font-poppins font-semibold text-sm shadow-lg shadow-ipimNavy/15 hover:bg-ipimNavyLight hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300 active:translate-y-0"
                 >
                   Ver transmissões ao vivo
-                </Link>
+                </a>
               </div>
             </div>
           </div>

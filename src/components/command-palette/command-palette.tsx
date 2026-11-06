@@ -11,12 +11,13 @@ import {
   CommandShortcut,
 } from '@/components/ui/command'
 import { Home, Calendar, Heart, Radio, Tent, LogIn, ChartColumn, ArrowRight } from 'lucide-react'
+import { LIVE_URL } from '@/lib/site-links'
 
 const navItems = [
   { label: 'Início', icon: Home, hint: 'Página inicial', to: '/' },
   { label: 'Programação', icon: Calendar, hint: 'Agenda e eventos', to: '/calendar' },
   { label: 'Dízimos e Ofertas', icon: Heart, hint: 'Contribuir com a obra', to: '/doe' },
-  { label: 'Culto Online', icon: Radio, hint: 'Assistir transmissões ao vivo', to: '/live' },
+  { label: 'Culto Online', icon: Radio, hint: 'Assistir transmissões ao vivo', href: LIVE_URL, external: true },
   { label: 'Acampamento', icon: Tent, hint: 'CATI e retiros espirituais', to: '/acampamento' },
 ]
 
@@ -118,9 +119,9 @@ export function CommandPalette() {
         <CommandGroup heading="🌐 Navegação do site">
           {navItems.map((item) => (
             <CommandItem
-              key={item.to}
+              key={item.label}
               value={`${item.label} ${item.hint}`}
-              onSelect={() => handleSelect(item.to)}
+              onSelect={() => handleSelect(item.to, item.href)}
             >
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-ipimGreenLight/40 to-ipimGold/20 dark:from-ipimGreen/15 dark:to-ipimGold/10 text-ipimGreen dark:text-ipimGreenLight">
                 <item.icon className="h-[18px] w-[18px]" />
@@ -129,7 +130,11 @@ export function CommandPalette() {
                 <span className="font-semibold text-ipimNavy dark:text-white">{item.label}</span>
                 <span className="text-[12px] text-muted-foreground font-normal">{item.hint}</span>
               </div>
-              <ArrowRight className="ml-auto h-4 w-4 text-muted-foreground/50" />
+              {item.external ? (
+                <CommandShortcut>↗ externo</CommandShortcut>
+              ) : (
+                <ArrowRight className="ml-auto h-4 w-4 text-muted-foreground/50" />
+              )}
             </CommandItem>
           ))}
         </CommandGroup>

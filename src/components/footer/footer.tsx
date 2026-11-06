@@ -8,9 +8,9 @@ import {
 } from 'react-icons/fi'
 import { FaWhatsapp } from 'react-icons/fa'
 import { FaXTwitter } from 'react-icons/fa6'
-import { Link } from '@tanstack/react-router'
 
 import { PageContainer } from '@/components/page-container/page-container'
+import { LIVE_URL } from '@/lib/site-links'
 import IPIBIcon from '../../assets/logo-ipim-verde.png'
 
 export function Footer() {
@@ -134,7 +134,7 @@ export function Footer() {
                     Quem Somos
                   </a>
                   <a href="#" className="font-source">Voluntarie-se</a>
-                  <Link to="/live" className="font-source">Culto Online</Link>
+                  <a href={LIVE_URL} target="_blank" rel="noopener noreferrer" className="font-source">Culto Online</a>
                 </div>
 
                 <p className="mt-6 text-[22px] font-bold text-ipimTitleFooter dark:text-ipimBgLightFooter">

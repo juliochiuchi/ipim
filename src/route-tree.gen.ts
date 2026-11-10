@@ -13,8 +13,10 @@ import { Route as PrivateLayoutRouteImport } from './pages/_private/layout'
 import { Route as AuthLayoutRouteImport } from './pages/_auth/layout'
 import { Route as AppLayoutRouteImport } from './pages/_app/layout'
 import { Route as AppIndexRouteImport } from './pages/_app/index'
+import { Route as PrivateTagsRouteImport } from './pages/_private/tags'
 import { Route as PrivateEventsRouteImport } from './pages/_private/events'
 import { Route as PrivateDashboardRouteImport } from './pages/_private/dashboard'
+import { Route as PrivateCategoriesRouteImport } from './pages/_private/categories'
 import { Route as PrivateAttendanceControlRouteImport } from './pages/_private/attendance-control'
 import { Route as AuthLoginRouteImport } from './pages/_auth/login'
 import { Route as AppLiveRouteImport } from './pages/_app/live'
@@ -40,6 +42,11 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppLayoutRoute,
 } as any)
+const PrivateTagsRoute = PrivateTagsRouteImport.update({
+  id: '/tags',
+  path: '/tags',
+  getParentRoute: () => PrivateLayoutRoute,
+} as any)
 const PrivateEventsRoute = PrivateEventsRouteImport.update({
   id: '/events',
   path: '/events',
@@ -48,6 +55,11 @@ const PrivateEventsRoute = PrivateEventsRouteImport.update({
 const PrivateDashboardRoute = PrivateDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => PrivateLayoutRoute,
+} as any)
+const PrivateCategoriesRoute = PrivateCategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
   getParentRoute: () => PrivateLayoutRoute,
 } as any)
 const PrivateAttendanceControlRoute =
@@ -95,8 +107,10 @@ export interface FileRoutesByFullPath {
   '/live': typeof AppLiveRoute
   '/login': typeof AuthLoginRoute
   '/attendance-control': typeof PrivateAttendanceControlRoute
+  '/categories': typeof PrivateCategoriesRoute
   '/dashboard': typeof PrivateDashboardRoute
   '/events': typeof PrivateEventsRoute
+  '/tags': typeof PrivateTagsRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
@@ -107,8 +121,10 @@ export interface FileRoutesByTo {
   '/live': typeof AppLiveRoute
   '/login': typeof AuthLoginRoute
   '/attendance-control': typeof PrivateAttendanceControlRoute
+  '/categories': typeof PrivateCategoriesRoute
   '/dashboard': typeof PrivateDashboardRoute
   '/events': typeof PrivateEventsRoute
+  '/tags': typeof PrivateTagsRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
@@ -123,8 +139,10 @@ export interface FileRoutesById {
   '/_app/live': typeof AppLiveRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_private/attendance-control': typeof PrivateAttendanceControlRoute
+  '/_private/categories': typeof PrivateCategoriesRoute
   '/_private/dashboard': typeof PrivateDashboardRoute
   '/_private/events': typeof PrivateEventsRoute
+  '/_private/tags': typeof PrivateTagsRoute
   '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
@@ -137,8 +155,10 @@ export interface FileRouteTypes {
     | '/live'
     | '/login'
     | '/attendance-control'
+    | '/categories'
     | '/dashboard'
     | '/events'
+    | '/tags'
     | '/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -149,8 +169,10 @@ export interface FileRouteTypes {
     | '/live'
     | '/login'
     | '/attendance-control'
+    | '/categories'
     | '/dashboard'
     | '/events'
+    | '/tags'
     | '/'
   id:
     | '__root__'
@@ -164,8 +186,10 @@ export interface FileRouteTypes {
     | '/_app/live'
     | '/_auth/login'
     | '/_private/attendance-control'
+    | '/_private/categories'
     | '/_private/dashboard'
     | '/_private/events'
+    | '/_private/tags'
     | '/_app/'
   fileRoutesById: FileRoutesById
 }
@@ -205,6 +229,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppLayoutRoute
     }
+    '/_private/tags': {
+      id: '/_private/tags'
+      path: '/tags'
+      fullPath: '/tags'
+      preLoaderRoute: typeof PrivateTagsRouteImport
+      parentRoute: typeof PrivateLayoutRoute
+    }
     '/_private/events': {
       id: '/_private/events'
       path: '/events'
@@ -217,6 +248,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof PrivateDashboardRouteImport
+      parentRoute: typeof PrivateLayoutRoute
+    }
+    '/_private/categories': {
+      id: '/_private/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof PrivateCategoriesRouteImport
       parentRoute: typeof PrivateLayoutRoute
     }
     '/_private/attendance-control': {
@@ -307,14 +345,18 @@ const AuthLayoutRouteWithChildren = AuthLayoutRoute._addFileChildren(
 
 interface PrivateLayoutRouteChildren {
   PrivateAttendanceControlRoute: typeof PrivateAttendanceControlRoute
+  PrivateCategoriesRoute: typeof PrivateCategoriesRoute
   PrivateDashboardRoute: typeof PrivateDashboardRoute
   PrivateEventsRoute: typeof PrivateEventsRoute
+  PrivateTagsRoute: typeof PrivateTagsRoute
 }
 
 const PrivateLayoutRouteChildren: PrivateLayoutRouteChildren = {
   PrivateAttendanceControlRoute: PrivateAttendanceControlRoute,
+  PrivateCategoriesRoute: PrivateCategoriesRoute,
   PrivateDashboardRoute: PrivateDashboardRoute,
   PrivateEventsRoute: PrivateEventsRoute,
+  PrivateTagsRoute: PrivateTagsRoute,
 }
 
 const PrivateLayoutRouteWithChildren = PrivateLayoutRoute._addFileChildren(

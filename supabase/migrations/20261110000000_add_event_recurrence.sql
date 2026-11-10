@@ -38,8 +38,13 @@ $$;
 -- (multi-dia e recorrentes), em vez de filtrar apenas pela data de início.
 -- Sem isso, um evento que começa em janeiro e termina em dezembro não
 -- apareceria nos meses seguintes.
+--
+-- É necessário remover a função antes de recriá-la: "create or replace" não
+-- permite alterar o tipo de retorno de uma função existente (erro 42P13).
 -- ----------------------------------------------------------------------------
-create or replace function public.get_events_by_month(p_year int, p_month int)
+drop function if exists public.get_events_by_month(int, int);
+
+create function public.get_events_by_month(p_year int, p_month int)
 returns setof public.events
 language sql
 stable
@@ -57,3 +62,6 @@ as $$
     and coalesce(e.end_date, e.start_date) >= b.month_start
   order by e.start_date asc, e.start_time asc nulls last;
 $$;
+
+-- Restaura os privilégios de execução (perdidos ao remover a função)
+grant execute on function public.get_events_by_month(int, int) to anon, authenticated;

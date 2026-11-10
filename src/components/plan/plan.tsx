@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Clock, MapPin, CalendarDays } from 'lucide-react';
 import {
   Select,
@@ -9,6 +9,7 @@ import {
 } from '@/components/ui/select';
 import { cn } from '@/lib/utils';
 import { eventService } from '@/services/event.service';
+import { tagService } from '@/services/tag.service';
 import type { EventRecurrenceType } from '@/types/events';
 import dayjs, { type Dayjs } from 'dayjs';
 import 'dayjs/locale/pt-br';
@@ -28,6 +29,7 @@ interface ApiEvent {
   end_time: string | null;
   location: string | null;
   category_id: string;
+  tag_id: string | null;
   recurrent: boolean;
   recurrence_type: EventRecurrenceType | null;
 }
@@ -94,23 +96,22 @@ function getRecurrenceDates(start: Dayjs, end: Dayjs, type: EventRecurrenceType)
   return dates;
 }
 
-function inferType(event: ApiEvent): string {
-  const titleLower = event.title.toLowerCase();
-  if (titleLower.includes('culto')) return 'Culto';
-  if (titleLower.includes('jovem') || titleLower.includes('jovens')) return 'Jovens';
-  if (titleLower.includes('ensino') || titleLower.includes('estudo')) return 'Ensino';
-  return 'Evento';
-}
+type TagNames = Record<string, string>;
+
+/** Tag padrão exibida quando o evento não possui uma tag cadastrada. */
+const DEFAULT_TAG_NAME = 'IPIM';
 
 function formatTime(timeStr: string): string {
   if (!timeStr) return '';
   return timeStr.slice(0, 5);
 }
 
-function toScheduleEvent(event: ApiEvent): ScheduleEvent {
+function toScheduleEvent(event: ApiEvent, tagNames: TagNames): ScheduleEvent {
+  const tagName = event.tag_id ? tagNames[event.tag_id] : undefined;
+
   return {
     id: event.id,
-    type: inferType(event),
+    type: tagName || DEFAULT_TAG_NAME,
     title: event.title,
     time: formatTime(event.start_time),
     location: event.location || undefined,
@@ -130,6 +131,9 @@ export default function Plan() {
   const [eventsByDate, setEventsByDate] = useState<EventsByDate>({});
   const [selectedDate, setSelectedDate] = useState<string>(dayjs().format('YYYY-MM-DD'));
   const [isLoading, setIsLoading] = useState(true);
+  // Cache das tags (id -> nome), carregado uma única vez
+  const tagNamesRef = useRef<TagNames>({});
+  const tagsLoadedRef = useRef(false);
 
   const monthStart = useMemo(() => dayjs(`${selectedMonth}-01`).startOf('month'), [selectedMonth]);
 
@@ -150,6 +154,18 @@ export default function Plan() {
     async (month: string) => {
       setIsLoading(true);
       try {
+        // Carrega as tags uma única vez para resolver o nome exibido acima do título
+        if (!tagsLoadedRef.current) {
+          const { data: tagsData, error: tagsError } = await tagService.getAll();
+
+          if (tagsError) throw tagsError;
+
+          tagNamesRef.current = Object.fromEntries(
+            (tagsData ?? []).map((tag) => [tag.id, tag.tag_name])
+          );
+          tagsLoadedRef.current = true;
+        }
+
         const [year, monthNumber] = month.split('-');
         const { data, error } = await eventService.getEventsByMonth(Number(year), Number(monthNumber));
 
@@ -157,7 +173,7 @@ export default function Plan() {
 
         const start = dayjs(`${month}-01`).startOf('month');
         const end = start.endOf('month');
-        const map = buildEventsByDate((data as ApiEvent[]) ?? [], start, end);
+        const map = buildEventsByDate((data as ApiEvent[]) ?? [], start, end, tagNamesRef.current);
 
         setEventsByDate(map);
 
@@ -402,7 +418,12 @@ export default function Plan() {
   );
 }
 
-function buildEventsByDate(apiEvents: ApiEvent[], rangeStart: Dayjs, rangeEnd: Dayjs): EventsByDate {
+function buildEventsByDate(
+  apiEvents: ApiEvent[],
+  rangeStart: Dayjs,
+  rangeEnd: Dayjs,
+  tagNames: TagNames
+): EventsByDate {
   const map: EventsByDate = {};
 
   const addEventToDay = (date: Dayjs, event: ApiEvent) => {
@@ -413,7 +434,7 @@ function buildEventsByDate(apiEvents: ApiEvent[], rangeStart: Dayjs, rangeEnd: D
     if (!map[dateKey]) {
       map[dateKey] = [];
     }
-    map[dateKey].push(toScheduleEvent(event));
+    map[dateKey].push(toScheduleEvent(event, tagNames));
   };
 
   apiEvents.forEach((event) => {

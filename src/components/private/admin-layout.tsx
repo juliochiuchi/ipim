@@ -4,7 +4,7 @@ import { useLocation } from "@tanstack/react-router"
 import { AdminSidebar } from "./admin-sidebar"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { LayoutDashboard, Calendar, Cog, Palette, LogOut, User, UserCheck } from "lucide-react"
+import { LayoutDashboard, Calendar, Cog, Palette, LogOut, User, UserCheck, Tags, Tag } from "lucide-react"
 
 type AdminLayoutProps = {
   title?: string
@@ -29,6 +29,18 @@ export function AdminLayout({ title, userEmail, onLogout, children }: AdminLayou
       to: "/events",
       icon: <Calendar className="h-5 w-5" />,
       active: location.pathname === "/events",
+    },
+    {
+      label: "Categorias",
+      to: "/categories",
+      icon: <Tags className="h-5 w-5" />,
+      active: location.pathname === "/categories",
+    },
+    {
+      label: "Tags",
+      to: "/tags",
+      icon: <Tag className="h-5 w-5" />,
+      active: location.pathname === "/tags",
     },
     {
       label: "Controle de Presença",

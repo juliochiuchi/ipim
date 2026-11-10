@@ -34,9 +34,10 @@ import {
 } from "@/components/ui/popover"
 import { cn } from "@/lib/utils"
 import { categoryService } from "@/services/category.service"
+import { tagService } from "@/services/tag.service"
 import { eventService } from "@/services/event.service"
 import { toast } from "sonner"
-import type { Event, EventCategory } from "@/types/events"
+import type { Event, EventCategory, Tag } from "@/types/events"
 
 const RECURRENCE_OPTIONS = [
   { value: "day_of_month", label: "Todo dia do mês (ex: sempre dia 15)" },
@@ -48,6 +49,7 @@ const formSchema = z
     title: z.string().min(1, "O título é obrigatório").max(150, "Máximo de 150 caracteres"),
     description: z.string().optional(),
     category_id: z.string().optional(),
+    tag_id: z.string().optional(),
     start_date: z.date({
       message: "A data de início é obrigatória",
     }),
@@ -89,7 +91,9 @@ interface EventFormProps {
 
 export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) {
   const [categories, setCategories] = useState<EventCategory[]>([])
+  const [tags, setTags] = useState<Tag[]>([])
   const [isLoadingCategories, setIsLoadingCategories] = useState(true)
+  const [isLoadingTags, setIsLoadingTags] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
   const fieldClassName =
     "bg-muted/25 border-border/70 shadow-none focus-visible:ring-1 focus-visible:ring-ipimGreen/30 dark:bg-white/[0.06] dark:border-white/10 dark:hover:bg-white/[0.08]"
@@ -102,6 +106,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
       title: "",
       description: "",
       category_id: undefined,
+      tag_id: undefined,
       start_date: undefined,
       end_date: undefined,
       start_time: "",
@@ -129,15 +134,30 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
       setIsLoadingCategories(false)
     }
 
+    async function fetchTags() {
+      setIsLoadingTags(true)
+      const { data, error } = await tagService.getAll()
+
+      if (error) {
+        toast.error("Erro ao carregar tags")
+        console.error(error)
+      } else {
+        setTags(data || [])
+      }
+      setIsLoadingTags(false)
+    }
+
     fetchCategories()
+    fetchTags()
   }, [])
 
   useEffect(() => {
-    if (initialData && !isLoadingCategories) {
+    if (initialData && !isLoadingCategories && !isLoadingTags) {
       form.reset({
         title: initialData.title,
         description: initialData.description || "",
         category_id: initialData.category_id ?? undefined,
+        tag_id: initialData.tag_id ?? undefined,
         start_date: initialData.start_date ? parse(initialData.start_date, "yyyy-MM-dd", new Date()) : undefined,
         end_date: initialData.end_date ? parse(initialData.end_date, "yyyy-MM-dd", new Date()) : undefined,
         start_time: initialData.start_time || "",
@@ -148,7 +168,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
         recurrence_type: initialData.recurrence_type ?? undefined,
       })
     }
-  }, [initialData, form, isLoadingCategories])
+  }, [initialData, form, isLoadingCategories, isLoadingTags])
 
   async function onSubmit(values: FormValues) {
     setIsSaving(true)
@@ -157,6 +177,7 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
         title: values.title,
         description: values.description || null,
         category_id: values.category_id || null,
+        tag_id: values.tag_id || null,
         start_date: format(values.start_date, "yyyy-MM-dd"),
         end_date: values.end_date ? format(values.end_date, "yyyy-MM-dd") : null,
         start_time: values.start_time || null,
@@ -231,6 +252,35 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
                     {categories.map((category) => (
                       <SelectItem key={category.id} value={category.id}>
                         {category.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="tag_id"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Tag</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  value={field.value ?? undefined}
+                  disabled={isLoadingTags}
+                >
+                  <FormControl>
+                    <SelectTrigger className={fieldClassName}>
+                      <SelectValue placeholder={isLoadingTags ? "Carregando..." : "Selecione uma tag"} />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {tags.map((tag) => (
+                      <SelectItem key={tag.id} value={tag.id}>
+                        {tag.tag_name}
                       </SelectItem>
                     ))}
                   </SelectContent>

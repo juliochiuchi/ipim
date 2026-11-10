@@ -10,6 +10,7 @@ import {
 import { cn } from '@/lib/utils';
 import { eventService } from '@/services/event.service';
 import { tagService } from '@/services/tag.service';
+import { categoryService } from '@/services/category.service';
 import type { EventRecurrenceType } from '@/types/events';
 import dayjs, { type Dayjs } from 'dayjs';
 import 'dayjs/locale/pt-br';
@@ -37,6 +38,7 @@ interface ApiEvent {
 interface ScheduleEvent {
   id: string;
   type: string;
+  color?: string;
   title: string;
   time: string;
   location?: string;
@@ -97,21 +99,40 @@ function getRecurrenceDates(start: Dayjs, end: Dayjs, type: EventRecurrenceType)
 }
 
 type TagNames = Record<string, string>;
+type CategoryColors = Record<string, string>;
 
 /** Tag padrão exibida quando o evento não possui uma tag cadastrada. */
 const DEFAULT_TAG_NAME = 'IPIM';
+
+/** Converte uma cor hexadecimal (#RRGGBB) em rgba com a opacidade informada. */
+function withAlpha(hexColor: string, alpha: number): string {
+  const hex = hexColor.replace('#', '');
+  if (hex.length !== 6) return hexColor;
+
+  const red = parseInt(hex.slice(0, 2), 16);
+  const green = parseInt(hex.slice(2, 4), 16);
+  const blue = parseInt(hex.slice(4, 6), 16);
+
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+}
 
 function formatTime(timeStr: string): string {
   if (!timeStr) return '';
   return timeStr.slice(0, 5);
 }
 
-function toScheduleEvent(event: ApiEvent, tagNames: TagNames): ScheduleEvent {
+function toScheduleEvent(
+  event: ApiEvent,
+  tagNames: TagNames,
+  categoryColors: CategoryColors
+): ScheduleEvent {
   const tagName = event.tag_id ? tagNames[event.tag_id] : undefined;
+  const color = event.category_id ? categoryColors[event.category_id] : undefined;
 
   return {
     id: event.id,
     type: tagName || DEFAULT_TAG_NAME,
+    color,
     title: event.title,
     time: formatTime(event.start_time),
     location: event.location || undefined,
@@ -131,9 +152,10 @@ export default function Plan() {
   const [eventsByDate, setEventsByDate] = useState<EventsByDate>({});
   const [selectedDate, setSelectedDate] = useState<string>(dayjs().format('YYYY-MM-DD'));
   const [isLoading, setIsLoading] = useState(true);
-  // Cache das tags (id -> nome), carregado uma única vez
+  // Caches auxiliares (nome das tags e cor das categorias), carregados uma única vez
   const tagNamesRef = useRef<TagNames>({});
-  const tagsLoadedRef = useRef(false);
+  const categoryColorsRef = useRef<CategoryColors>({});
+  const lookupsLoadedRef = useRef(false);
 
   const monthStart = useMemo(() => dayjs(`${selectedMonth}-01`).startOf('month'), [selectedMonth]);
 
@@ -154,16 +176,26 @@ export default function Plan() {
     async (month: string) => {
       setIsLoading(true);
       try {
-        // Carrega as tags uma única vez para resolver o nome exibido acima do título
-        if (!tagsLoadedRef.current) {
-          const { data: tagsData, error: tagsError } = await tagService.getAll();
+        // Carrega tags e cores das categorias uma única vez: definem o texto
+        // e a cor do badge exibidos acima do título do evento
+        if (!lookupsLoadedRef.current) {
+          const [tagsResult, categoriesResult] = await Promise.all([
+            tagService.getAll(),
+            categoryService.getAll(),
+          ]);
 
-          if (tagsError) throw tagsError;
+          if (tagsResult.error) throw tagsResult.error;
+          if (categoriesResult.error) throw categoriesResult.error;
 
           tagNamesRef.current = Object.fromEntries(
-            (tagsData ?? []).map((tag) => [tag.id, tag.tag_name])
+            (tagsResult.data ?? []).map((tag) => [tag.id, tag.tag_name])
           );
-          tagsLoadedRef.current = true;
+          categoryColorsRef.current = Object.fromEntries(
+            (categoriesResult.data ?? [])
+              .filter((category) => category.color)
+              .map((category) => [category.id, category.color as string])
+          );
+          lookupsLoadedRef.current = true;
         }
 
         const [year, monthNumber] = month.split('-');
@@ -173,7 +205,13 @@ export default function Plan() {
 
         const start = dayjs(`${month}-01`).startOf('month');
         const end = start.endOf('month');
-        const map = buildEventsByDate((data as ApiEvent[]) ?? [], start, end, tagNamesRef.current);
+        const map = buildEventsByDate(
+          (data as ApiEvent[]) ?? [],
+          start,
+          end,
+          tagNamesRef.current,
+          categoryColorsRef.current
+        );
 
         setEventsByDate(map);
 
@@ -387,8 +425,13 @@ export default function Plan() {
                       <span
                         className={cn(
                           'mb-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-                          typeBadgeClass(event.type)
+                          !event.color && typeBadgeClass(event.type)
                         )}
+                        style={
+                          event.color
+                            ? { color: event.color, backgroundColor: withAlpha(event.color, 0.14) }
+                            : undefined
+                        }
                       >
                         {event.type}
                       </span>
@@ -422,7 +465,8 @@ function buildEventsByDate(
   apiEvents: ApiEvent[],
   rangeStart: Dayjs,
   rangeEnd: Dayjs,
-  tagNames: TagNames
+  tagNames: TagNames,
+  categoryColors: CategoryColors
 ): EventsByDate {
   const map: EventsByDate = {};
 
@@ -434,7 +478,7 @@ function buildEventsByDate(
     if (!map[dateKey]) {
       map[dateKey] = [];
     }
-    map[dateKey].push(toScheduleEvent(event, tagNames));
+    map[dateKey].push(toScheduleEvent(event, tagNames, categoryColors));
   };
 
   apiEvents.forEach((event) => {

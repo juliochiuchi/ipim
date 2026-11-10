@@ -6,6 +6,8 @@ export interface EventCategory {
   created_at: string
 }
 
+export type EventRecurrenceType = "day_of_month" | "day_of_week"
+
 export interface Event {
   id: string
   title: string
@@ -17,6 +19,8 @@ export interface Event {
   end_time?: string | null
   location?: string | null
   is_active: boolean
+  recurrent: boolean
+  recurrence_type?: EventRecurrenceType | null
   created_at: string
   updated_at: string
 

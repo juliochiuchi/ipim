@@ -38,19 +38,46 @@ import { eventService } from "@/services/event.service"
 import { toast } from "sonner"
 import type { Event, EventCategory } from "@/types/events"
 
-const formSchema = z.object({
-  title: z.string().min(1, "O título é obrigatório").max(150, "Máximo de 150 caracteres"),
-  description: z.string().optional(),
-  category_id: z.string().optional(),
-  start_date: z.date({
-    message: "A data de início é obrigatória",
-  }),
-  end_date: z.date().optional(),
-  start_time: z.string().optional(),
-  end_time: z.string().optional(),
-  location: z.string().max(150, "Máximo de 150 caracteres").optional(),
-  is_active: z.boolean().default(true),
-})
+const RECURRENCE_OPTIONS = [
+  { value: "day_of_month", label: "Todo dia do mês (ex: sempre dia 15)" },
+  { value: "day_of_week", label: "Todo dia da semana (ex: sempre quarta-feira)" },
+] as const
+
+const formSchema = z
+  .object({
+    title: z.string().min(1, "O título é obrigatório").max(150, "Máximo de 150 caracteres"),
+    description: z.string().optional(),
+    category_id: z.string().optional(),
+    start_date: z.date({
+      message: "A data de início é obrigatória",
+    }),
+    end_date: z.date().optional(),
+    start_time: z.string().optional(),
+    end_time: z.string().optional(),
+    location: z.string().max(150, "Máximo de 150 caracteres").optional(),
+    is_active: z.boolean().default(true),
+    recurrent: z.boolean().default(false),
+    recurrence_type: z.enum(["day_of_month", "day_of_week"]).optional(),
+  })
+  .superRefine((values, ctx) => {
+    if (!values.recurrent) return
+
+    if (!values.end_date) {
+      ctx.addIssue({
+        code: "custom",
+        message: "A data de término é obrigatória para eventos recorrentes",
+        path: ["end_date"],
+      })
+    }
+
+    if (!values.recurrence_type) {
+      ctx.addIssue({
+        code: "custom",
+        message: "Selecione a forma de recorrência",
+        path: ["recurrence_type"],
+      })
+    }
+  })
 
 type FormValues = z.infer<typeof formSchema>
 
@@ -81,8 +108,12 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
       end_time: "",
       location: "",
       is_active: true,
+      recurrent: false,
+      recurrence_type: undefined,
     },
   })
+
+  const isRecurrent = form.watch("recurrent")
 
   useEffect(() => {
     async function fetchCategories() {
@@ -113,6 +144,8 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
         end_time: initialData.end_time || "",
         location: initialData.location || "",
         is_active: initialData.is_active,
+        recurrent: initialData.recurrent ?? false,
+        recurrence_type: initialData.recurrence_type ?? undefined,
       })
     }
   }, [initialData, form, isLoadingCategories])
@@ -130,6 +163,8 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
         end_time: values.end_time || null,
         location: values.location || null,
         is_active: values.is_active,
+        recurrent: values.recurrent,
+        recurrence_type: values.recurrent ? values.recurrence_type ?? null : null,
       }
 
       if (initialData?.id) {
@@ -301,6 +336,62 @@ export function EventForm({ initialData, onSuccess, onCancel }: EventFormProps) 
             )}
           />
         </div>
+
+        <FormField
+          control={form.control}
+          name="recurrent"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-center justify-between rounded-xl border bg-card/40 p-4">
+              <div className="space-y-0.5">
+                <FormLabel>Evento recorrente</FormLabel>
+                <FormDescription>
+                  Repete o evento dentro do período definido, sempre no mesmo dia do mês ou dia da
+                  semana.
+                </FormDescription>
+              </div>
+              <FormControl>
+                <Switch
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+        {isRecurrent && (
+          <FormField
+            control={form.control}
+            name="recurrence_type"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Forma de recorrência</FormLabel>
+                <Select
+                  onValueChange={field.onChange}
+                  value={field.value ?? undefined}
+                >
+                  <FormControl>
+                    <SelectTrigger className={fieldClassName}>
+                      <SelectValue placeholder="Selecione a forma de recorrência" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {RECURRENCE_OPTIONS.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <FormDescription>
+                  Ex: iniciando em 01/01 e terminando em 01/12, o evento será repetido em todo dia
+                  15 ou em toda quarta-feira dentro deste período.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        )}
 
         <div className="flex flex-col gap-4 tablet:flex-row">
           <FormField
